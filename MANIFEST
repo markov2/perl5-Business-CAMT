@@ -10,6 +10,7 @@ examples/dutch-sepa/README.md
 examples/dutch-sepa/camt.053.001.02.xml
 examples/show
 lib/Business/CAMT.pm
+lib/Business/CAMT/Message.pm
 lib/Business/CAMT/tags/README.md
 lib/Business/CAMT/tags/abbreviations.csv
 lib/Business/CAMT/tags/abbreviations.pdf
