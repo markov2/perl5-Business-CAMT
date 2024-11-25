@@ -1,0 +1,203 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.061.001.02}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:21 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.061.001.02
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of PayInCall
+
+  # is a x0:PayInCallV02
+  PayInCall =>
+  { # sequence of PartyId, ReportData,
+    #   SettlementSessionIdentifier, SupplementaryData
+
+    # is a x0:PartyIdentification73Choice
+    PartyId =>
+    { # choice of NameAndAddress, AnyBIC, PartyId
+
+      # is a x0:NameAndAddress8
+      NameAndAddress =>
+      { # sequence of Name, Address, AltrntvIdr
+
+        # is a xs:string
+        # length <= 350
+        # length >= 1
+        Name => "example",
+
+        # is a x0:PostalAddress1
+        # is optional
+        Address =>
+        { # sequence of AddressType, AddressLine, SteetName,
+          #   BuildingNumber, PostalCode, TownName, CountrySubDivision, Country
+
+          # is a xs:string
+          # is optional
+          # Enum: ADDR BIZZ DLVY HOME MLTO PBOX
+          AddressType => "ADDR",
+
+          # is a xs:string
+          # occurs 0 <= # <= 5 times
+          # length <= 70
+          # length >= 1
+          AddressLine => [ "example", ],
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          SteetName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 16
+          # length >= 1
+          BuildingNumber => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 16
+          # length >= 1
+          PostalCode => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          TownName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          CountrySubDivision => "example",
+
+          # is a xs:string
+          # Pattern: [A-Z]{2,2}
+          Country => "example", },
+
+        # is a xs:string
+        # occurs 0 <= # <= 10 times
+        # length <= 35
+        # length >= 1
+        AltrntvIdr => [ "example", ], },
+
+      # is a x0:PartyIdentification44
+      AnyBIC =>
+      { # sequence of AnyBIC, AltrntvIdr
+
+        # is a xs:string
+        # Pattern:
+        #    [A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}
+        AnyBIC => "example",
+
+        # is a xs:string
+        # occurs 0 <= # <= 10 times
+        # length <= 35
+        # length >= 1
+        AltrntvIdr => [ "example", ], },
+
+      # is a x0:PartyIdentification59
+      # probably a recursive complex
+      PartyId => {}, },
+
+    # is a x0:ReportData5
+    ReportData =>
+    { # sequence of MessageId, ValueDate, DateAndTimeStamp, Type,
+      #   PayInCallAmount, SettlementSessionIdentifier, AccountValue
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:date
+      ValueDate => "2006-10-06",
+
+      # is a xs:dateTime
+      DateAndTimeStamp => "2006-10-06T00:23:02Z",
+
+      # is a xs:string
+      # Enum: CFAV CFCC CFST
+      Type => "CFAV",
+
+      # is a x0:PayInCallItem
+      # occurs any number of times
+      PayInCallAmount =>
+      [ { # sequence of Amount
+
+          # is a x0:ActiveOrHistoricCurrencyAndAmount
+          # Amount is simple value with attributes
+          Amount =>
+          { # is a xs:string
+            # attribute Currency is required
+            # Pattern: [A-Z]{3,3}
+            Currency => "example",
+
+            # is a xs:decimal
+            # string content of the container
+            _ => 3.1415, }, }, ],
+
+      # is a xs:string
+      # is optional
+      # Pattern: [a-zA-Z0-9]{4}
+      SettlementSessionIdentifier => "example",
+
+      # is a x0:Value
+      # is optional
+      AccountValue =>
+      { # sequence of BaseCurrencyItem, AltrnCcyItm
+
+        # is a x0:ActiveOrHistoricCurrencyAndAmount
+        # BaseCurrencyItem is simple value with attributes
+        BaseCurrencyItem =>
+        { # is a xs:string
+          # attribute Currency is required
+          # Pattern: [A-Z]{3,3}
+          Currency => "example",
+
+          # is a xs:decimal
+          # string content of the container
+          _ => 3.1415, },
+
+        # is a x0:ActiveOrHistoricCurrencyAndAmount
+        # AltrnCcyItm is simple value with attributes
+        # occurs 1 <= # <= unbounded times
+        AltrnCcyItm =>
+        [ { # is a xs:string
+            # attribute Currency is required
+            # Pattern: [A-Z]{3,3}
+            Currency => "example",
+
+            # is a xs:decimal
+            # string content of the container
+            _ => 3.1415, }, ], }, },
+
+    # is a xs:string
+    # is optional
+    # Pattern: [a-zA-Z0-9]{4}
+    SettlementSessionIdentifier => "example",
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

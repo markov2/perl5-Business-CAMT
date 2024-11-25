@@ -1,0 +1,146 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.020.001.04}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.020.001.04
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of GetGeneralBusinessInformation
+
+  # is a x0:GetGeneralBusinessInformationV04
+  GetGeneralBusinessInformation =>
+  { # sequence of MessageHeader, GnlBizInfQryDef, SupplementaryData
+
+    # is a x0:MessageHeader1
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z", },
+
+    # is a x0:BusinessInformationQueryDefinition3
+    # is optional
+    GnlBizInfQryDef =>
+    { # sequence of QueryType, GeneralBusinessInformationCriteria
+
+      # is a xs:string
+      # is optional
+      # Enum: ALLL CHNG DELD MODF
+      QueryType => "ALLL",
+
+      # is a x0:GeneralBusinessInformationCriteriaDefinition1Choice
+      # is optional
+      GeneralBusinessInformationCriteria =>
+      { # choice of QueryName, NewCriteria
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        QueryName => "example",
+
+        # is a x0:BusinessInformationCriteria1
+        NewCriteria =>
+        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          NewQryNm => "example",
+
+          # is a x0:GeneralBusinessInformationSearchCriteria1
+          # occurs any number of times
+          SearchCriteria =>
+          [ { # sequence of Reference, Subject, Qualifier
+
+              # is a xs:string
+              # occurs any number of times
+              # length <= 35
+              # length >= 1
+              Reference => [ "example", ],
+
+              # is a x0:CharacterSearch1Choice
+              # occurs any number of times
+              Subject =>
+              [ { # choice of Equal, NotEqual, Contain, NotContain
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Equal => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  NotEqual => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Contain => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  NotContain => "example", }, ],
+
+              # is a x0:InformationQualifierType1
+              # occurs any number of times
+              Qualifier =>
+              [ { # sequence of IsFormatted, Priority
+
+                  # is a xs:boolean
+                  # is optional
+                  IsFormatted => "true",
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: HIGH LOWW NORM
+                  Priority => "HIGH", }, ], }, ],
+
+          # is a x0:GeneralBusinessInformationReturnCriteria1
+          # is optional
+          ReturnCriteria =>
+          { # sequence of QualifierInd, SubjectInd, SubjectDetailsInd
+
+            # is a xs:boolean
+            # is optional
+            QualifierInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            SubjectInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            SubjectDetailsInd => "true", }, }, }, },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

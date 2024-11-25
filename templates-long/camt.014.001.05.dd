@@ -1,0 +1,443 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.014.001.05}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.014.001.05
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of ReturnMember
+
+  # is a x0:ReturnMemberV05
+  ReturnMember =>
+  { # sequence of MessageHeader, ReportOrError, SupplementaryData
+
+    # is a x0:MessageHeader7
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime, RequestType,
+      #   OrgnlBizQry, QueryName
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:RequestType4Choice
+      # is optional
+      RequestType =>
+      { # choice of PaymentControl, Enquiry, Proprietary
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        PaymentControl => "example",
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        Enquiry => "example",
+
+        # is a x0:GenericIdentification1
+        Proprietary =>
+        { # sequence of Identification, SchemName, Issuer
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Identification => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          SchemName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Issuer => "example", }, },
+
+      # is a x0:OriginalBusinessQuery1
+      # is optional
+      OrgnlBizQry =>
+      { # sequence of MessageId, MessageNameId, CreationDateTime
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        MessageId => "example",
+
+        # is a xs:string
+        # is optional
+        # length <= 35
+        # length >= 1
+        MessageNameId => "example",
+
+        # is a xs:dateTime
+        # is optional
+        CreationDateTime => "2006-10-06T00:23:02Z", },
+
+      # is a xs:string
+      # is optional
+      # length <= 35
+      # length >= 1
+      QueryName => "example", },
+
+    # is a x0:MemberReportOrError7Choice
+    ReportOrError =>
+    { # choice of Report, OperationalError
+
+      # is a x0:MemberReport6
+      # occurs 1 <= # <= unbounded times
+      Report =>
+      [ { # sequence of MemberId, MemberOrError
+
+          # is a x0:MemberIdentification3Choice
+          MemberId =>
+          { # choice of BICFI, ClearSystemMemberId, Other
+
+            # is a xs:string
+            # Pattern:
+            #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+            BICFI => "example",
+
+            # is a x0:ClearingSystemMemberIdentification2
+            ClearSystemMemberId =>
+            { # sequence of ClearSystemId, MemberId
+
+              # is a x0:ClearingSystemIdentification2Choice
+              # is optional
+              ClearSystemId =>
+              { # choice of Code, Proprietary
+
+                # is a xs:string
+                # length <= 5
+                # length >= 1
+                Code => "example",
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                Proprietary => "example", },
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              MemberId => "example", },
+
+            # is a x0:GenericFinancialIdentification1
+            Other =>
+            { # sequence of Identification, SchemName, Issuer
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              Identification => "example",
+
+              # is a x0:FinancialIdentificationSchemeName1Choice
+              # is optional
+              SchemName =>
+              { # choice of Code, Proprietary
+
+                # is a xs:string
+                # length <= 4
+                # length >= 1
+                Code => "example",
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                Proprietary => "example", },
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              Issuer => "example", }, },
+
+          # is a x0:MemberReportOrError8Choice
+          MemberOrError =>
+          { # choice of Member, BusinessError
+
+            # is a x0:Member7
+            Member =>
+            { # sequence of Name, ReturnAddress, Account, Type, Status,
+              #   ContactReference, CommunicationAddress
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              Name => "example",
+
+              # is a x0:MemberIdentification3Choice
+              # complex structure shown above
+              # occurs any number of times
+              ReturnAddress => [{},],
+
+              # is a x0:CashAccount40
+              # occurs any number of times
+              Account =>
+              [ { # sequence of Identification, Type, Currency, Name, Proxy
+
+                  # is a x0:AccountIdentification4Choice
+                  # is optional
+                  Identification =>
+                  { # choice of IBAN, Other
+
+                    # is a xs:string
+                    # Pattern: [A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}
+                    IBAN => "example",
+
+                    # is a x0:GenericAccountIdentification1
+                    # complex structure shown above
+                    Other => {}, },
+
+                  # is a x0:CashAccountType2Choice
+                  # is optional
+                  Type =>
+                  { # choice of Code, Proprietary
+
+                    # is a xs:string
+                    # length <= 4
+                    # length >= 1
+                    Code => "example",
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    Proprietary => "example", },
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z]{3,3}
+                  Currency => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 70
+                  # length >= 1
+                  Name => "example",
+
+                  # is a x0:ProxyAccountIdentification1
+                  # is optional
+                  Proxy =>
+                  { # sequence of Type, Identification
+
+                    # is a x0:ProxyAccountType1Choice
+                    # complex structure shown above
+                    # is optional
+                    Type => [{},],
+
+                    # is a xs:string
+                    # length <= 2048
+                    # length >= 1
+                    Identification => "example", }, }, ],
+
+              # is a x0:SystemMemberType1Choice
+              # complex structure shown above
+              # is optional
+              Type => [{},],
+
+              # is a x0:SystemMemberStatus1Choice
+              # is optional
+              Status =>
+              { # choice of Code, Proprietary
+
+                # is a xs:string
+                # Enum: DLTD DSBL ENBL JOIN
+                Code => "ENBL",
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                Proprietary => "example", },
+
+              # is a x0:ContactIdentificationAndAddress2
+              # occurs any number of times
+              ContactReference =>
+              [ { # sequence of Name, Role, CommunicationAddress
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  Name => "example",
+
+                  # is a x0:PaymentRole1Choice
+                  Role =>
+                  { # choice of Code, Proprietary
+
+                    # is a xs:string
+                    # length <= 4
+                    # length >= 1
+                    Code => "example",
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    Proprietary => "example", },
+
+                  # is a x0:CommunicationAddress10
+                  CommunicationAddress =>
+                  { # sequence of PostalAddress, PhoneNumber, FaxNumber, EmailAddress
+
+                    # is a x0:LongPostalAddress1Choice
+                    PostalAddress =>
+                    { # choice of Unstructured, Structured
+
+                      # is a xs:string
+                      # length <= 140
+                      # length >= 1
+                      Unstructured => "example",
+
+                      # is a x0:StructuredLongPostalAddress1
+                      Structured =>
+                      { # sequence of BuildingName, SteetName, StreetBuildingId,
+                        #   Floor, TownName, DistrictName, RegionId, State, CityId,
+                        #   Country, PostalCodeId, PostOfficeBox
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        BuildingName => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        SteetName => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        StreetBuildingId => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 16
+                        # length >= 1
+                        Floor => "example",
+
+                        # is a xs:string
+                        # length <= 35
+                        # length >= 1
+                        TownName => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        DistrictName => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        RegionId => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        State => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        CityId => "example",
+
+                        # is a xs:string
+                        # Pattern: [A-Z]{2,2}
+                        Country => "example",
+
+                        # is a xs:string
+                        # length <= 16
+                        # length >= 1
+                        PostalCodeId => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 16
+                        # length >= 1
+                        PostOfficeBox => "example", }, },
+
+                    # is a xs:string
+                    # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+                    PhoneNumber => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+                    FaxNumber => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 2048
+                    # length >= 1
+                    EmailAddress => "example", }, }, ],
+
+              # is a x0:CommunicationAddress10
+              # complex structure shown above
+              # is optional
+              CommunicationAddress => [{},], },
+
+            # is a x0:ErrorHandling3
+            BusinessError =>
+            { # sequence of Error, Description
+
+              # is a x0:ErrorHandling1Choice
+              Error =>
+              { # choice of Code, Proprietary
+
+                # is a xs:string
+                # Enum: X020 X030 X050
+                Code => "X020",
+
+                # is a xs:string
+                # length <= 4
+                # length >= 1
+                # Pattern: [a-zA-Z0-9]{1,4}
+                Proprietary => "example", },
+
+              # is a xs:string
+              # is optional
+              # length <= 140
+              # length >= 1
+              Description => "example", }, }, }, ],
+
+      # is a x0:ErrorHandling3
+      # complex structure shown above
+      # occurs 1 <= # <= unbounded times
+      OperationalError => [{},], },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

@@ -7,7 +7,10 @@ Mark Overmeer.
 version 0.11:
 
 	Fixes:
-	- Message.pm was missing from the MANIFEST
+	- Message.pm was missing from the MANIFEST.
+
+	Improvements:
+	- Add templates which use the long tagnames.
 
 version 0.10: Mon 25 Nov 09:55:46 CET 2024
 	- initial release

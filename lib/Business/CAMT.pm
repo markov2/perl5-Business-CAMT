@@ -27,7 +27,6 @@ my $tagdir  = $moddir->subdir('CAMT', 'tags');
 # The XSD filename is like camt.052.001.12.xsd.  camt.052.001.* is expected
 # to be incompatible tiwh camt.052.002.*, but *.12.xsd can parse *.11.xsd
 my (%xsd_files, $tagtable);
-our $schemas;  # public for template generator
 
 =encoding utf-8
 
@@ -98,17 +97,21 @@ sub init($) {
 	$self->{BC_rule} = delete $args->{match_schema}  || 'NEWER';
 	$self->{BC_big}  = delete $args->{big_numbers}   || 0;
 	$self->{BC_long} = delete $args->{long_tagnames} || 0;
+	$self->{RC_schemas} = XML::Compile::Cache->new;
 
-	$schemas = XML::Compile::Cache->new;
     $self;
 }
 
 #-------------------------
 =section Accessors
+
+=method schemas
 =cut
 
+sub schemas() { $_[0]->{RC_schemas} }
+
 #-------------------------
-=chapter Read
+=section Read
 
 =method read $file|$xml, %options
 Pass a $file name, an $xml document or an $xml node.  Returned is
@@ -155,6 +158,7 @@ sub schemaReader($$$)
 {	my ($self, $set, $version, $ns) = @_;
 	return $msg_readers{$ns} if $msg_readers{$ns};
 
+	my $schemas = $self->schemas;
 	$schemas->importDefinitions($xsd_files{$set}{$version});
 
 	$msg_readers{$ns} = $schemas->compile(
@@ -240,6 +244,35 @@ sub tag2fullnameTable()
 
 #---------------
 =chapter DETAILS
+
+In this chapter, you find some background information and implementation tips.
+
+=section Examples
+
+The release contains a C<examples/> directory.  In that directory, you with find
+a C<show> script and some xml files.  Run the script with a file, to see what
+this module has to offer.  For example:
+
+  cd Business-CAMT-0.01/
+  examples/show examples/danskeci.com/camt053_dk_example.xml
+
+The script (this module) auto-detects the CAMT type which is found in the XML
+message.  Play with the module initialization parameters to see how it changes
+the output.
+
+=section Templates
+
+The release contains a C<templates/> directory, which contains a
+structural dump of each of the Perl data structure which is produced (for
+M<read()>) or consumed (for C<write>, to be implemented) by this module.
+
+Be sure you understand anonymous HASHes and ARRAYs in Perl well, when you
+start playing.  Do not forget that code gets more readible when you use
+practical reference variables.
+
+This release also comes with a C<templates-long/> directory full of
+examples.  This demonstrates what option M<new(long_tagname)> does: it
+will make the Perl datastructures readible.
 
 =section Implementation issues
 

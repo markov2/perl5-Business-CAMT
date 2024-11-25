@@ -1,0 +1,2690 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.053.001.12}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:21 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.053.001.12
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of BankToCustomerStatement
+
+  # is a x0:BankToCustomerStatementV12
+  BankToCustomerStatement =>
+  { # sequence of GroupHeader, Statement, SupplementaryData
+
+    # is a x0:GroupHeader116
+    GroupHeader =>
+    { # sequence of MessageId, CreationDateTime, MessageRecipient,
+      #   MessagePagination, OrgnlBizQry, AdditionalInformation
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:PartyIdentification272
+      # is optional
+      MessageRecipient =>
+      { # sequence of Name, PostalAddress, Identification,
+        #   CountryOfResidence, ContactDetails
+
+        # is a xs:string
+        # is optional
+        # length <= 140
+        # length >= 1
+        Name => "example",
+
+        # is a x0:PostalAddress27
+        # is optional
+        PostalAddress =>
+        { # sequence of AddressType, CareOf, Department, SubDepartment,
+          #   SteetName, BuildingNumber, BuildingName, Floor, UnitNumber,
+          #   Postbox, Room, PostalCode, TownName, TownLocationName,
+          #   DistrictName, CountrySubDivision, Country, AddressLine
+
+          # is a x0:AddressType3Choice
+          # is optional
+          AddressType =>
+          { # choice of Code, Proprietary
+
+            # is a xs:string
+            # Enum: ADDR BIZZ DLVY HOME MLTO PBOX
+            Code => "ADDR",
+
+            # is a x0:GenericIdentification30
+            Proprietary =>
+            { # sequence of Identification, Issuer, SchemName
+
+              # is a xs:string
+              # Pattern: [a-zA-Z0-9]{4}
+              Identification => "example",
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              Issuer => "example",
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              SchemName => "example", }, },
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          CareOf => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          Department => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          SubDepartment => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          SteetName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 16
+          # length >= 1
+          BuildingNumber => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          BuildingName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          Floor => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 16
+          # length >= 1
+          UnitNumber => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 16
+          # length >= 1
+          Postbox => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          Room => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 16
+          # length >= 1
+          PostalCode => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          TownName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          TownLocationName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          DistrictName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          CountrySubDivision => "example",
+
+          # is a xs:string
+          # is optional
+          # Pattern: [A-Z]{2,2}
+          Country => "example",
+
+          # is a xs:string
+          # occurs 0 <= # <= 7 times
+          # length <= 70
+          # length >= 1
+          AddressLine => [ "example", ], },
+
+        # is a x0:Party52Choice
+        # is optional
+        Identification =>
+        { # choice of OrganisationId, PrivateId
+
+          # is a x0:OrganisationIdentification39
+          OrganisationId =>
+          { # sequence of AnyBIC, LEI, Other
+
+            # is a xs:string
+            # is optional
+            # Pattern:
+            #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+            AnyBIC => "example",
+
+            # is a xs:string
+            # is optional
+            # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+            LEI => "example",
+
+            # is a x0:GenericOrganisationIdentification3
+            # occurs any number of times
+            Other =>
+            [ { # sequence of Identification, SchemName, Issuer
+
+                # is a xs:string
+                # length <= 256
+                # length >= 1
+                Identification => "example",
+
+                # is a x0:OrganisationIdentificationSchemeName1Choice
+                # is optional
+                SchemName =>
+                { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # length <= 4
+                  # length >= 1
+                  Code => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Proprietary => "example", },
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                Issuer => "example", }, ], },
+
+          # is a x0:PersonIdentification18
+          PrivateId =>
+          { # sequence of DateAndPlaceOfBirth, Other
+
+            # is a x0:DateAndPlaceOfBirth1
+            # is optional
+            DateAndPlaceOfBirth =>
+            { # sequence of BirthDate, ProvinceOfBrith, CityOfBirth,
+              #   CountryOfBirth
+
+              # is a xs:date
+              BirthDate => "2006-10-06",
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              ProvinceOfBrith => "example",
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              CityOfBirth => "example",
+
+              # is a xs:string
+              # Pattern: [A-Z]{2,2}
+              CountryOfBirth => "example", },
+
+            # is a x0:GenericPersonIdentification2
+            # complex structure shown above
+            # occurs any number of times
+            Other => [{},], }, },
+
+        # is a xs:string
+        # is optional
+        # Pattern: [A-Z]{2,2}
+        CountryOfResidence => "example",
+
+        # is a x0:Contact13
+        # is optional
+        ContactDetails =>
+        { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
+          #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
+          #   Responsibility, Department, Other, PreferredMethod
+
+          # is a xs:string
+          # is optional
+          # Enum: DOCT MADM MIKS MISS MIST
+          NamePrefix => "DOCT",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          Name => "example",
+
+          # is a xs:string
+          # is optional
+          # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+          PhoneNumber => "example",
+
+          # is a xs:string
+          # is optional
+          # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+          MobNb => "example",
+
+          # is a xs:string
+          # is optional
+          # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+          FaxNumber => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 2048
+          # length >= 1
+          URLAdr => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 256
+          # length >= 1
+          EmailAddress => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          EmailPurpose => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          JobTitle => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Responsibility => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          Department => "example",
+
+          # is a x0:OtherContact1
+          # complex structure shown above
+          # occurs any number of times
+          Other => [{},],
+
+          # is a xs:string
+          # is optional
+          # Enum: CELL FAXX LETT MAIL ONLI PHON
+          PreferredMethod => "MAIL", }, },
+
+      # is a x0:Pagination1
+      # is optional
+      MessagePagination =>
+      { # sequence of PageNumber, LastPageInd
+
+        # is a xs:string
+        # Pattern: [0-9]{1,5}
+        PageNumber => "example",
+
+        # is a xs:boolean
+        LastPageInd => "true", },
+
+      # is a x0:OriginalBusinessQuery1
+      # is optional
+      OrgnlBizQry =>
+      { # sequence of MessageId, MessageNameId, CreationDateTime
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        MessageId => "example",
+
+        # is a xs:string
+        # is optional
+        # length <= 35
+        # length >= 1
+        MessageNameId => "example",
+
+        # is a xs:dateTime
+        # is optional
+        CreationDateTime => "2006-10-06T00:23:02Z", },
+
+      # is a xs:string
+      # is optional
+      # length <= 500
+      # length >= 1
+      AdditionalInformation => "example", },
+
+    # is a x0:AccountStatement13
+    # occurs 1 <= # <= unbounded times
+    Statement =>
+    [ { # sequence of Identification, StatementPagination,
+        #   ElectronicSequenceNumber, ReportingSequence,
+        #   LegalSequenceNumber, CreationDateTime, FromToDate,
+        #   CopyDuplicateInd, ReportingSource, Account, RelatedAccount,
+        #   Interest, Balance, TransactionsSummery, Entry,
+        #   AdditionalStatementInformation
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        Identification => "example",
+
+        # is a x0:Pagination1
+        # complex structure shown above
+        # is optional
+        StatementPagination => [{},],
+
+        # is a xs:decimal
+        # is optional
+        # faction digits is 0
+        # total digits is 18
+        ElectronicSequenceNumber => 3.1415,
+
+        # is a x0:SequenceRange1Choice
+        # is optional
+        ReportingSequence =>
+        { # choice of FromSequence, ToSequence, FromToSequence,
+          #   EqualSequence, NotEqualSequence
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          FromSequence => "example",
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          ToSequence => "example",
+
+          # is a x0:SequenceRange1
+          # occurs 1 <= # <= unbounded times
+          FromToSequence =>
+          [ { # sequence of FromSequence, ToSequence
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              FromSequence => "example",
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              ToSequence => "example", }, ],
+
+          # is a xs:string
+          # occurs 1 <= # <= unbounded times
+          # length <= 35
+          # length >= 1
+          EqualSequence => [ "example", ],
+
+          # is a xs:string
+          # occurs 1 <= # <= unbounded times
+          # length <= 35
+          # length >= 1
+          NotEqualSequence => [ "example", ], },
+
+        # is a xs:decimal
+        # is optional
+        # faction digits is 0
+        # total digits is 18
+        LegalSequenceNumber => 3.1415,
+
+        # is a xs:dateTime
+        # is optional
+        CreationDateTime => "2006-10-06T00:23:02Z",
+
+        # is a x0:DateTimePeriod1
+        # is optional
+        FromToDate =>
+        { # sequence of FromDateTime, ToDateTime
+
+          # is a xs:dateTime
+          FromDateTime => "2006-10-06T00:23:02Z",
+
+          # is a xs:dateTime
+          ToDateTime => "2006-10-06T00:23:02Z", },
+
+        # is a xs:string
+        # is optional
+        # Enum: CODU COPY DUPL
+        CopyDuplicateInd => "CODU",
+
+        # is a x0:ReportingSource1Choice
+        # is optional
+        ReportingSource =>
+        { # choice of Code, Proprietary
+
+          # is a xs:string
+          # length <= 4
+          # length >= 1
+          Code => "example",
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Proprietary => "example", },
+
+        # is a x0:CashAccount43
+        Account =>
+        { # sequence of Identification, Type, Currency, Name, Proxy,
+          #   Owner, Servicer
+
+          # is a x0:AccountIdentification4Choice
+          # complex structure shown above
+          # is optional
+          Identification => [{},],
+
+          # is a x0:CashAccountType2Choice
+          # is optional
+          Type =>
+          { # choice of Code, Proprietary
+
+            # is a xs:string
+            # length <= 4
+            # length >= 1
+            Code => "example",
+
+            # is a xs:string
+            # length <= 35
+            # length >= 1
+            Proprietary => "example", },
+
+          # is a xs:string
+          # is optional
+          # Pattern: [A-Z]{3,3}
+          Currency => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          Name => "example",
+
+          # is a x0:ProxyAccountIdentification1
+          # is optional
+          Proxy =>
+          { # sequence of Type, Identification
+
+            # is a x0:ProxyAccountType1Choice
+            # complex structure shown above
+            # is optional
+            Type => [{},],
+
+            # is a xs:string
+            # length <= 2048
+            # length >= 1
+            Identification => "example", },
+
+          # is a x0:PartyIdentification272
+          # complex structure shown above
+          # is optional
+          Owner => [{},],
+
+          # is a x0:BranchAndFinancialInstitutionIdentification8
+          # is optional
+          Servicer =>
+          { # sequence of FinancialInstitutionId, BranchId
+
+            # is a x0:FinancialInstitutionIdentification23
+            FinancialInstitutionId =>
+            { # sequence of BICFI, ClearSystemMemberId, LEI, Name,
+              #   PostalAddress, Other
+
+              # is a xs:string
+              # is optional
+              # Pattern:
+              #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+              BICFI => "example",
+
+              # is a x0:ClearingSystemMemberIdentification2
+              # is optional
+              ClearSystemMemberId =>
+              { # sequence of ClearSystemId, MemberId
+
+                # is a x0:ClearingSystemIdentification2Choice
+                # is optional
+                ClearSystemId =>
+                { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # length <= 5
+                  # length >= 1
+                  Code => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Proprietary => "example", },
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                MemberId => "example", },
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+              LEI => "example",
+
+              # is a xs:string
+              # is optional
+              # length <= 140
+              # length >= 1
+              Name => "example",
+
+              # is a x0:PostalAddress27
+              # complex structure shown above
+              # is optional
+              PostalAddress => [{},],
+
+              # is a x0:GenericFinancialIdentification1
+              # complex structure shown above
+              # is optional
+              Other => [{},], },
+
+            # is a x0:BranchData5
+            # is optional
+            BranchId =>
+            { # sequence of Identification, LEI, Name, PostalAddress
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              Identification => "example",
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+              LEI => "example",
+
+              # is a xs:string
+              # is optional
+              # length <= 140
+              # length >= 1
+              Name => "example",
+
+              # is a x0:PostalAddress27
+              # complex structure shown above
+              # is optional
+              PostalAddress => [{},], }, }, },
+
+        # is a x0:CashAccount40
+        # is optional
+        RelatedAccount =>
+        { # sequence of Identification, Type, Currency, Name, Proxy
+
+          # is a x0:AccountIdentification4Choice
+          # complex structure shown above
+          # is optional
+          Identification => [{},],
+
+          # is a x0:CashAccountType2Choice
+          # complex structure shown above
+          # is optional
+          Type => [{},],
+
+          # is a xs:string
+          # is optional
+          # Pattern: [A-Z]{3,3}
+          Currency => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 70
+          # length >= 1
+          Name => "example",
+
+          # is a x0:ProxyAccountIdentification1
+          # complex structure shown above
+          # is optional
+          Proxy => [{},], },
+
+        # is a x0:AccountInterest4
+        # occurs any number of times
+        Interest =>
+        [ { # sequence of Type, Rate, FromToDate, Reason, Tax
+
+            # is a x0:InterestType1Choice
+            # complex structure shown above
+            # is optional
+            Type => [{},],
+
+            # is a x0:Rate4
+            # occurs any number of times
+            Rate =>
+            [ { # sequence of Type, ValidityRegion
+
+                # is a x0:RateType4Choice
+                # complex structure shown above
+                Type => {},
+
+                # is a x0:ActiveOrHistoricCurrencyAndAmountRange2
+                # is optional
+                ValidityRegion =>
+                { # sequence of Amount, CreditDebitInd, Currency
+
+                  # is a x0:ImpliedCurrencyAmountRange1Choice
+                  Amount =>
+                  { # choice of FromAmount, ToAmount, FromToAmount, EqualAmount,
+                    #   NotEqualAmount
+
+                    # is a x0:AmountRangeBoundary1
+                    FromAmount =>
+                    { # sequence of BdryAmt, Included
+
+                      # is a xs:decimal
+                      # faction digits is 5
+                      # value >= 0
+                      # total digits is 18
+                      BdryAmt => 3.1415,
+
+                      # is a xs:boolean
+                      Included => "true", },
+
+                    # is a x0:AmountRangeBoundary1
+                    # complex structure shown above
+                    ToAmount => {},
+
+                    # is a x0:FromToAmountRange1
+                    FromToAmount =>
+                    { # sequence of FromAmount, ToAmount
+
+                      # is a x0:AmountRangeBoundary1
+                      # complex structure shown above
+                      FromAmount => {},
+
+                      # is a x0:AmountRangeBoundary1
+                      # complex structure shown above
+                      ToAmount => {}, },
+
+                    # is a xs:decimal
+                    # faction digits is 5
+                    # value >= 0
+                    # total digits is 18
+                    EqualAmount => 3.1415,
+
+                    # is a xs:decimal
+                    # faction digits is 5
+                    # value >= 0
+                    # total digits is 18
+                    NotEqualAmount => 3.1415, },
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: CRDT DBIT
+                  CreditDebitInd => "CRDT",
+
+                  # is a xs:string
+                  # Pattern: [A-Z]{3,3}
+                  Currency => "example", }, }, ],
+
+            # is a x0:DateTimePeriod1
+            # complex structure shown above
+            # is optional
+            FromToDate => [{},],
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            Reason => "example",
+
+            # is a x0:TaxCharges2
+            # is optional
+            Tax =>
+            { # sequence of Identification, Rate, Amount
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              Identification => "example",
+
+              # is a xs:decimal
+              # is optional
+              # faction digits is 10
+              # total digits is 11
+              Rate => 3.1415,
+
+              # is a x0:ActiveOrHistoricCurrencyAndAmount
+              # Amount is simple value with attributes
+              # is optional
+              Amount =>
+              { # is a xs:string
+                # attribute Currency is required
+                # Pattern: [A-Z]{3,3}
+                Currency => "example",
+
+                # is a xs:decimal
+                # string content of the container
+                _ => 3.1415, }, }, }, ],
+
+        # is a x0:CashBalance8
+        # occurs 1 <= # <= unbounded times
+        Balance =>
+        [ { # sequence of Type, CreditLine, Amount, CreditDebitInd, Date,
+            #   Availability
+
+            # is a x0:BalanceType13
+            # complex structure shown above
+            Type => {},
+
+            # is a x0:CreditLine3
+            # occurs any number of times
+            CreditLine =>
+            [ { # sequence of Included, Type, Amount, Date
+
+                # is a xs:boolean
+                Included => "true",
+
+                # is a x0:CreditLineType1Choice
+                # complex structure shown above
+                # is optional
+                Type => [{},],
+
+                # is a x0:ActiveOrHistoricCurrencyAndAmount
+                # Amount is simple value with attributes
+                # is optional
+                Amount =>
+                { # is a xs:string
+                  # attribute Currency is required
+                  # Pattern: [A-Z]{3,3}
+                  Currency => "example",
+
+                  # is a xs:decimal
+                  # string content of the container
+                  _ => 3.1415, },
+
+                # is a x0:DateAndDateTime2Choice
+                # is optional
+                Date =>
+                { # choice of Date, DateTime
+
+                  # is a xs:date
+                  Date => "2006-10-06",
+
+                  # is a xs:dateTime
+                  DateTime => "2006-10-06T00:23:02Z", }, }, ],
+
+            # is a x0:ActiveOrHistoricCurrencyAndAmount
+            # Amount is simple value with attributes
+            Amount =>
+            { # is a xs:string
+              # attribute Currency is required
+              # Pattern: [A-Z]{3,3}
+              Currency => "example",
+
+              # is a xs:decimal
+              # string content of the container
+              _ => 3.1415, },
+
+            # is a xs:string
+            # Enum: CRDT DBIT
+            CreditDebitInd => "CRDT",
+
+            # is a x0:DateAndDateTime2Choice
+            # complex structure shown above
+            Date => {},
+
+            # is a x0:CashAvailability1
+            # occurs any number of times
+            Availability =>
+            [ { # sequence of Date, Amount, CreditDebitInd
+
+                # is a x0:CashAvailabilityDate1Choice
+                # complex structure shown above
+                Date => {},
+
+                # is a x0:ActiveOrHistoricCurrencyAndAmount
+                # Amount is simple value with attributes
+                Amount =>
+                { # is a xs:string
+                  # attribute Currency is required
+                  # Pattern: [A-Z]{3,3}
+                  Currency => "example",
+
+                  # is a xs:decimal
+                  # string content of the container
+                  _ => 3.1415, },
+
+                # is a xs:string
+                # Enum: CRDT DBIT
+                CreditDebitInd => "CRDT", }, ], }, ],
+
+        # is a x0:TotalTransactions6
+        # is optional
+        TransactionsSummery =>
+        { # sequence of totalEntries, TotalCreditEntries,
+          #   TotalDebitEntries, TtlNtriesPerBkTxCd
+
+          # is a x0:NumberAndSumOfTransactions4
+          # is optional
+          totalEntries =>
+          { # sequence of NumberOfEntries, Sum, TotalNetEntry
+
+            # is a xs:string
+            # is optional
+            # Pattern: [0-9]{1,15}
+            NumberOfEntries => "example",
+
+            # is a xs:decimal
+            # is optional
+            # faction digits is 17
+            # total digits is 18
+            Sum => 3.1415,
+
+            # is a x0:AmountAndDirection35
+            # is optional
+            TotalNetEntry =>
+            { # sequence of Amount, CreditDebitInd
+
+              # is a xs:decimal
+              # faction digits is 17
+              # value >= 0
+              # total digits is 18
+              Amount => 3.1415,
+
+              # is a xs:string
+              # Enum: CRDT DBIT
+              CreditDebitInd => "CRDT", }, },
+
+          # is a x0:NumberAndSumOfTransactions1
+          # is optional
+          TotalCreditEntries =>
+          { # sequence of NumberOfEntries, Sum
+
+            # is a xs:string
+            # is optional
+            # Pattern: [0-9]{1,15}
+            NumberOfEntries => "example",
+
+            # is a xs:decimal
+            # is optional
+            # faction digits is 17
+            # total digits is 18
+            Sum => 3.1415, },
+
+          # is a x0:NumberAndSumOfTransactions1
+          # complex structure shown above
+          # is optional
+          TotalDebitEntries => [{},],
+
+          # is a x0:TotalsPerBankTransactionCode5
+          # occurs any number of times
+          TtlNtriesPerBkTxCd =>
+          [ { # sequence of NumberOfEntries, Sum, TotalNetEntry,
+              #   CreditEntries, DebitEntries, ForecastInd,
+              #   BankTransactionCode, Availability, Date
+
+              # is a xs:string
+              # is optional
+              # Pattern: [0-9]{1,15}
+              NumberOfEntries => "example",
+
+              # is a xs:decimal
+              # is optional
+              # faction digits is 17
+              # total digits is 18
+              Sum => 3.1415,
+
+              # is a x0:AmountAndDirection35
+              # complex structure shown above
+              # is optional
+              TotalNetEntry => [{},],
+
+              # is a x0:NumberAndSumOfTransactions1
+              # complex structure shown above
+              # is optional
+              CreditEntries => [{},],
+
+              # is a x0:NumberAndSumOfTransactions1
+              # complex structure shown above
+              # is optional
+              DebitEntries => [{},],
+
+              # is a xs:boolean
+              # is optional
+              ForecastInd => "true",
+
+              # is a x0:BankTransactionCodeStructure4
+              BankTransactionCode =>
+              { # sequence of Domain, Proprietary
+
+                # is a x0:BankTransactionCodeStructure5
+                # is optional
+                Domain =>
+                { # sequence of Code, Family
+
+                  # is a xs:string
+                  # length <= 4
+                  # length >= 1
+                  Code => "example",
+
+                  # is a x0:BankTransactionCodeStructure6
+                  Family =>
+                  { # sequence of Code, SubFamilyCode
+
+                    # is a xs:string
+                    # length <= 4
+                    # length >= 1
+                    Code => "example",
+
+                    # is a xs:string
+                    # length <= 4
+                    # length >= 1
+                    SubFamilyCode => "example", }, },
+
+                # is a x0:ProprietaryBankTransactionCodeStructure1
+                # complex structure shown above
+                # is optional
+                Proprietary => [{},], },
+
+              # is a x0:CashAvailability1
+              # complex structure shown above
+              # occurs any number of times
+              Availability => [{},],
+
+              # is a x0:DateAndDateTime2Choice
+              # complex structure shown above
+              # is optional
+              Date => [{},], }, ], },
+
+        # is a x0:ReportEntry14
+        # occurs any number of times
+        Entry =>
+        [ { # sequence of EntryReference, Amount, CreditDebitInd,
+            #   ReversalInd, Status, BookingDate, ValueDate,
+            #   AccountServicerReference, Availability, BankTransactionCode,
+            #   CommisionWaverInd, AdditionalInformationInd, AmountDetails,
+            #   Charges, TechnicalInputChannel, Interest, CardTransaction,
+            #   EntryDetails, AdditionalEntryInformation
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            EntryReference => "example",
+
+            # is a x0:ActiveOrHistoricCurrencyAndAmount
+            # Amount is simple value with attributes
+            Amount =>
+            { # is a xs:string
+              # attribute Currency is required
+              # Pattern: [A-Z]{3,3}
+              Currency => "example",
+
+              # is a xs:decimal
+              # string content of the container
+              _ => 3.1415, },
+
+            # is a xs:string
+            # Enum: CRDT DBIT
+            CreditDebitInd => "CRDT",
+
+            # is a xs:boolean
+            # is optional
+            ReversalInd => "true",
+
+            # is a x0:EntryStatus1Choice
+            Status =>
+            { # choice of Code, Proprietary
+
+              # is a xs:string
+              # length <= 4
+              # length >= 1
+              Code => "example",
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              Proprietary => "example", },
+
+            # is a x0:DateAndDateTime2Choice
+            # complex structure shown above
+            # is optional
+            BookingDate => [{},],
+
+            # is a x0:DateAndDateTime2Choice
+            # complex structure shown above
+            # is optional
+            ValueDate => [{},],
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            AccountServicerReference => "example",
+
+            # is a x0:CashAvailability1
+            # complex structure shown above
+            # occurs any number of times
+            Availability => [{},],
+
+            # is a x0:BankTransactionCodeStructure4
+            # complex structure shown above
+            BankTransactionCode => {},
+
+            # is a xs:boolean
+            # is optional
+            CommisionWaverInd => "true",
+
+            # is a x0:MessageIdentification2
+            # is optional
+            AdditionalInformationInd =>
+            { # sequence of MessageNameId, MessageId
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              MessageNameId => "example",
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              MessageId => "example", },
+
+            # is a x0:AmountAndCurrencyExchange4
+            # is optional
+            AmountDetails =>
+            { # sequence of InstructedAmount, TransactionAmount,
+              #   CounterValueAmount, AnncdPstngAmt, ProprietaryAmount
+
+              # is a x0:AmountAndCurrencyExchangeDetails5
+              # is optional
+              InstructedAmount =>
+              { # sequence of Amount, CurrencyExchange
+
+                # is a x0:ActiveOrHistoricCurrencyAndAmount
+                # Amount is simple value with attributes
+                Amount =>
+                { # is a xs:string
+                  # attribute Currency is required
+                  # Pattern: [A-Z]{3,3}
+                  Currency => "example",
+
+                  # is a xs:decimal
+                  # string content of the container
+                  _ => 3.1415, },
+
+                # is a x0:CurrencyExchange24
+                # is optional
+                CurrencyExchange =>
+                { # sequence of SourceCurrency, TargetCurrency, UnitCurrency,
+                  #   ExchangeRate, ContractId, QuotationDate, ExchangeRateBase
+
+                  # is a xs:string
+                  # Pattern: [A-Z]{3,3}
+                  SourceCurrency => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z]{3,3}
+                  TargetCurrency => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z]{3,3}
+                  UnitCurrency => "example",
+
+                  # is a xs:decimal
+                  # faction digits is 10
+                  # total digits is 11
+                  ExchangeRate => 3.1415,
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  ContractId => "example",
+
+                  # is a xs:dateTime
+                  # is optional
+                  QuotationDate => "2006-10-06T00:23:02Z",
+
+                  # is a xs:decimal
+                  # is optional
+                  # faction digits is 0
+                  # value >= 1
+                  # total digits is 18
+                  ExchangeRateBase => 3.1415, }, },
+
+              # is a x0:AmountAndCurrencyExchangeDetails5
+              # complex structure shown above
+              # is optional
+              TransactionAmount => [{},],
+
+              # is a x0:AmountAndCurrencyExchangeDetails5
+              # complex structure shown above
+              # is optional
+              CounterValueAmount => [{},],
+
+              # is a x0:AmountAndCurrencyExchangeDetails5
+              # complex structure shown above
+              # is optional
+              AnncdPstngAmt => [{},],
+
+              # is a x0:AmountAndCurrencyExchangeDetails6
+              # occurs any number of times
+              ProprietaryAmount =>
+              [ { # sequence of Type, Amount, CurrencyExchange
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Type => "example",
+
+                  # is a x0:ActiveOrHistoricCurrencyAndAmount
+                  # Amount is simple value with attributes
+                  Amount =>
+                  { # is a xs:string
+                    # attribute Currency is required
+                    # Pattern: [A-Z]{3,3}
+                    Currency => "example",
+
+                    # is a xs:decimal
+                    # string content of the container
+                    _ => 3.1415, },
+
+                  # is a x0:CurrencyExchange24
+                  # complex structure shown above
+                  # is optional
+                  CurrencyExchange => [{},], }, ], },
+
+            # is a x0:Charges15
+            # is optional
+            Charges =>
+            { # sequence of TotalChargesAndTaxAmount, Record
+
+              # is a x0:ActiveOrHistoricCurrencyAndAmount
+              # TotalChargesAndTaxAmount is simple value with attributes
+              # is optional
+              TotalChargesAndTaxAmount =>
+              { # is a xs:string
+                # attribute Currency is required
+                # Pattern: [A-Z]{3,3}
+                Currency => "example",
+
+                # is a xs:decimal
+                # string content of the container
+                _ => 3.1415, },
+
+              # is a x0:ChargesRecord8
+              # occurs any number of times
+              Record =>
+              [ { # sequence of Amount, CreditDebitInd, ChargeIncludedInd, Type,
+                  #   Rate, Bearer, Agent, Tax
+
+                  # is a x0:ActiveOrHistoricCurrencyAndAmount
+                  # Amount is simple value with attributes
+                  Amount =>
+                  { # is a xs:string
+                    # attribute Currency is required
+                    # Pattern: [A-Z]{3,3}
+                    Currency => "example",
+
+                    # is a xs:decimal
+                    # string content of the container
+                    _ => 3.1415, },
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: CRDT DBIT
+                  CreditDebitInd => "CRDT",
+
+                  # is a xs:boolean
+                  # is optional
+                  ChargeIncludedInd => "true",
+
+                  # is a x0:ChargeType3Choice
+                  # complex structure shown above
+                  # is optional
+                  Type => [{},],
+
+                  # is a xs:decimal
+                  # is optional
+                  # faction digits is 10
+                  # total digits is 11
+                  Rate => 3.1415,
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: CRED DEBT SHAR SLEV
+                  Bearer => "DEBT",
+
+                  # is a x0:BranchAndFinancialInstitutionIdentification8
+                  # complex structure shown above
+                  # is optional
+                  Agent => [{},],
+
+                  # is a x0:TaxCharges2
+                  # complex structure shown above
+                  # is optional
+                  Tax => [{},], }, ], },
+
+            # is a x0:TechnicalInputChannel1Choice
+            # is optional
+            TechnicalInputChannel =>
+            { # choice of Code, Proprietary
+
+              # is a xs:string
+              # length <= 4
+              # length >= 1
+              Code => "example",
+
+              # is a xs:string
+              # length <= 35
+              # length >= 1
+              Proprietary => "example", },
+
+            # is a x0:TransactionInterest4
+            # complex structure shown above
+            # is optional
+            Interest => [{},],
+
+            # is a x0:CardEntry5
+            # is optional
+            CardTransaction =>
+            { # sequence of Card, POI, AggregatedEntry, PrepaidAccount
+
+              # is a x0:PaymentCard4
+              # is optional
+              Card =>
+              { # sequence of PlainCardData, CardCountryCode, CardBrand,
+                #   AdditionalCardData
+
+                # is a x0:PlainCardData1
+                # is optional
+                PlainCardData =>
+                { # sequence of PAN, CardSequenceNumber, EffectiveDate,
+                  #   ExpiryDate, ServiceCode, TrackData, CardSecurityCode
+
+                  # is a xs:string
+                  # Pattern: [0-9]{8,28}
+                  PAN => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [0-9]{2,3}
+                  CardSequenceNumber => "example",
+
+                  # is a xs:gYearMonth
+                  # is optional
+                  EffectiveDate => "2006-11+07:00",
+
+                  # is a xs:gYearMonth
+                  ExpiryDate => "2006-11+07:00",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [0-9]{3}
+                  ServiceCode => "example",
+
+                  # is a x0:TrackData1
+                  # occurs any number of times
+                  TrackData =>
+                  [ { # sequence of TrackNumber, TrackValue
+
+                      # is a xs:string
+                      # is optional
+                      # Pattern: [0-9]
+                      TrackNumber => "example",
+
+                      # is a xs:string
+                      # length <= 140
+                      # length >= 1
+                      TrackValue => "example", }, ],
+
+                  # is a x0:CardSecurityInformation1
+                  # is optional
+                  CardSecurityCode =>
+                  { # sequence of CSCMgmt, CSCVal
+
+                    # is a xs:string
+                    # Enum: BYPS NCSC PRST UNRD
+                    CSCMgmt => "PRST",
+
+                    # is a xs:string
+                    # is optional
+                    # Pattern: [0-9]{3,4}
+                    CSCVal => "example", }, },
+
+                # is a xs:string
+                # is optional
+                # Pattern: [0-9]{3}
+                CardCountryCode => "example",
+
+                # is a x0:GenericIdentification1
+                # is optional
+                CardBrand =>
+                { # sequence of Identification, SchemName, Issuer
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Identification => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  SchemName => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  Issuer => "example", },
+
+                # is a xs:string
+                # is optional
+                # length <= 70
+                # length >= 1
+                AdditionalCardData => "example", },
+
+              # is a x0:PointOfInteraction1
+              # is optional
+              POI =>
+              { # sequence of Identification, SystemName, GroupId,
+                #   Capabilities, Component
+
+                # is a x0:GenericIdentification32
+                # complex structure shown above
+                Identification => {},
+
+                # is a xs:string
+                # is optional
+                # length <= 70
+                # length >= 1
+                SystemName => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                GroupId => "example",
+
+                # is a x0:PointOfInteractionCapabilities1
+                # is optional
+                Capabilities =>
+                { # sequence of CardReadingCapabilities,
+                  #   CardholderVerficationCapabilities, OnLineCapabilities,
+                  #   DisplayCapabilities, PrinterLineWidht
+
+                  # is a xs:string
+                  # occurs any number of times
+                  # Enum: BRCD CICC CTLS DFLE ECTL MGST PHYS TAGC
+                  CardReadingCapabilities => [ "TAGC", ],
+
+                  # is a xs:string
+                  # occurs any number of times
+                  # Enum: APKI CHDT FBIG FBIO FCPN FDSG FEPN MNSG MNVR NPIN
+                  #    PKIS SCEC
+                  CardholderVerficationCapabilities => [ "MNSG", ],
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: OFLN ONLN SMON
+                  OnLineCapabilities => "OFLN",
+
+                  # is a x0:DisplayCapabilities1
+                  # occurs any number of times
+                  DisplayCapabilities =>
+                  [ { # sequence of DisplayType, NumberOfLines, LineWidth
+
+                      # is a xs:string
+                      # Enum: CDSP MDSP
+                      DisplayType => "MDSP",
+
+                      # is a xs:string
+                      # Pattern: [0-9]{1,3}
+                      NumberOfLines => "example",
+
+                      # is a xs:string
+                      # Pattern: [0-9]{1,3}
+                      LineWidth => "example", }, ],
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [0-9]{1,3}
+                  PrinterLineWidht => "example", },
+
+                # is a x0:PointOfInteractionComponent1
+                # occurs any number of times
+                Component =>
+                [ { # sequence of POIComponentType, ManufacturerId, Model, VrsnNb,
+                    #   SerialNumber, ApprovalNumber
+
+                    # is a xs:string
+                    # Enum: CHIT EMVK EMVO MRIT PEDV SECM SOFT
+                    POIComponentType => "SOFT",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 35
+                    # length >= 1
+                    ManufacturerId => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 35
+                    # length >= 1
+                    Model => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 16
+                    # length >= 1
+                    VrsnNb => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 35
+                    # length >= 1
+                    SerialNumber => "example",
+
+                    # is a xs:string
+                    # occurs any number of times
+                    # length <= 70
+                    # length >= 1
+                    ApprovalNumber => [ "example", ], }, ], },
+
+              # is a x0:CardAggregated2
+              # is optional
+              AggregatedEntry =>
+              { # sequence of AdditionalService, TransactionCategory,
+                #   SaleReconsiliationId, SequenceNumberRegion, TransactionDateRegion
+
+                # is a xs:string
+                # is optional
+                # Enum: AGGR DCCV GRTT INSP LOYT NRES PUCO RECP SOAF UNAF
+                #    VCAU
+                AdditionalService => "AGGR",
+
+                # is a xs:string
+                # is optional
+                # length <= 4
+                # length >= 1
+                TransactionCategory => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                SaleReconsiliationId => "example",
+
+                # is a x0:CardSequenceNumberRange1
+                # is optional
+                SequenceNumberRegion =>
+                { # sequence of FirstTransaction, LastTransaction
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  FirstTransaction => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  LastTransaction => "example", },
+
+                # is a x0:DateOrDateTimePeriod1Choice
+                # is optional
+                TransactionDateRegion =>
+                { # choice of Date, DateTime
+
+                  # is a x0:DatePeriod2
+                  # complex structure shown above
+                  Date => {},
+
+                  # is a x0:DateTimePeriod1
+                  # complex structure shown above
+                  DateTime => {}, }, },
+
+              # is a x0:CashAccount40
+              # complex structure shown above
+              # is optional
+              PrepaidAccount => [{},], },
+
+            # is a x0:EntryDetails13
+            # occurs any number of times
+            EntryDetails =>
+            [ { # sequence of Batch, TransactionDetails
+
+                # is a x0:BatchInformation2
+                # is optional
+                Batch =>
+                { # sequence of MessageId, PaymentInformationId,
+                  #   NumberOfTransactions, TotalAmount, CreditDebitInd
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  MessageId => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  PaymentInformationId => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [0-9]{1,15}
+                  NumberOfTransactions => "example",
+
+                  # is a x0:ActiveOrHistoricCurrencyAndAmount
+                  # TotalAmount is simple value with attributes
+                  # is optional
+                  TotalAmount =>
+                  { # is a xs:string
+                    # attribute Currency is required
+                    # Pattern: [A-Z]{3,3}
+                    Currency => "example",
+
+                    # is a xs:decimal
+                    # string content of the container
+                    _ => 3.1415, },
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: CRDT DBIT
+                  CreditDebitInd => "CRDT", },
+
+                # is a x0:EntryTransaction14
+                # occurs any number of times
+                TransactionDetails =>
+                [ { # sequence of References, Amount, CreditDebitInd,
+                    #   AmountDetails, Availability, BankTransactionCode, Charges,
+                    #   Interest, RltdPties, RelatedAgents, LclInstrm,
+                    #   PaymentTypeInformation, Purpose, RelatedRemoteInformation,
+                    #   RmtInf, RelatedDates, RelatedPrice, RelatedQuantities,
+                    #   FinancialInstrumentId, Tax, ReturnInformation,
+                    #   CorporateAction, SafekeepingAccount, CashDeposit,
+                    #   CardTransaction, AdditionalTransactionInformation,
+                    #   SupplementaryData
+
+                    # is a x0:TransactionReferences6
+                    # is optional
+                    References =>
+                    { # sequence of MessageId, AccountServicerReference,
+                      #   PaymentInformationId, InstrId, EndToEndId, UETR,
+                      #   TransactionId, MndtId, ChequeNumber, ClearSystemReference,
+                      #   AccountOwnerTransactionId, AccountServicerTransactionId,
+                      #   MarketInfrastructureTransactionId, ProcessingId, Proprietary
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      MessageId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      AccountServicerReference => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      PaymentInformationId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      InstrId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      EndToEndId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # Pattern:
+                      #    [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}
+                      UETR => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      TransactionId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      MndtId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      ChequeNumber => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      ClearSystemReference => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      AccountOwnerTransactionId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      AccountServicerTransactionId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      MarketInfrastructureTransactionId => "example",
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 35
+                      # length >= 1
+                      ProcessingId => "example",
+
+                      # is a x0:ProprietaryReference1
+                      # complex structure shown above
+                      # occurs any number of times
+                      Proprietary => [{},], },
+
+                    # is a x0:ActiveOrHistoricCurrencyAndAmount
+                    # Amount is simple value with attributes
+                    # is optional
+                    Amount =>
+                    { # is a xs:string
+                      # attribute Currency is required
+                      # Pattern: [A-Z]{3,3}
+                      Currency => "example",
+
+                      # is a xs:decimal
+                      # string content of the container
+                      _ => 3.1415, },
+
+                    # is a xs:string
+                    # is optional
+                    # Enum: CRDT DBIT
+                    CreditDebitInd => "CRDT",
+
+                    # is a x0:AmountAndCurrencyExchange4
+                    # complex structure shown above
+                    # is optional
+                    AmountDetails => [{},],
+
+                    # is a x0:CashAvailability1
+                    # complex structure shown above
+                    # occurs any number of times
+                    Availability => [{},],
+
+                    # is a x0:BankTransactionCodeStructure4
+                    # complex structure shown above
+                    # is optional
+                    BankTransactionCode => [{},],
+
+                    # is a x0:Charges15
+                    # complex structure shown above
+                    # is optional
+                    Charges => [{},],
+
+                    # is a x0:TransactionInterest4
+                    # complex structure shown above
+                    # is optional
+                    Interest => [{},],
+
+                    # is a x0:TransactionParties12
+                    # is optional
+                    RltdPties =>
+                    { # sequence of InitiatingParty, Debtor, DebtorAccount,
+                      #   UltimateDebitor, Creditor, CreditorAccount,
+                      #   UltimateCreditor, TradingParty, Proprietary
+
+                      # is a x0:Party50Choice
+                      # is optional
+                      InitiatingParty =>
+                      { # choice of Party, Agent
+
+                        # is a x0:PartyIdentification272
+                        # complex structure shown above
+                        Party => {},
+
+                        # is a x0:BranchAndFinancialInstitutionIdentification8
+                        # complex structure shown above
+                        Agent => {}, },
+
+                      # is a x0:Party50Choice
+                      # complex structure shown above
+                      # is optional
+                      Debtor => [{},],
+
+                      # is a x0:CashAccount40
+                      # complex structure shown above
+                      # is optional
+                      DebtorAccount => [{},],
+
+                      # is a x0:Party50Choice
+                      # complex structure shown above
+                      # is optional
+                      UltimateDebitor => [{},],
+
+                      # is a x0:Party50Choice
+                      # complex structure shown above
+                      # is optional
+                      Creditor => [{},],
+
+                      # is a x0:CashAccount40
+                      # complex structure shown above
+                      # is optional
+                      CreditorAccount => [{},],
+
+                      # is a x0:Party50Choice
+                      # complex structure shown above
+                      # is optional
+                      UltimateCreditor => [{},],
+
+                      # is a x0:Party50Choice
+                      # complex structure shown above
+                      # is optional
+                      TradingParty => [{},],
+
+                      # is a x0:ProprietaryParty6
+                      # complex structure shown above
+                      # occurs any number of times
+                      Proprietary => [{},], },
+
+                    # is a x0:TransactionAgents6
+                    # is optional
+                    RelatedAgents =>
+                    { # sequence of InstructingAgent, InstructedAgent, DebtorAgent,
+                      #   CreditorAgent, IntermediaryAgent1, IntermediaryAgent2,
+                      #   IntermediaryAgent3, ReceivingAgent, DeliveringAgent,
+                      #   IssueingAgent, SettlementPlace, Proprietary
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      InstructingAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      InstructedAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      DebtorAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      CreditorAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      IntermediaryAgent1 => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      IntermediaryAgent2 => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      IntermediaryAgent3 => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      ReceivingAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      DeliveringAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      IssueingAgent => [{},],
+
+                      # is a x0:BranchAndFinancialInstitutionIdentification8
+                      # complex structure shown above
+                      # is optional
+                      SettlementPlace => [{},],
+
+                      # is a x0:ProprietaryAgent5
+                      # complex structure shown above
+                      # occurs any number of times
+                      Proprietary => [{},], },
+
+                    # is a x0:LocalInstrument2Choice
+                    # is optional
+                    LclInstrm =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Proprietary => "example", },
+
+                    # is a x0:PaymentTypeInformation27
+                    # is optional
+                    PaymentTypeInformation =>
+                    { # sequence of InstrPrty, ClearChannel, ServiceLevel,
+                      #   LclInstrm, SequenceType, CategoryPurpose
+
+                      # is a xs:string
+                      # is optional
+                      # Enum: HIGH NORM
+                      InstrPrty => "HIGH",
+
+                      # is a xs:string
+                      # is optional
+                      # Enum: BOOK MPNS RTGS RTNS
+                      ClearChannel => "RTGS",
+
+                      # is a x0:ServiceLevel8Choice
+                      # occurs any number of times
+                      ServiceLevel =>
+                      [ { # choice of Code, Proprietary
+
+                          # is a xs:string
+                          # length <= 4
+                          # length >= 1
+                          Code => "example",
+
+                          # is a xs:string
+                          # length <= 35
+                          # length >= 1
+                          Proprietary => "example", }, ],
+
+                      # is a x0:LocalInstrument2Choice
+                      # complex structure shown above
+                      # is optional
+                      LclInstrm => [{},],
+
+                      # is a xs:string
+                      # is optional
+                      # Enum: FNAL FRST OOFF RCUR RPRE
+                      SequenceType => "FRST",
+
+                      # is a x0:CategoryPurpose1Choice
+                      # is optional
+                      CategoryPurpose =>
+                      { # choice of Code, Proprietary
+
+                        # is a xs:string
+                        # length <= 4
+                        # length >= 1
+                        Code => "example",
+
+                        # is a xs:string
+                        # length <= 35
+                        # length >= 1
+                        Proprietary => "example", }, },
+
+                    # is a x0:Purpose2Choice
+                    # is optional
+                    Purpose =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # length <= 4
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Proprietary => "example", },
+
+                    # is a x0:RemittanceLocation8
+                    # occurs 0 <= # <= 10 times
+                    RelatedRemoteInformation =>
+                    [ { # sequence of RmtId, RmtLctnDtls
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 35
+                        # length >= 1
+                        RmtId => "example",
+
+                        # is a x0:RemittanceLocationData2
+                        # occurs any number of times
+                        RmtLctnDtls =>
+                        [ { # sequence of Method, ElectronicAddress, PostalAddress
+
+                            # is a xs:string
+                            # Enum: EDIC EMAL FAXI POST SMSM URID
+                            Method => "FAXI",
+
+                            # is a xs:string
+                            # is optional
+                            # length <= 2048
+                            # length >= 1
+                            ElectronicAddress => "example",
+
+                            # is a x0:NameAndAddress18
+                            # complex structure shown above
+                            # is optional
+                            PostalAddress => [{},], }, ], }, ],
+
+                    # is a x0:RemittanceInformation22
+                    # is optional
+                    RmtInf =>
+                    { # sequence of Unstructured, Structured
+
+                      # is a xs:string
+                      # occurs any number of times
+                      # length <= 140
+                      # length >= 1
+                      Unstructured => [ "example", ],
+
+                      # is a x0:StructuredRemittanceInformation18
+                      # occurs any number of times
+                      Structured =>
+                      [ { # sequence of ReferencedDocumentInformation,
+                          #   ReferencedDocumentsAmount, CreditorReferenceInformation,
+                          #   Invoicer, Invoicee, Taxremittance, GrnshmtRmt, AddtlRmtInf
+
+                          # is a x0:ReferredDocumentInformation8
+                          # occurs any number of times
+                          ReferencedDocumentInformation =>
+                          [ { # sequence of Type, Number, RelatedDate, LineDetails
+
+                              # is a x0:DocumentType1
+                              # complex structure shown above
+                              # is optional
+                              Type => [{},],
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              Number => "example",
+
+                              # is a x0:DateAndType1
+                              # is optional
+                              RelatedDate =>
+                              { # sequence of Type, Date
+
+                                # is a x0:DateType2Choice
+                                # complex structure shown above
+                                Type => {},
+
+                                # is a xs:date
+                                Date => "2006-10-06", },
+
+                              # is a x0:DocumentLineInformation2
+                              # occurs any number of times
+                              LineDetails =>
+                              [ { # sequence of Identification, Description, Amount
+
+                                  # is a x0:DocumentLineIdentification1
+                                  # complex structure shown above
+                                  # occurs 1 <= # <= unbounded times
+                                  Identification => [{},],
+
+                                  # is a xs:string
+                                  # is optional
+                                  # length <= 2048
+                                  # length >= 1
+                                  Description => "example",
+
+                                  # is a x0:RemittanceAmount4
+                                  # complex structure shown above
+                                  # is optional
+                                  Amount => [{},], }, ], }, ],
+
+                          # is a x0:RemittanceAmount4
+                          # is optional
+                          ReferencedDocumentsAmount =>
+                          { # sequence of RmtAmtAndTp, AdjustmentAmountAndReason
+
+                            # is a x0:DocumentAmount1
+                            # occurs any number of times
+                            RmtAmtAndTp =>
+                            [ { # sequence of Type, Amount
+
+                                # is a x0:DocumentAmountType1Choice
+                                # complex structure shown above
+                                Type => {},
+
+                                # is a x0:ActiveOrHistoricCurrencyAndAmount
+                                # Amount is simple value with attributes
+                                Amount =>
+                                { # is a xs:string
+                                  # attribute Currency is required
+                                  # Pattern: [A-Z]{3,3}
+                                  Currency => "example",
+
+                                  # is a xs:decimal
+                                  # string content of the container
+                                  _ => 3.1415, }, }, ],
+
+                            # is a x0:DocumentAdjustment1
+                            # occurs any number of times
+                            AdjustmentAmountAndReason =>
+                            [ { # sequence of Amount, CreditDebitInd, Reason, AdditionalInformation
+
+                                # is a x0:ActiveOrHistoricCurrencyAndAmount
+                                # Amount is simple value with attributes
+                                Amount =>
+                                { # is a xs:string
+                                  # attribute Currency is required
+                                  # Pattern: [A-Z]{3,3}
+                                  Currency => "example",
+
+                                  # is a xs:decimal
+                                  # string content of the container
+                                  _ => 3.1415, },
+
+                                # is a xs:string
+                                # is optional
+                                # Enum: CRDT DBIT
+                                CreditDebitInd => "CRDT",
+
+                                # is a xs:string
+                                # is optional
+                                # length <= 4
+                                # length >= 1
+                                Reason => "example",
+
+                                # is a xs:string
+                                # is optional
+                                # length <= 140
+                                # length >= 1
+                                AdditionalInformation => "example", }, ], },
+
+                          # is a x0:CreditorReferenceInformation3
+                          # is optional
+                          CreditorReferenceInformation =>
+                          { # sequence of Type, Reference
+
+                            # is a x0:CreditorReferenceType3
+                            # complex structure shown above
+                            # is optional
+                            Type => [{},],
+
+                            # is a xs:string
+                            # is optional
+                            # length <= 35
+                            # length >= 1
+                            Reference => "example", },
+
+                          # is a x0:PartyIdentification272
+                          # complex structure shown above
+                          # is optional
+                          Invoicer => [{},],
+
+                          # is a x0:PartyIdentification272
+                          # complex structure shown above
+                          # is optional
+                          Invoicee => [{},],
+
+                          # is a x0:TaxData1
+                          # is optional
+                          Taxremittance =>
+                          { # sequence of Creditor, Debtor, UltimateDebitor,
+                            #   AdministrationZone, ReferenceNumber, Method,
+                            #   TotalTaxableBaseAmount, TotalTaxAmount, Date,
+                            #   SequenceNumber, Record
+
+                            # is a x0:TaxParty1
+                            # is optional
+                            Creditor =>
+                            { # sequence of TaxId, RegionId, TaxType
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              TaxId => "example",
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              RegionId => "example",
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              TaxType => "example", },
+
+                            # is a x0:TaxParty2
+                            # is optional
+                            Debtor =>
+                            { # sequence of TaxId, RegionId, TaxType, Authorisation
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              TaxId => "example",
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              RegionId => "example",
+
+                              # is a xs:string
+                              # is optional
+                              # length <= 35
+                              # length >= 1
+                              TaxType => "example",
+
+                              # is a x0:TaxAuthorisation1
+                              # is optional
+                              Authorisation =>
+                              { # sequence of Title, Name
+
+                                # is a xs:string
+                                # is optional
+                                # length <= 35
+                                # length >= 1
+                                Title => "example",
+
+                                # is a xs:string
+                                # is optional
+                                # length <= 140
+                                # length >= 1
+                                Name => "example", }, },
+
+                            # is a x0:TaxParty2
+                            # complex structure shown above
+                            # is optional
+                            UltimateDebitor => [{},],
+
+                            # is a xs:string
+                            # is optional
+                            # length <= 35
+                            # length >= 1
+                            AdministrationZone => "example",
+
+                            # is a xs:string
+                            # is optional
+                            # length <= 140
+                            # length >= 1
+                            ReferenceNumber => "example",
+
+                            # is a xs:string
+                            # is optional
+                            # length <= 35
+                            # length >= 1
+                            Method => "example",
+
+                            # is a x0:ActiveOrHistoricCurrencyAndAmount
+                            # TotalTaxableBaseAmount is simple value with attributes
+                            # is optional
+                            TotalTaxableBaseAmount =>
+                            { # is a xs:string
+                              # attribute Currency is required
+                              # Pattern: [A-Z]{3,3}
+                              Currency => "example",
+
+                              # is a xs:decimal
+                              # string content of the container
+                              _ => 3.1415, },
+
+                            # is a x0:ActiveOrHistoricCurrencyAndAmount
+                            # TotalTaxAmount is simple value with attributes
+                            # is optional
+                            TotalTaxAmount =>
+                            { # is a xs:string
+                              # attribute Currency is required
+                              # Pattern: [A-Z]{3,3}
+                              Currency => "example",
+
+                              # is a xs:decimal
+                              # string content of the container
+                              _ => 3.1415, },
+
+                            # is a xs:date
+                            # is optional
+                            Date => "2006-10-06",
+
+                            # is a xs:decimal
+                            # is optional
+                            # faction digits is 0
+                            # total digits is 18
+                            SequenceNumber => 3.1415,
+
+                            # is a x0:TaxRecord3
+                            # complex structure shown above
+                            # occurs any number of times
+                            Record => [{},], },
+
+                          # is a x0:Garnishment4
+                          # is optional
+                          GrnshmtRmt =>
+                          { # sequence of Type, Garnishee, GrnshmtAdmstr, ReferenceNumber,
+                            #   Date, RmtdAmt, FamilyMedicalInsuranceInd, EmployeeTerminationInd
+
+                            # is a x0:GarnishmentType1
+                            # complex structure shown above
+                            Type => {},
+
+                            # is a x0:PartyIdentification272
+                            # complex structure shown above
+                            # is optional
+                            Garnishee => [{},],
+
+                            # is a x0:PartyIdentification272
+                            # complex structure shown above
+                            # is optional
+                            GrnshmtAdmstr => [{},],
+
+                            # is a xs:string
+                            # is optional
+                            # length <= 140
+                            # length >= 1
+                            ReferenceNumber => "example",
+
+                            # is a xs:date
+                            # is optional
+                            Date => "2006-10-06",
+
+                            # is a x0:ActiveOrHistoricCurrencyAndAmount
+                            # RmtdAmt is simple value with attributes
+                            # is optional
+                            RmtdAmt =>
+                            { # is a xs:string
+                              # attribute Currency is required
+                              # Pattern: [A-Z]{3,3}
+                              Currency => "example",
+
+                              # is a xs:decimal
+                              # string content of the container
+                              _ => 3.1415, },
+
+                            # is a xs:boolean
+                            # is optional
+                            FamilyMedicalInsuranceInd => "true",
+
+                            # is a xs:boolean
+                            # is optional
+                            EmployeeTerminationInd => "true", },
+
+                          # is a xs:string
+                          # occurs 0 <= # <= 3 times
+                          # length <= 140
+                          # length >= 1
+                          AddtlRmtInf => [ "example", ], }, ], },
+
+                    # is a x0:TransactionDates3
+                    # is optional
+                    RelatedDates =>
+                    { # sequence of AcceptationDateTime, TradActvtyCtrctlSttlmDt,
+                      #   TradeDate, IntrBkSttlmDt, StartDate, EndDate,
+                      #   TransactionDateTime, Proprietary
+
+                      # is a xs:dateTime
+                      # is optional
+                      AcceptationDateTime => "2006-10-06T00:23:02Z",
+
+                      # is a xs:date
+                      # is optional
+                      TradActvtyCtrctlSttlmDt => "2006-10-06",
+
+                      # is a xs:date
+                      # is optional
+                      TradeDate => "2006-10-06",
+
+                      # is a xs:date
+                      # is optional
+                      IntrBkSttlmDt => "2006-10-06",
+
+                      # is a xs:date
+                      # is optional
+                      StartDate => "2006-10-06",
+
+                      # is a xs:date
+                      # is optional
+                      EndDate => "2006-10-06",
+
+                      # is a xs:dateTime
+                      # is optional
+                      TransactionDateTime => "2006-10-06T00:23:02Z",
+
+                      # is a x0:ProprietaryDate3
+                      # complex structure shown above
+                      # occurs any number of times
+                      Proprietary => [{},], },
+
+                    # is a x0:TransactionPrice4Choice
+                    # is optional
+                    RelatedPrice =>
+                    { # choice of DealPrice, Proprietary
+
+                      # is a x0:Price7
+                      DealPrice =>
+                      { # sequence of Type, Value
+
+                        # is a x0:YieldedOrValueType1Choice
+                        # complex structure shown above
+                        Type => {},
+
+                        # is a x0:PriceRateOrAmount3Choice
+                        Value =>
+                        { # choice of Rate, Amount
+
+                          # is a xs:decimal
+                          # faction digits is 10
+                          # total digits is 11
+                          Rate => 3.1415,
+
+                          # is a x0:ActiveOrHistoricCurrencyAnd13DecimalAmount
+                          # Amount is simple value with attributes
+                          Amount =>
+                          { # is a xs:string
+                            # attribute Currency is required
+                            # Pattern: [A-Z]{3,3}
+                            Currency => "example",
+
+                            # is a xs:decimal
+                            # string content of the container
+                            _ => 3.1415, }, }, },
+
+                      # is a x0:ProprietaryPrice2
+                      # complex structure shown above
+                      # occurs 1 <= # <= unbounded times
+                      Proprietary => [{},], },
+
+                    # is a x0:TransactionQuantities3Choice
+                    # occurs any number of times
+                    RelatedQuantities =>
+                    [ { # choice of Quantity, OrgnlAndCurFaceAmt, Proprietary
+
+                        # is a x0:FinancialInstrumentQuantity1Choice
+                        Quantity =>
+                        { # choice of Unit, FaceAmout, AmtsdVal
+
+                          # is a xs:decimal
+                          # faction digits is 17
+                          # total digits is 18
+                          Unit => 3.1415,
+
+                          # is a xs:decimal
+                          # faction digits is 5
+                          # value >= 0
+                          # total digits is 18
+                          FaceAmout => 3.1415,
+
+                          # is a xs:decimal
+                          # faction digits is 5
+                          # value >= 0
+                          # total digits is 18
+                          AmtsdVal => 3.1415, },
+
+                        # is a x0:OriginalAndCurrentQuantities1
+                        OrgnlAndCurFaceAmt =>
+                        { # sequence of FaceAmout, AmtsdVal
+
+                          # is a xs:decimal
+                          # faction digits is 5
+                          # value >= 0
+                          # total digits is 18
+                          FaceAmout => 3.1415,
+
+                          # is a xs:decimal
+                          # faction digits is 5
+                          # value >= 0
+                          # total digits is 18
+                          AmtsdVal => 3.1415, },
+
+                        # is a x0:ProprietaryQuantity1
+                        # complex structure shown above
+                        Proprietary => {}, }, ],
+
+                    # is a x0:SecurityIdentification19
+                    # is optional
+                    FinancialInstrumentId =>
+                    { # sequence of ISIN, OtherId, Description
+
+                      # is a xs:string
+                      # is optional
+                      # Pattern: [A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}
+                      ISIN => "example",
+
+                      # is a x0:OtherIdentification1
+                      # occurs any number of times
+                      OtherId =>
+                      [ { # sequence of Identification, Suffix, Type
+
+                          # is a xs:string
+                          # length <= 35
+                          # length >= 1
+                          Identification => "example",
+
+                          # is a xs:string
+                          # is optional
+                          # length <= 16
+                          # length >= 1
+                          Suffix => "example",
+
+                          # is a x0:IdentificationSource3Choice
+                          # complex structure shown above
+                          Type => {}, }, ],
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 140
+                      # length >= 1
+                      Description => "example", },
+
+                    # is a x0:TaxData1
+                    # complex structure shown above
+                    # is optional
+                    Tax => [{},],
+
+                    # is a x0:PaymentReturnReason8
+                    # is optional
+                    ReturnInformation =>
+                    { # sequence of OriginalBankTransactionCode, Originator, Reason,
+                      #   AdditionalInformation
+
+                      # is a x0:BankTransactionCodeStructure4
+                      # complex structure shown above
+                      # is optional
+                      OriginalBankTransactionCode => [{},],
+
+                      # is a x0:PartyIdentification272
+                      # complex structure shown above
+                      # is optional
+                      Originator => [{},],
+
+                      # is a x0:ReturnReason5Choice
+                      # is optional
+                      Reason =>
+                      { # choice of Code, Proprietary
+
+                        # is a xs:string
+                        # length <= 4
+                        # length >= 1
+                        Code => "example",
+
+                        # is a xs:string
+                        # length <= 35
+                        # length >= 1
+                        Proprietary => "example", },
+
+                      # is a xs:string
+                      # occurs any number of times
+                      # length <= 105
+                      # length >= 1
+                      AdditionalInformation => [ "example", ], },
+
+                    # is a x0:CorporateAction9
+                    # is optional
+                    CorporateAction =>
+                    { # sequence of EventType, EventId
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      EventType => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      EventId => "example", },
+
+                    # is a x0:SecuritiesAccount19
+                    # is optional
+                    SafekeepingAccount =>
+                    { # sequence of Identification, Type, Name
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Identification => "example",
+
+                      # is a x0:GenericIdentification30
+                      # complex structure shown above
+                      # is optional
+                      Type => [{},],
+
+                      # is a xs:string
+                      # is optional
+                      # length <= 70
+                      # length >= 1
+                      Name => "example", },
+
+                    # is a x0:CashDeposit1
+                    # occurs any number of times
+                    CashDeposit =>
+                    [ { # sequence of NoteDnmtn, NumberOfNotes, Amount
+
+                        # is a x0:ActiveCurrencyAndAmount
+                        # NoteDnmtn is simple value with attributes
+                        NoteDnmtn =>
+                        { # is a xs:string
+                          # attribute Currency is required
+                          # Pattern: [A-Z]{3,3}
+                          Currency => "example",
+
+                          # is a xs:decimal
+                          # string content of the container
+                          _ => 3.1415, },
+
+                        # is a xs:string
+                        # Pattern: [0-9]{1,15}
+                        NumberOfNotes => "example",
+
+                        # is a x0:ActiveCurrencyAndAmount
+                        # Amount is simple value with attributes
+                        Amount =>
+                        { # is a xs:string
+                          # attribute Currency is required
+                          # Pattern: [A-Z]{3,3}
+                          Currency => "example",
+
+                          # is a xs:decimal
+                          # string content of the container
+                          _ => 3.1415, }, }, ],
+
+                    # is a x0:CardTransaction18
+                    # complex structure shown above
+                    # is optional
+                    CardTransaction => [{},],
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 500
+                    # length >= 1
+                    AdditionalTransactionInformation => "example",
+
+                    # is a x0:SupplementaryData1
+                    # occurs any number of times
+                    SupplementaryData =>
+                    [ { # sequence of PlaceAndName, Envelope
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 350
+                        # length >= 1
+                        PlaceAndName => "example",
+
+                        # is a x0:SupplementaryDataEnvelope1
+                        Envelope =>
+                        { # sequence of ANY
+
+                          # any element in any namespace
+                          ANY => "Anything", }, }, ], }, ], }, ],
+
+            # is a xs:string
+            # is optional
+            # length <= 500
+            # length >= 1
+            AdditionalEntryInformation => "example", }, ],
+
+        # is a xs:string
+        # is optional
+        # length <= 500
+        # length >= 1
+        AdditionalStatementInformation => "example", }, ],
+
+    # is a x0:SupplementaryData1
+    # complex structure shown above
+    # occurs any number of times
+    SupplementaryData => [{},], }, }

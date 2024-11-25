@@ -1,0 +1,204 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.017.001.05}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.017.001.05
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of ReturnCurrencyExchangeRate
+
+  # is a x0:ReturnCurrencyExchangeRateV05
+  ReturnCurrencyExchangeRate =>
+  { # sequence of MessageHeader, ReportOrError, SupplementaryData
+
+    # is a x0:MessageHeader7
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime, RequestType,
+      #   OrgnlBizQry, QueryName
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:RequestType4Choice
+      # is optional
+      RequestType =>
+      { # choice of PaymentControl, Enquiry, Proprietary
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        PaymentControl => "example",
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        Enquiry => "example",
+
+        # is a x0:GenericIdentification1
+        Proprietary =>
+        { # sequence of Identification, SchemName, Issuer
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Identification => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          SchemName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Issuer => "example", }, },
+
+      # is a x0:OriginalBusinessQuery1
+      # is optional
+      OrgnlBizQry =>
+      { # sequence of MessageId, MessageNameId, CreationDateTime
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        MessageId => "example",
+
+        # is a xs:string
+        # is optional
+        # length <= 35
+        # length >= 1
+        MessageNameId => "example",
+
+        # is a xs:dateTime
+        # is optional
+        CreationDateTime => "2006-10-06T00:23:02Z", },
+
+      # is a xs:string
+      # is optional
+      # length <= 35
+      # length >= 1
+      QueryName => "example", },
+
+    # is a x0:ExchangeRateReportOrError3Choice
+    ReportOrError =>
+    { # choice of CurrencyExchangeReport, OperationalError
+
+      # is a x0:CurrencyExchangeReport4
+      # occurs 1 <= # <= unbounded times
+      CurrencyExchangeReport =>
+      [ { # sequence of CurrencyReference, CurrencyExchangeOrError
+
+          # is a x0:CurrencySourceTarget1
+          CurrencyReference =>
+          { # sequence of SourceCurrency, TargetCurrency
+
+            # is a xs:string
+            # Pattern: [A-Z]{3,3}
+            SourceCurrency => "example",
+
+            # is a xs:string
+            # Pattern: [A-Z]{3,3}
+            TargetCurrency => "example", },
+
+          # is a x0:ExchangeRateReportOrError4Choice
+          CurrencyExchangeOrError =>
+          { # choice of BusinessError, CurrencyExchange
+
+            # is a x0:ErrorHandling3
+            # occurs 1 <= # <= unbounded times
+            BusinessError =>
+            [ { # sequence of Error, Description
+
+                # is a x0:ErrorHandling1Choice
+                Error =>
+                { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # Enum: X020 X030 X050
+                  Code => "X020",
+
+                  # is a xs:string
+                  # length <= 4
+                  # length >= 1
+                  # Pattern: [a-zA-Z0-9]{1,4}
+                  Proprietary => "example", },
+
+                # is a xs:string
+                # is optional
+                # length <= 140
+                # length >= 1
+                Description => "example", }, ],
+
+            # is a x0:CurrencyExchange20
+            CurrencyExchange =>
+            { # sequence of ExchangeRate, QuotedCurrency, QuotationDate,
+              #   LwLmt, HighLimit
+
+              # is a xs:decimal
+              # faction digits is 10
+              # total digits is 11
+              ExchangeRate => 3.1415,
+
+              # is a xs:string
+              # Pattern: [A-Z]{3,3}
+              QuotedCurrency => "example",
+
+              # is a xs:dateTime
+              QuotationDate => "2006-10-06T00:23:02Z",
+
+              # is a x0:ExchangeRateOrPercentage1Choice
+              # is optional
+              LwLmt =>
+              { # choice of Rate, Percentage
+
+                # is a xs:decimal
+                # faction digits is 10
+                # total digits is 11
+                Rate => 3.1415,
+
+                # is a xs:decimal
+                # faction digits is 10
+                # total digits is 11
+                Percentage => 3.1415, },
+
+              # is a x0:ExchangeRateOrPercentage1Choice
+              # complex structure shown above
+              # is optional
+              HighLimit => [{},], }, }, }, ],
+
+      # is a x0:ErrorHandling3
+      # complex structure shown above
+      # occurs 1 <= # <= unbounded times
+      OperationalError => [{},], },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

@@ -1,0 +1,247 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.013.001.04}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.013.001.04
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of GetMember
+
+  # is a x0:GetMemberV04
+  GetMember =>
+  { # sequence of MessageHeader, MmbQryDef, SupplementaryData
+
+    # is a x0:MessageHeader9
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime, RequestType
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:RequestType4Choice
+      # is optional
+      RequestType =>
+      { # choice of PaymentControl, Enquiry, Proprietary
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        PaymentControl => "example",
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        Enquiry => "example",
+
+        # is a x0:GenericIdentification1
+        Proprietary =>
+        { # sequence of Identification, SchemName, Issuer
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Identification => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          SchemName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Issuer => "example", }, }, },
+
+    # is a x0:MemberQueryDefinition4
+    # is optional
+    MmbQryDef =>
+    { # sequence of QueryType, MemberCriteria
+
+      # is a xs:string
+      # is optional
+      # Enum: ALLL CHNG DELD MODF
+      QueryType => "ALLL",
+
+      # is a x0:MemberCriteriaDefinition2Choice
+      # is optional
+      MemberCriteria =>
+      { # choice of QueryName, NewCriteria
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        QueryName => "example",
+
+        # is a x0:MemberCriteria4
+        NewCriteria =>
+        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          NewQryNm => "example",
+
+          # is a x0:MemberSearchCriteria4
+          # occurs any number of times
+          SearchCriteria =>
+          [ { # sequence of Identification, Type, Status
+
+              # is a x0:MemberIdentification3Choice
+              # occurs any number of times
+              Identification =>
+              [ { # choice of BICFI, ClearSystemMemberId, Other
+
+                  # is a xs:string
+                  # Pattern:
+                  #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+                  BICFI => "example",
+
+                  # is a x0:ClearingSystemMemberIdentification2
+                  ClearSystemMemberId =>
+                  { # sequence of ClearSystemId, MemberId
+
+                    # is a x0:ClearingSystemIdentification2Choice
+                    # is optional
+                    ClearSystemId =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # length <= 5
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Proprietary => "example", },
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    MemberId => "example", },
+
+                  # is a x0:GenericFinancialIdentification1
+                  Other =>
+                  { # sequence of Identification, SchemName, Issuer
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    Identification => "example",
+
+                    # is a x0:FinancialIdentificationSchemeName1Choice
+                    # is optional
+                    SchemName =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # length <= 4
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Proprietary => "example", },
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 35
+                    # length >= 1
+                    Issuer => "example", }, }, ],
+
+              # is a x0:SystemMemberType1Choice
+              # occurs any number of times
+              Type =>
+              [ { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # length <= 4
+                  # length >= 1
+                  Code => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Proprietary => "example", }, ],
+
+              # is a x0:SystemMemberStatus1Choice
+              # occurs any number of times
+              Status =>
+              [ { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # Enum: DLTD DSBL ENBL JOIN
+                  Code => "ENBL",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Proprietary => "example", }, ], }, ],
+
+          # is a x0:MemberReturnCriteria1
+          # is optional
+          ReturnCriteria =>
+          { # sequence of NameInd, MemberReturnAddressInd, AccountInd,
+            #   TypeInd, StatusInd, ContactReferenceInd, CommunicationAddressInd
+
+            # is a xs:boolean
+            # is optional
+            NameInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            MemberReturnAddressInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            AccountInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            TypeInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            StatusInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ContactReferenceInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            CommunicationAddressInd => "true", }, }, }, },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

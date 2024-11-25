@@ -1,0 +1,557 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.069.001.05}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:21 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.069.001.05
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of GetStagingOrder
+
+  # is a x0:GetStandingOrderV05
+  GetStagingOrder =>
+  { # sequence of MessageHeader, StandingOrderQueryDefinition,
+    #   SupplementaryData
+
+    # is a x0:MessageHeader4
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime, RequestType
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:RequestType3Choice
+      # is optional
+      RequestType =>
+      { # choice of Code, Proprietary
+
+        # is a xs:string
+        # Enum: SDTL SLSL SLST SWLS TAPS
+        Code => "SLST",
+
+        # is a x0:GenericIdentification1
+        Proprietary =>
+        { # sequence of Identification, SchemName, Issuer
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Identification => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          SchemName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Issuer => "example", }, }, },
+
+    # is a x0:StandingOrderQuery5
+    # is optional
+    StandingOrderQueryDefinition =>
+    { # sequence of QueryType, StandingOrderCriteria
+
+      # is a xs:string
+      # is optional
+      # Enum: ALLL CHNG DELD MODF
+      QueryType => "ALLL",
+
+      # is a x0:StandingOrderCriteria5Choice
+      # is optional
+      StandingOrderCriteria =>
+      { # choice of QueryName, NewCriteria
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        QueryName => "example",
+
+        # is a x0:StandingOrderCriteria5
+        NewCriteria =>
+        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          NewQryNm => "example",
+
+          # is a x0:StandingOrderSearchCriteria5
+          # occurs any number of times
+          SearchCriteria =>
+          [ { # sequence of KeyAttributesInd, StandingOrderId, Type,
+              #   Account, Currency, ValidityPeriod, SystemMember,
+              #   ResponsibleParty, AssociatedPoolAccount, LkSetId,
+              #   LkSetOrdrId, LkSetOrdrSeq, ZeroSweepInd
+
+              # is a xs:boolean
+              # is optional
+              KeyAttributesInd => "true",
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              StandingOrderId => "example",
+
+              # is a x0:StandingOrderType1Choice
+              # is optional
+              Type =>
+              { # choice of Code, Proprietary
+
+                # is a xs:string
+                # Enum: PSTO USTO
+                Code => "USTO",
+
+                # is a x0:GenericIdentification1
+                # complex structure shown above
+                Proprietary => {}, },
+
+              # is a x0:CashAccount40
+              # is optional
+              Account =>
+              { # sequence of Identification, Type, Currency, Name, Proxy
+
+                # is a x0:AccountIdentification4Choice
+                # is optional
+                Identification =>
+                { # choice of IBAN, Other
+
+                  # is a xs:string
+                  # Pattern: [A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}
+                  IBAN => "example",
+
+                  # is a x0:GenericAccountIdentification1
+                  Other =>
+                  { # sequence of Identification, SchemName, Issuer
+
+                    # is a xs:string
+                    # length <= 34
+                    # length >= 1
+                    Identification => "example",
+
+                    # is a x0:AccountSchemeName1Choice
+                    # is optional
+                    SchemName =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # length <= 4
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Proprietary => "example", },
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 35
+                    # length >= 1
+                    Issuer => "example", }, },
+
+                # is a x0:CashAccountType2Choice
+                # complex structure shown above
+                # is optional
+                Type => [{},],
+
+                # is a xs:string
+                # is optional
+                # Pattern: [A-Z]{3,3}
+                Currency => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 70
+                # length >= 1
+                Name => "example",
+
+                # is a x0:ProxyAccountIdentification1
+                # is optional
+                Proxy =>
+                { # sequence of Type, Identification
+
+                  # is a x0:ProxyAccountType1Choice
+                  # complex structure shown above
+                  # is optional
+                  Type => [{},],
+
+                  # is a xs:string
+                  # length <= 2048
+                  # length >= 1
+                  Identification => "example", }, },
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z]{3,3}
+              Currency => "example",
+
+              # is a x0:DatePeriod2Choice
+              # is optional
+              ValidityPeriod =>
+              { # choice of FromDate, ToDate, FromToDate
+
+                # is a xs:date
+                FromDate => "2006-10-06",
+
+                # is a xs:date
+                ToDate => "2006-10-06",
+
+                # is a x0:DatePeriod2
+                FromToDate =>
+                { # sequence of FromDate, ToDate
+
+                  # is a xs:date
+                  FromDate => "2006-10-06",
+
+                  # is a xs:date
+                  ToDate => "2006-10-06", }, },
+
+              # is a x0:BranchAndFinancialInstitutionIdentification8
+              # is optional
+              SystemMember =>
+              { # sequence of FinancialInstitutionId, BranchId
+
+                # is a x0:FinancialInstitutionIdentification23
+                FinancialInstitutionId =>
+                { # sequence of BICFI, ClearSystemMemberId, LEI, Name,
+                  #   PostalAddress, Other
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern:
+                  #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+                  BICFI => "example",
+
+                  # is a x0:ClearingSystemMemberIdentification2
+                  # is optional
+                  ClearSystemMemberId =>
+                  { # sequence of ClearSystemId, MemberId
+
+                    # is a x0:ClearingSystemIdentification2Choice
+                    # is optional
+                    ClearSystemId =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # length <= 5
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Proprietary => "example", },
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    MemberId => "example", },
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+                  LEI => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 140
+                  # length >= 1
+                  Name => "example",
+
+                  # is a x0:PostalAddress27
+                  # is optional
+                  PostalAddress =>
+                  { # sequence of AddressType, CareOf, Department, SubDepartment,
+                    #   SteetName, BuildingNumber, BuildingName, Floor, UnitNumber,
+                    #   Postbox, Room, PostalCode, TownName, TownLocationName,
+                    #   DistrictName, CountrySubDivision, Country, AddressLine
+
+                    # is a x0:AddressType3Choice
+                    # is optional
+                    AddressType =>
+                    { # choice of Code, Proprietary
+
+                      # is a xs:string
+                      # Enum: ADDR BIZZ DLVY HOME MLTO PBOX
+                      Code => "ADDR",
+
+                      # is a x0:GenericIdentification30
+                      # complex structure shown above
+                      Proprietary => {}, },
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 140
+                    # length >= 1
+                    CareOf => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 70
+                    # length >= 1
+                    Department => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 70
+                    # length >= 1
+                    SubDepartment => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 140
+                    # length >= 1
+                    SteetName => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 16
+                    # length >= 1
+                    BuildingNumber => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 140
+                    # length >= 1
+                    BuildingName => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 70
+                    # length >= 1
+                    Floor => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 16
+                    # length >= 1
+                    UnitNumber => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 16
+                    # length >= 1
+                    Postbox => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 70
+                    # length >= 1
+                    Room => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 16
+                    # length >= 1
+                    PostalCode => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 140
+                    # length >= 1
+                    TownName => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 140
+                    # length >= 1
+                    TownLocationName => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 140
+                    # length >= 1
+                    DistrictName => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 35
+                    # length >= 1
+                    CountrySubDivision => "example",
+
+                    # is a xs:string
+                    # is optional
+                    # Pattern: [A-Z]{2,2}
+                    Country => "example",
+
+                    # is a xs:string
+                    # occurs 0 <= # <= 7 times
+                    # length <= 70
+                    # length >= 1
+                    AddressLine => [ "example", ], },
+
+                  # is a x0:GenericFinancialIdentification1
+                  # complex structure shown above
+                  # is optional
+                  Other => [{},], },
+
+                # is a x0:BranchData5
+                # is optional
+                BranchId =>
+                { # sequence of Identification, LEI, Name, PostalAddress
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  Identification => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+                  LEI => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 140
+                  # length >= 1
+                  Name => "example",
+
+                  # is a x0:PostalAddress27
+                  # complex structure shown above
+                  # is optional
+                  PostalAddress => [{},], }, },
+
+              # is a x0:BranchAndFinancialInstitutionIdentification8
+              # complex structure shown above
+              # is optional
+              ResponsibleParty => [{},],
+
+              # is a x0:AccountIdentification4Choice
+              # complex structure shown above
+              # is optional
+              AssociatedPoolAccount => [{},],
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              LkSetId => "example",
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              LkSetOrdrId => "example",
+
+              # is a xs:decimal
+              # is optional
+              # faction digits is 0
+              # total digits is 18
+              LkSetOrdrSeq => 3.1415,
+
+              # is a xs:boolean
+              # is optional
+              ZeroSweepInd => "true", }, ],
+
+          # is a x0:StandingOrderReturnCriteria1
+          # is optional
+          ReturnCriteria =>
+          { # sequence of StandingOrderIdInd, TypeInd, SystemMemberInd,
+            #   ResponsiblePartyInd, CurrencyInd, DebtorAccountInd,
+            #   CreditorAccountInd, AssociatedPoolAccount, FrequencyInd,
+            #   ExecutionTypeInd, ValidityForInd, ValidToInd, LkSetIdInd,
+            #   LkSetOrdrIdInd, LkSetOrdrSeqInd, TotalAmountInd, ZeroSweepInd
+
+            # is a xs:boolean
+            # is optional
+            StandingOrderIdInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            TypeInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            SystemMemberInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ResponsiblePartyInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            CurrencyInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            DebtorAccountInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            CreditorAccountInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            AssociatedPoolAccount => "true",
+
+            # is a xs:boolean
+            # is optional
+            FrequencyInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ExecutionTypeInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ValidityForInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ValidToInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            LkSetIdInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            LkSetOrdrIdInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            LkSetOrdrSeqInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            TotalAmountInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ZeroSweepInd => "true", }, }, }, },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

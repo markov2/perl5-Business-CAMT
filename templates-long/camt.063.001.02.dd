@@ -1,0 +1,61 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.063.001.02}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:21 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.063.001.02
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of PayInEventAcknowledge
+
+  # is a x0:PayInEventAcknowledgementV02
+  PayInEventAcknowledge =>
+  { # sequence of MessageId, SettlementSessionIdentifier,
+    #   AcknowlegdementDetails, SupplementaryData
+
+    # is a xs:string
+    # length <= 35
+    # length >= 1
+    MessageId => "example",
+
+    # is a xs:string
+    # is optional
+    # Pattern: [a-zA-Z0-9]{4}
+    SettlementSessionIdentifier => "example",
+
+    # is a x0:AcknowledgementDetails1Choice
+    AcknowlegdementDetails =>
+    { # choice of PayInScheduleReference, PayInCallReference
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      PayInScheduleReference => "example",
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      PayInCallReference => "example", },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

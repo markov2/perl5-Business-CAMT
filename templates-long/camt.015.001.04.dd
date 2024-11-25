@@ -1,0 +1,245 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.015.001.04}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.015.001.04
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of ModifyMember
+
+  # is a x0:ModifyMemberV04
+  ModifyMember =>
+  { # sequence of MessageHeader, MemberId, NewMemberValueSet,
+    #   SupplementaryData
+
+    # is a x0:MessageHeader1
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z", },
+
+    # is a x0:MemberIdentification3Choice
+    MemberId =>
+    { # choice of BICFI, ClearSystemMemberId, Other
+
+      # is a xs:string
+      # Pattern:
+      #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+      BICFI => "example",
+
+      # is a x0:ClearingSystemMemberIdentification2
+      ClearSystemMemberId =>
+      { # sequence of ClearSystemId, MemberId
+
+        # is a x0:ClearingSystemIdentification2Choice
+        # is optional
+        ClearSystemId =>
+        { # choice of Code, Proprietary
+
+          # is a xs:string
+          # length <= 5
+          # length >= 1
+          Code => "example",
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Proprietary => "example", },
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        MemberId => "example", },
+
+      # is a x0:GenericFinancialIdentification1
+      Other =>
+      { # sequence of Identification, SchemName, Issuer
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        Identification => "example",
+
+        # is a x0:FinancialIdentificationSchemeName1Choice
+        # is optional
+        SchemName =>
+        { # choice of Code, Proprietary
+
+          # is a xs:string
+          # length <= 4
+          # length >= 1
+          Code => "example",
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Proprietary => "example", },
+
+        # is a xs:string
+        # is optional
+        # length <= 35
+        # length >= 1
+        Issuer => "example", }, },
+
+    # is a x0:Member6
+    NewMemberValueSet =>
+    { # sequence of MemberReturnAddress, ContactReference,
+      #   CommunicationAddress
+
+      # is a x0:MemberIdentification3Choice
+      # complex structure shown above
+      # occurs any number of times
+      MemberReturnAddress => [{},],
+
+      # is a x0:ContactIdentificationAndAddress1
+      # occurs any number of times
+      ContactReference =>
+      [ { # sequence of Name, Role, CommunicationAddress
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Name => "example",
+
+          # is a xs:string
+          # Enum: BKMG LMMG LQMG PYMG REDR STMG
+          Role => "LQMG",
+
+          # is a x0:CommunicationAddress8
+          CommunicationAddress =>
+          { # sequence of PostalAddress, PhoneNumber, FaxNumber, EmailAddress
+
+            # is a x0:LongPostalAddress1Choice
+            PostalAddress =>
+            { # choice of Unstructured, Structured
+
+              # is a xs:string
+              # length <= 140
+              # length >= 1
+              Unstructured => "example",
+
+              # is a x0:StructuredLongPostalAddress1
+              Structured =>
+              { # sequence of BuildingName, SteetName, StreetBuildingId,
+                #   Floor, TownName, DistrictName, RegionId, State, CityId,
+                #   Country, PostalCodeId, PostOfficeBox
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                BuildingName => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                SteetName => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                StreetBuildingId => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 16
+                # length >= 1
+                Floor => "example",
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                TownName => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                DistrictName => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                RegionId => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                State => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                CityId => "example",
+
+                # is a xs:string
+                # Pattern: [A-Z]{2,2}
+                Country => "example",
+
+                # is a xs:string
+                # length <= 16
+                # length >= 1
+                PostalCodeId => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 16
+                # length >= 1
+                PostOfficeBox => "example", }, },
+
+            # is a xs:string
+            # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+            PhoneNumber => "example",
+
+            # is a xs:string
+            # is optional
+            # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+            FaxNumber => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 256
+            # length >= 1
+            EmailAddress => "example", }, }, ],
+
+      # is a x0:CommunicationAddress8
+      # complex structure shown above
+      # is optional
+      CommunicationAddress => [{},], },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

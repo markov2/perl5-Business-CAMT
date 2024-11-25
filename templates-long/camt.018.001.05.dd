@@ -1,0 +1,224 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.018.001.05}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.018.001.05
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of GetBusinessDayInformation
+
+  # is a x0:GetBusinessDayInformationV05
+  GetBusinessDayInformation =>
+  { # sequence of MessageHeader, BizDayInfQryDef, SupplementaryData
+
+    # is a x0:MessageHeader9
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime, RequestType
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:RequestType4Choice
+      # is optional
+      RequestType =>
+      { # choice of PaymentControl, Enquiry, Proprietary
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        PaymentControl => "example",
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        Enquiry => "example",
+
+        # is a x0:GenericIdentification1
+        Proprietary =>
+        { # sequence of Identification, SchemName, Issuer
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Identification => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          SchemName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Issuer => "example", }, }, },
+
+    # is a x0:BusinessDayQuery2
+    # is optional
+    BizDayInfQryDef =>
+    { # sequence of QueryType, Criteria
+
+      # is a xs:string
+      # is optional
+      # Enum: ALLL CHNG DELD MODF
+      QueryType => "ALLL",
+
+      # is a x0:BusinessDayCriteria3Choice
+      # is optional
+      Criteria =>
+      { # choice of QueryName, NewCriteria
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        QueryName => "example",
+
+        # is a x0:BusinessDayCriteria2
+        NewCriteria =>
+        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          NewQryNm => "example",
+
+          # is a x0:BusinessDaySearchCriteria2
+          # occurs any number of times
+          SearchCriteria =>
+          [ { # sequence of SystemDate, SystemId, SystemCurrency, EventType,
+              #   ClosurePeriod
+
+              # is a xs:date
+              # is optional
+              SystemDate => "2006-10-06",
+
+              # is a x0:SystemIdentification2Choice
+              # occurs any number of times
+              SystemId =>
+              [ { # choice of MarketInfrastructureId, Country
+
+                  # is a x0:MarketInfrastructureIdentification1Choice
+                  MarketInfrastructureId =>
+                  { # choice of Code, Proprietary
+
+                    # is a xs:string
+                    # length <= 3
+                    # length >= 1
+                    Code => "example",
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    Proprietary => "example", },
+
+                  # is a xs:string
+                  # Pattern: [A-Z]{2,2}
+                  Country => "example", }, ],
+
+              # is a xs:string
+              # occurs any number of times
+              # Pattern: [A-Z]{3,3}
+              SystemCurrency => [ "example", ],
+
+              # is a x0:SystemEventType2Choice
+              # is optional
+              EventType =>
+              { # choice of Code, Proprietary
+
+                # is a xs:string
+                # Enum: CRCO CUSC ESTF EUCO EUSU FIRE IBKC LTDC LTGC LTNC
+                #    LVCC LVCO LVRT LWSU NPCT PCOT RECC REOP SSSC STDY
+                #    STSU SYSC
+                Code => "LVCO",
+
+                # is a x0:GenericIdentification1
+                # complex structure shown above
+                Proprietary => {}, },
+
+              # is a x0:DateTimePeriod1Choice
+              # is optional
+              ClosurePeriod =>
+              { # choice of FromDateTime, ToDateTime, DateTimeRange
+
+                # is a xs:dateTime
+                FromDateTime => "2006-10-06T00:23:02Z",
+
+                # is a xs:dateTime
+                ToDateTime => "2006-10-06T00:23:02Z",
+
+                # is a x0:DateTimePeriod1
+                DateTimeRange =>
+                { # sequence of FromDateTime, ToDateTime
+
+                  # is a xs:dateTime
+                  FromDateTime => "2006-10-06T00:23:02Z",
+
+                  # is a xs:dateTime
+                  ToDateTime => "2006-10-06T00:23:02Z", }, }, }, ],
+
+          # is a x0:BusinessDayReturnCriteria2
+          # is optional
+          ReturnCriteria =>
+          { # sequence of SystemDateInd, SystemStatusInd,
+            #   SystemCurrencyInd, ClosurePeriodInd, EventInd,
+            #   SeasonPeriodInd, EventTypeInd
+
+            # is a xs:boolean
+            # is optional
+            SystemDateInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            SystemStatusInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            SystemCurrencyInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            ClosurePeriodInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            EventInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            SeasonPeriodInd => "true",
+
+            # is a xs:boolean
+            # is optional
+            EventTypeInd => "true", }, }, }, },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

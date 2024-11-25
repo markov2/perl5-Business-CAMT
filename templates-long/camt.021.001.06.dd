@@ -1,0 +1,190 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.021.001.06}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.021.001.06
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of ReturnGeneralBusinessInformation
+
+  # is a x0:ReturnGeneralBusinessInformationV06
+  ReturnGeneralBusinessInformation =>
+  { # sequence of MessageHeader, ReportOrError, SupplementaryData
+
+    # is a x0:MessageHeader7
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime, RequestType,
+      #   OrgnlBizQry, QueryName
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z",
+
+      # is a x0:RequestType4Choice
+      # is optional
+      RequestType =>
+      { # choice of PaymentControl, Enquiry, Proprietary
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        PaymentControl => "example",
+
+        # is a xs:string
+        # length <= 4
+        # length >= 1
+        Enquiry => "example",
+
+        # is a x0:GenericIdentification1
+        Proprietary =>
+        { # sequence of Identification, SchemName, Issuer
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          Identification => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          SchemName => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          Issuer => "example", }, },
+
+      # is a x0:OriginalBusinessQuery1
+      # is optional
+      OrgnlBizQry =>
+      { # sequence of MessageId, MessageNameId, CreationDateTime
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        MessageId => "example",
+
+        # is a xs:string
+        # is optional
+        # length <= 35
+        # length >= 1
+        MessageNameId => "example",
+
+        # is a xs:dateTime
+        # is optional
+        CreationDateTime => "2006-10-06T00:23:02Z", },
+
+      # is a xs:string
+      # is optional
+      # length <= 35
+      # length >= 1
+      QueryName => "example", },
+
+    # is a x0:GeneralBusinessOrError7Choice
+    ReportOrError =>
+    { # choice of OperationalError, BusinessReport
+
+      # is a x0:ErrorHandling5
+      # occurs 1 <= # <= unbounded times
+      OperationalError =>
+      [ { # sequence of Error, Description
+
+          # is a x0:ErrorHandling3Choice
+          Error =>
+          { # choice of Code, Proprietary
+
+            # is a xs:string
+            # length <= 4
+            # length >= 1
+            Code => "example",
+
+            # is a xs:string
+            # length <= 35
+            # length >= 1
+            Proprietary => "example", },
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          Description => "example", }, ],
+
+      # is a x0:GeneralBusinessReport6
+      # occurs 1 <= # <= unbounded times
+      BusinessReport =>
+      [ { # sequence of BizInfRef, GeneralBusinessOrError
+
+          # is a xs:string
+          # length <= 35
+          # length >= 1
+          BizInfRef => "example",
+
+          # is a x0:GeneralBusinessOrError8Choice
+          GeneralBusinessOrError =>
+          { # choice of BusinessError, GeneralBusiness
+
+            # is a x0:ErrorHandling5
+            # complex structure shown above
+            # occurs 1 <= # <= unbounded times
+            BusinessError => [{},],
+
+            # is a x0:GeneralBusinessInformation1
+            GeneralBusiness =>
+            { # sequence of Qualifier, Subject, SubjectDetails
+
+              # is a x0:InformationQualifierType1
+              # is optional
+              Qualifier =>
+              { # sequence of IsFormatted, Priority
+
+                # is a xs:boolean
+                # is optional
+                IsFormatted => "true",
+
+                # is a xs:string
+                # is optional
+                # Enum: HIGH LOWW NORM
+                Priority => "HIGH", },
+
+              # is a xs:string
+              # is optional
+              # length <= 35
+              # length >= 1
+              Subject => "example",
+
+              # is a xs:string
+              # is optional
+              # length <= 350
+              # length >= 1
+              SubjectDetails => "example", }, }, }, ], },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }

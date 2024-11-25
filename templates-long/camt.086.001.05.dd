@@ -1,0 +1,1228 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.086.001.05}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:22 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.086.001.05
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of BkSvcsBllgStmt
+
+  # is a x0:BankServicesBillingStatementV05
+  BkSvcsBllgStmt =>
+  { # sequence of ReportHeader, BillingStatementGroup
+
+    # is a x0:ReportHeader6
+    ReportHeader =>
+    { # sequence of ReportId, MessagePagination
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      ReportId => "example",
+
+      # is a x0:Pagination1
+      # is optional
+      MessagePagination =>
+      { # sequence of PageNumber, LastPageInd
+
+        # is a xs:string
+        # Pattern: [0-9]{1,5}
+        PageNumber => "example",
+
+        # is a xs:boolean
+        LastPageInd => "true", }, },
+
+    # is a x0:StatementGroup5
+    # occurs 1 <= # <= unbounded times
+    BillingStatementGroup =>
+    [ { # sequence of GroupId, Sender, SenderIndividualContact,
+        #   Receiver, ReceiverIndividualContact, BillingStatement
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        GroupId => "example",
+
+        # is a x0:PartyIdentification273
+        Sender =>
+        { # sequence of Name, LegalName, PostalAddress, Identification,
+          #   CountryOfResidence, ContactDetails
+
+          # is a xs:string
+          # length <= 140
+          # length >= 1
+          Name => "example",
+
+          # is a xs:string
+          # is optional
+          # length <= 140
+          # length >= 1
+          LegalName => "example",
+
+          # is a x0:PostalAddress27
+          # is optional
+          PostalAddress =>
+          { # sequence of AddressType, CareOf, Department, SubDepartment,
+            #   SteetName, BuildingNumber, BuildingName, Floor, UnitNumber,
+            #   Postbox, Room, PostalCode, TownName, TownLocationName,
+            #   DistrictName, CountrySubDivision, Country, AddressLine
+
+            # is a x0:AddressType3Choice
+            # is optional
+            AddressType =>
+            { # choice of Code, Proprietary
+
+              # is a xs:string
+              # Enum: ADDR BIZZ DLVY HOME MLTO PBOX
+              Code => "ADDR",
+
+              # is a x0:GenericIdentification30
+              Proprietary =>
+              { # sequence of Identification, Issuer, SchemName
+
+                # is a xs:string
+                # Pattern: [a-zA-Z0-9]{4}
+                Identification => "example",
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                Issuer => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                SchemName => "example", }, },
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            CareOf => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 70
+            # length >= 1
+            Department => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 70
+            # length >= 1
+            SubDepartment => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            SteetName => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 16
+            # length >= 1
+            BuildingNumber => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            BuildingName => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 70
+            # length >= 1
+            Floor => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 16
+            # length >= 1
+            UnitNumber => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 16
+            # length >= 1
+            Postbox => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 70
+            # length >= 1
+            Room => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 16
+            # length >= 1
+            PostalCode => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            TownName => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            TownLocationName => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            DistrictName => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            CountrySubDivision => "example",
+
+            # is a xs:string
+            # is optional
+            # Pattern: [A-Z]{2,2}
+            Country => "example",
+
+            # is a xs:string
+            # occurs 0 <= # <= 7 times
+            # length <= 70
+            # length >= 1
+            AddressLine => [ "example", ], },
+
+          # is a x0:Party56Choice
+          Identification =>
+          { # choice of OrganisationId, FinancialInstitutionId
+
+            # is a x0:OrganisationIdentification39
+            OrganisationId =>
+            { # sequence of AnyBIC, LEI, Other
+
+              # is a xs:string
+              # is optional
+              # Pattern:
+              #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+              AnyBIC => "example",
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+              LEI => "example",
+
+              # is a x0:GenericOrganisationIdentification3
+              # occurs any number of times
+              Other =>
+              [ { # sequence of Identification, SchemName, Issuer
+
+                  # is a xs:string
+                  # length <= 256
+                  # length >= 1
+                  Identification => "example",
+
+                  # is a x0:OrganisationIdentificationSchemeName1Choice
+                  # is optional
+                  SchemName =>
+                  { # choice of Code, Proprietary
+
+                    # is a xs:string
+                    # length <= 4
+                    # length >= 1
+                    Code => "example",
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    Proprietary => "example", },
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  Issuer => "example", }, ], },
+
+            # is a x0:FinancialInstitutionIdentification19
+            FinancialInstitutionId =>
+            { # sequence of BICFI, ClearSystemMemberId, LEI, Other
+
+              # is a xs:string
+              # is optional
+              # Pattern:
+              #    [A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}
+              BICFI => "example",
+
+              # is a x0:ClearingSystemMemberIdentification2
+              # is optional
+              ClearSystemMemberId =>
+              { # sequence of ClearSystemId, MemberId
+
+                # is a x0:ClearingSystemIdentification2Choice
+                # is optional
+                ClearSystemId =>
+                { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # length <= 5
+                  # length >= 1
+                  Code => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Proprietary => "example", },
+
+                # is a xs:string
+                # length <= 35
+                # length >= 1
+                MemberId => "example", },
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+              LEI => "example",
+
+              # is a x0:GenericFinancialIdentification1
+              # complex structure shown above
+              # is optional
+              Other => [{},], }, },
+
+          # is a xs:string
+          # is optional
+          # Pattern: [A-Z]{2,2}
+          CountryOfResidence => "example",
+
+          # is a x0:Contact13
+          # is optional
+          ContactDetails =>
+          { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
+            #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
+            #   Responsibility, Department, Other, PreferredMethod
+
+            # is a xs:string
+            # is optional
+            # Enum: DOCT MADM MIKS MISS MIST
+            NamePrefix => "DOCT",
+
+            # is a xs:string
+            # is optional
+            # length <= 140
+            # length >= 1
+            Name => "example",
+
+            # is a xs:string
+            # is optional
+            # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+            PhoneNumber => "example",
+
+            # is a xs:string
+            # is optional
+            # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+            MobNb => "example",
+
+            # is a xs:string
+            # is optional
+            # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
+            FaxNumber => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 2048
+            # length >= 1
+            URLAdr => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 256
+            # length >= 1
+            EmailAddress => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            EmailPurpose => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            JobTitle => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 35
+            # length >= 1
+            Responsibility => "example",
+
+            # is a xs:string
+            # is optional
+            # length <= 70
+            # length >= 1
+            Department => "example",
+
+            # is a x0:OtherContact1
+            # complex structure shown above
+            # occurs any number of times
+            Other => [{},],
+
+            # is a xs:string
+            # is optional
+            # Enum: CELL FAXX LETT MAIL ONLI PHON
+            PreferredMethod => "MAIL", }, },
+
+        # is a x0:Contact13
+        # complex structure shown above
+        # occurs 0 <= # <= 2 times
+        SenderIndividualContact => [{},],
+
+        # is a x0:PartyIdentification273
+        # complex structure shown above
+        Receiver => {},
+
+        # is a x0:Contact13
+        # complex structure shown above
+        # occurs 0 <= # <= 2 times
+        ReceiverIndividualContact => [{},],
+
+        # is a x0:BillingStatement5
+        # occurs 1 <= # <= unbounded times
+        BillingStatement =>
+        [ { # sequence of StatementId, FromToDate, CreationDateTime,
+            #   Status, AccountCharacteristics, RateData, CurrencyExchange,
+            #   Balance, Compensation, Service, TaxRegion,
+            #   BallanceAdjustment, ServiceAdjustment
+
+            # is a xs:string
+            # length <= 35
+            # length >= 1
+            StatementId => "example",
+
+            # is a x0:DatePeriod1
+            FromToDate =>
+            { # sequence of FromDate, ToDate
+
+              # is a xs:date
+              # is optional
+              FromDate => "2006-10-06",
+
+              # is a xs:date
+              ToDate => "2006-10-06", },
+
+            # is a xs:dateTime
+            CreationDateTime => "2006-10-06T00:23:02Z",
+
+            # is a xs:string
+            # Enum: ORGN RPLC TEST
+            Status => "ORGN",
+
+            # is a x0:CashAccountCharacteristics5
+            AccountCharacteristics =>
+            { # sequence of AccountLevel, CashAccount, AccountServicer,
+              #   PrinterAccount, CompensationMethod, DebitAccount,
+              #   DelayedDebitDate, SettlementAdvice,
+              #   AccountBalanceCurrencyCode, SettlementCurrencyCode,
+              #   HstCcyCd, Tax, AccountServicerContact
+
+              # is a xs:string
+              # Enum: DETL INTM SMRY
+              AccountLevel => "INTM",
+
+              # is a x0:CashAccount40
+              CashAccount =>
+              { # sequence of Identification, Type, Currency, Name, Proxy
+
+                # is a x0:AccountIdentification4Choice
+                # complex structure shown above
+                # is optional
+                Identification => [{},],
+
+                # is a x0:CashAccountType2Choice
+                # is optional
+                Type =>
+                { # choice of Code, Proprietary
+
+                  # is a xs:string
+                  # length <= 4
+                  # length >= 1
+                  Code => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Proprietary => "example", },
+
+                # is a xs:string
+                # is optional
+                # Pattern: [A-Z]{3,3}
+                Currency => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 70
+                # length >= 1
+                Name => "example",
+
+                # is a x0:ProxyAccountIdentification1
+                # is optional
+                Proxy =>
+                { # sequence of Type, Identification
+
+                  # is a x0:ProxyAccountType1Choice
+                  # complex structure shown above
+                  # is optional
+                  Type => [{},],
+
+                  # is a xs:string
+                  # length <= 2048
+                  # length >= 1
+                  Identification => "example", }, },
+
+              # is a x0:BranchAndFinancialInstitutionIdentification8
+              # is optional
+              AccountServicer =>
+              { # sequence of FinancialInstitutionId, BranchId
+
+                # is a x0:FinancialInstitutionIdentification23
+                # complex structure shown above
+                FinancialInstitutionId => {},
+
+                # is a x0:BranchData5
+                # is optional
+                BranchId =>
+                { # sequence of Identification, LEI, Name, PostalAddress
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  Identification => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
+                  LEI => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 140
+                  # length >= 1
+                  Name => "example",
+
+                  # is a x0:PostalAddress27
+                  # complex structure shown above
+                  # is optional
+                  PostalAddress => [{},], }, },
+
+              # is a x0:ParentCashAccount5
+              # is optional
+              PrinterAccount =>
+              { # sequence of Level, Identification, Servicer
+
+                # is a xs:string
+                # is optional
+                # Enum: INTM SMRY
+                Level => "INTM",
+
+                # is a x0:CashAccount40
+                # complex structure shown above
+                Identification => {},
+
+                # is a x0:BranchAndFinancialInstitutionIdentification8
+                # complex structure shown above
+                # is optional
+                Servicer => [{},], },
+
+              # is a xs:string
+              # Enum: DBTD DDBT INVD NOCP
+              CompensationMethod => "NOCP",
+
+              # is a x0:AccountIdentification4Choice
+              # is optional
+              DebitAccount =>
+              { # choice of IBAN, Other
+
+                # is a xs:string
+                # Pattern: [A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}
+                IBAN => "example",
+
+                # is a x0:GenericAccountIdentification1
+                # complex structure shown above
+                Other => {}, },
+
+              # is a xs:date
+              # is optional
+              DelayedDebitDate => "2006-10-06",
+
+              # is a xs:string
+              # is optional
+              # length <= 105
+              # length >= 1
+              SettlementAdvice => "example",
+
+              # is a xs:string
+              # Pattern: [A-Z]{3,3}
+              AccountBalanceCurrencyCode => "example",
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z]{3,3}
+              SettlementCurrencyCode => "example",
+
+              # is a xs:string
+              # is optional
+              # Pattern: [A-Z]{3,3}
+              HstCcyCd => "example",
+
+              # is a x0:AccountTax1
+              # is optional
+              Tax =>
+              { # sequence of CalculationMethod, Region, NonResidentalCountry
+
+                # is a xs:string
+                # Enum: MTDA MTDB MTDC MTDD NTAX UDFD
+                CalculationMethod => "NTAX",
+
+                # is a xs:string
+                # is optional
+                # length <= 40
+                # length >= 1
+                Region => "example",
+
+                # is a x0:ResidenceLocation1Choice
+                # is optional
+                NonResidentalCountry =>
+                { # choice of Country, Area
+
+                  # is a xs:string
+                  # Pattern: [A-Z]{2,2}
+                  Country => "example",
+
+                  # is a xs:string
+                  # length <= 35
+                  # length >= 1
+                  Area => "example", }, },
+
+              # is a x0:Contact13
+              # complex structure shown above
+              AccountServicerContact => {}, },
+
+            # is a x0:BillingRate1
+            # occurs any number of times
+            RateData =>
+            [ { # sequence of Identification, Value, DaysInPeriod, DaysInYear
+
+                # is a x0:BillingRateIdentification1Choice
+                # complex structure shown above
+                Identification => {},
+
+                # is a xs:decimal
+                # faction digits is 10
+                # total digits is 11
+                Value => 3.1415,
+
+                # is a xs:decimal
+                # is optional
+                # faction digits is 0
+                # total digits is 18
+                DaysInPeriod => 3.1415,
+
+                # is a xs:decimal
+                # is optional
+                # faction digits is 0
+                # total digits is 18
+                DaysInYear => 3.1415, }, ],
+
+            # is a x0:CurrencyExchange6
+            # occurs any number of times
+            CurrencyExchange =>
+            [ { # sequence of SourceCurrency, TargetCurrency, ExchangeRate,
+                #   Description, UnitCurrency, Comments, QuotationDate
+
+                # is a xs:string
+                # Pattern: [A-Z]{3,3}
+                SourceCurrency => "example",
+
+                # is a xs:string
+                # Pattern: [A-Z]{3,3}
+                TargetCurrency => "example",
+
+                # is a xs:decimal
+                # faction digits is 10
+                # total digits is 11
+                ExchangeRate => 3.1415,
+
+                # is a xs:string
+                # is optional
+                # length <= 40
+                # length >= 1
+                Description => "example",
+
+                # is a xs:string
+                # is optional
+                # Pattern: [A-Z]{3,3}
+                UnitCurrency => "example",
+
+                # is a xs:string
+                # is optional
+                # length <= 70
+                # length >= 1
+                Comments => "example",
+
+                # is a xs:dateTime
+                # is optional
+                QuotationDate => "2006-10-06T00:23:02Z", }, ],
+
+            # is a x0:BillingBalance1
+            # occurs any number of times
+            Balance =>
+            [ { # sequence of Type, Value, CurrencyType
+
+                # is a x0:BillingBalanceType1Choice
+                # complex structure shown above
+                Type => {},
+
+                # is a x0:AmountAndDirection34
+                Value =>
+                { # sequence of Amount, Sign
+
+                  # is a x0:ActiveOrHistoricCurrencyAndAmount
+                  # Amount is simple value with attributes
+                  Amount =>
+                  { # is a xs:string
+                    # attribute Currency is required
+                    # Pattern: [A-Z]{3,3}
+                    Currency => "example",
+
+                    # is a xs:decimal
+                    # string content of the container
+                    _ => 3.1415, },
+
+                  # is a xs:boolean
+                  Sign => "true", },
+
+                # is a xs:string
+                # is optional
+                # Enum: ACCT PRCG STLM
+                CurrencyType => "ACCT", }, ],
+
+            # is a x0:BillingCompensation1
+            # occurs any number of times
+            Compensation =>
+            [ { # sequence of Type, Value, CurrencyType
+
+                # is a x0:BillingCompensationType1Choice
+                # complex structure shown above
+                Type => {},
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                Value => {},
+
+                # is a xs:string
+                # is optional
+                # Enum: ACCT HOST PRCG STLM
+                CurrencyType => "ACCT", }, ],
+
+            # is a x0:BillingService2
+            # occurs any number of times
+            Service =>
+            [ { # sequence of ServiceDetail, Price, PaymentMethod,
+                #   OriginalChargePrice, OriginalChargeSettlementAmount,
+                #   BallanceRequestedAccountAmount, TaxDesignation, TaxCalculation
+
+                # is a x0:BillingServiceParameters3
+                ServiceDetail =>
+                { # sequence of BankService, Volume
+
+                  # is a x0:BillingServiceIdentification3
+                  BankService =>
+                  { # sequence of Identification, SubService, Description,
+                    #   CommonCode, BankTransactionCode, ServiceType
+
+                    # is a xs:string
+                    # length <= 35
+                    # length >= 1
+                    Identification => "example",
+
+                    # is a x0:BillingSubServiceIdentification1
+                    # is optional
+                    SubService =>
+                    { # sequence of Issuer, Identification
+
+                      # is a x0:BillingSubServiceQualifier1Choice
+                      Issuer =>
+                      { # choice of Code, Proprietary
+
+                        # is a xs:string
+                        # Enum: BILA LBOX MACT SEQN STOR
+                        Code => "LBOX",
+
+                        # is a xs:string
+                        # length <= 35
+                        # length >= 1
+                        Proprietary => "example", },
+
+                      # is a xs:string
+                      # length <= 35
+                      # length >= 1
+                      Identification => "example", },
+
+                    # is a xs:string
+                    # length <= 70
+                    # length >= 1
+                    Description => "example",
+
+                    # is a x0:BillingServiceCommonIdentification1
+                    # is optional
+                    CommonCode =>
+                    { # sequence of Issuer, Identification
+
+                      # is a xs:string
+                      # length <= 6
+                      # length >= 1
+                      Issuer => "example",
+
+                      # is a xs:string
+                      # length <= 8
+                      # length >= 1
+                      Identification => "example", },
+
+                    # is a x0:BankTransactionCodeStructure4
+                    # is optional
+                    BankTransactionCode =>
+                    { # sequence of Domain, Proprietary
+
+                      # is a x0:BankTransactionCodeStructure5
+                      # is optional
+                      Domain =>
+                      { # sequence of Code, Family
+
+                        # is a xs:string
+                        # length <= 4
+                        # length >= 1
+                        Code => "example",
+
+                        # is a x0:BankTransactionCodeStructure6
+                        Family =>
+                        { # sequence of Code, SubFamilyCode
+
+                          # is a xs:string
+                          # length <= 4
+                          # length >= 1
+                          Code => "example",
+
+                          # is a xs:string
+                          # length <= 4
+                          # length >= 1
+                          SubFamilyCode => "example", }, },
+
+                      # is a x0:ProprietaryBankTransactionCodeStructure1
+                      # complex structure shown above
+                      # is optional
+                      Proprietary => [{},], },
+
+                    # is a xs:string
+                    # is optional
+                    # length <= 12
+                    # length >= 1
+                    ServiceType => "example", },
+
+                  # is a xs:decimal
+                  # is optional
+                  # faction digits is 17
+                  # total digits is 18
+                  Volume => 3.1415, },
+
+                # is a x0:BillingPrice1
+                # is optional
+                Price =>
+                { # sequence of Currency, UnitPrice, Method, Rule
+
+                  # is a xs:string
+                  # is optional
+                  # Pattern: [A-Z]{3,3}
+                  Currency => "example",
+
+                  # is a x0:AmountAndDirection34
+                  # complex structure shown above
+                  # is optional
+                  UnitPrice => [{},],
+
+                  # is a xs:string
+                  # is optional
+                  # Enum: BBSE BCHG DPRC FCHG LPRC MCHG MXRD STAM TIR1 TIR2
+                  #    TIR3 TIR4 TIR5 TIR6 TIR7 TIR8 TIR9 TPRC UPRC ZPRC
+                  Method => "UPRC",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 20
+                  # length >= 1
+                  Rule => "example", },
+
+                # is a xs:string
+                # Enum: BCMP FLAT FREE INVS PVCH WVED
+                PaymentMethod => "BCMP",
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                OriginalChargePrice => {},
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                OriginalChargeSettlementAmount => [{},],
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                BallanceRequestedAccountAmount => [{},],
+
+                # is a x0:ServiceTaxDesignation1
+                TaxDesignation =>
+                { # sequence of Code, Region, TaxReason
+
+                  # is a xs:string
+                  # Enum: TAXE XMPT ZERO
+                  Code => "XMPT",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  Region => "example",
+
+                  # is a x0:TaxReason1
+                  # occurs any number of times
+                  TaxReason =>
+                  [ { # sequence of Code, Explanation
+
+                      # is a xs:string
+                      # length <= 10
+                      # length >= 1
+                      Code => "example",
+
+                      # is a xs:string
+                      # length <= 105
+                      # length >= 1
+                      Explanation => "example", }, ], },
+
+                # is a x0:BillingMethod1Choice
+                # is optional
+                TaxCalculation =>
+                { # choice of MethodA, MethodB, MethodD
+
+                  # is a x0:BillingMethod1
+                  MethodA =>
+                  { # sequence of ServiceChargeHostAmount, ServiceTax,
+                    #   TotalCharge, TaxId
+
+                    # is a x0:AmountAndDirection34
+                    # complex structure shown above
+                    ServiceChargeHostAmount => {},
+
+                    # is a x0:BillingServicesAmount1
+                    ServiceTax =>
+                    { # sequence of HstAmt, PriveAmount
+
+                      # is a x0:AmountAndDirection34
+                      # complex structure shown above
+                      HstAmt => {},
+
+                      # is a x0:AmountAndDirection34
+                      # complex structure shown above
+                      # is optional
+                      PriveAmount => [{},], },
+
+                    # is a x0:BillingServicesAmount2
+                    TotalCharge =>
+                    { # sequence of HstAmt, SettlementAmount, PriveAmount
+
+                      # is a x0:AmountAndDirection34
+                      # complex structure shown above
+                      HstAmt => {},
+
+                      # is a x0:AmountAndDirection34
+                      # complex structure shown above
+                      # is optional
+                      SettlementAmount => [{},],
+
+                      # is a x0:AmountAndDirection34
+                      # complex structure shown above
+                      # is optional
+                      PriveAmount => [{},], },
+
+                    # is a x0:BillingServicesTax1
+                    # occurs 1 <= # <= 3 times
+                    TaxId =>
+                    [ { # sequence of Number, Description, Rate, HstAmt, PriveAmount
+
+                        # is a xs:string
+                        # length <= 35
+                        # length >= 1
+                        Number => "example",
+
+                        # is a xs:string
+                        # is optional
+                        # length <= 40
+                        # length >= 1
+                        Description => "example",
+
+                        # is a xs:decimal
+                        # faction digits is 17
+                        # total digits is 18
+                        Rate => 3.1415,
+
+                        # is a x0:AmountAndDirection34
+                        # complex structure shown above
+                        HstAmt => {},
+
+                        # is a x0:AmountAndDirection34
+                        # complex structure shown above
+                        # is optional
+                        PriveAmount => [{},], }, ], },
+
+                  # is a x0:BillingMethod2
+                  MethodB =>
+                  { # sequence of ServiceChargeHostAmount, ServiceTax, TaxId
+
+                    # is a x0:AmountAndDirection34
+                    # complex structure shown above
+                    ServiceChargeHostAmount => {},
+
+                    # is a x0:BillingServicesAmount1
+                    # complex structure shown above
+                    ServiceTax => {},
+
+                    # is a x0:BillingServicesTax1
+                    # complex structure shown above
+                    # occurs 1 <= # <= 3 times
+                    TaxId => [{},], },
+
+                  # is a x0:BillingMethod3
+                  MethodD =>
+                  { # sequence of ServiceTaxPriceAmount, TaxId
+
+                    # is a x0:AmountAndDirection34
+                    # complex structure shown above
+                    ServiceTaxPriceAmount => {},
+
+                    # is a x0:BillingServicesTax2
+                    # complex structure shown above
+                    # occurs 1 <= # <= 3 times
+                    TaxId => [{},], }, }, }, ],
+
+            # is a x0:BillingTaxRegion3
+            # occurs any number of times
+            TaxRegion =>
+            [ { # sequence of RegionNumber, RegionName, CustomerTaxId,
+                #   PointDate, SendingFinancialInstitution, InvoiceNumber,
+                #   MethodC, SettlementAmount, TaxDueToRegion
+
+                # is a xs:string
+                # length <= 40
+                # length >= 1
+                RegionNumber => "example",
+
+                # is a xs:string
+                # length <= 40
+                # length >= 1
+                RegionName => "example",
+
+                # is a xs:string
+                # length <= 40
+                # length >= 1
+                CustomerTaxId => "example",
+
+                # is a xs:date
+                # is optional
+                PointDate => "2006-10-06",
+
+                # is a x0:BillingTaxIdentification3
+                # is optional
+                SendingFinancialInstitution =>
+                { # sequence of VATRegionNumber, TaxRegionNumber, TaxContact
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  VATRegionNumber => "example",
+
+                  # is a xs:string
+                  # is optional
+                  # length <= 35
+                  # length >= 1
+                  TaxRegionNumber => "example",
+
+                  # is a x0:Contact13
+                  # complex structure shown above
+                  # is optional
+                  TaxContact => [{},], },
+
+                # is a xs:string
+                # is optional
+                # length <= 40
+                # length >= 1
+                InvoiceNumber => "example",
+
+                # is a x0:BillingMethod4
+                # is optional
+                MethodC =>
+                { # sequence of ServiceDetail, TaxCalculation
+
+                  # is a x0:BillingServiceParameters2
+                  # complex structure shown above
+                  # occurs 1 <= # <= unbounded times
+                  ServiceDetail => [{},],
+
+                  # is a x0:TaxCalculation1
+                  # complex structure shown above
+                  TaxCalculation => {}, },
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                SettlementAmount => {},
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                TaxDueToRegion => {}, }, ],
+
+            # is a x0:BalanceAdjustment1
+            # occurs any number of times
+            BallanceAdjustment =>
+            [ { # sequence of Type, Description, BallanceAmount,
+                #   AverageAmount, ErrorDate, PostingDate, Days,
+                #   EarningsAdjustmentAmount
+
+                # is a xs:string
+                # Enum: CLLD FLOT LDGR
+                Type => "LDGR",
+
+                # is a xs:string
+                # length <= 105
+                # length >= 1
+                Description => "example",
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                BallanceAmount => {},
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                AverageAmount => [{},],
+
+                # is a xs:date
+                # is optional
+                ErrorDate => "2006-10-06",
+
+                # is a xs:date
+                PostingDate => "2006-10-06",
+
+                # is a xs:decimal
+                # is optional
+                # faction digits is 17
+                # total digits is 18
+                Days => 3.1415,
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                EarningsAdjustmentAmount => [{},], }, ],
+
+            # is a x0:BillingServiceAdjustment1
+            # occurs any number of times
+            ServiceAdjustment =>
+            [ { # sequence of Type, Description, Amount,
+                #   BallanceRequestedAmount, ErrorDate, AdjustmentId,
+                #   SubService, PriceChange, OriginalPrice, NewPrice,
+                #   VolumeChange, OriginalVolume, NewVolume,
+                #   OriginalChargeAmount, NewChargeAmount
+
+                # is a xs:string
+                # Enum: COMP NCMP
+                Type => "COMP",
+
+                # is a xs:string
+                # length <= 140
+                # length >= 1
+                Description => "example",
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                Amount => {},
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                BallanceRequestedAmount => [{},],
+
+                # is a xs:date
+                # is optional
+                ErrorDate => "2006-10-06",
+
+                # is a xs:string
+                # is optional
+                # length <= 35
+                # length >= 1
+                AdjustmentId => "example",
+
+                # is a x0:BillingSubServiceIdentification1
+                # complex structure shown above
+                # is optional
+                SubService => [{},],
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                PriceChange => [{},],
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                OriginalPrice => [{},],
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                NewPrice => [{},],
+
+                # is a xs:decimal
+                # is optional
+                # faction digits is 17
+                # total digits is 18
+                VolumeChange => 3.1415,
+
+                # is a xs:decimal
+                # is optional
+                # faction digits is 17
+                # total digits is 18
+                OriginalVolume => 3.1415,
+
+                # is a xs:decimal
+                # is optional
+                # faction digits is 17
+                # total digits is 18
+                NewVolume => 3.1415,
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                OriginalChargeAmount => [{},],
+
+                # is a x0:AmountAndDirection34
+                # complex structure shown above
+                # is optional
+                NewChargeAmount => [{},], }, ], }, ], }, ], }, }

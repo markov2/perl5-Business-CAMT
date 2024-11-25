@@ -1,0 +1,92 @@
+# Describing complex x0:Document
+#     {urn:iso:std:iso:20022:tech:xsd:camt.016.001.04}Document
+#
+# Produced by XML::Compile::Translate::Template version undef
+#          on Mon Nov 25 15:46:19 2024
+#
+# BE WARNED: in most cases, the example below cannot be used without
+# interpretation.  The comments will guide you.
+#
+# xmlns:x0        urn:iso:std:iso:20022:tech:xsd:camt.016.001.04
+# xmlns:xs        http://www.w3.org/2001/XMLSchema
+
+# is a x0:Document
+{ # sequence of GetCurrencyExchangeRate
+
+  # is a x0:GetCurrencyExchangeRateV04
+  GetCurrencyExchangeRate =>
+  { # sequence of MessageHeader, CcyQryDef, SupplementaryData
+
+    # is a x0:MessageHeader1
+    MessageHeader =>
+    { # sequence of MessageId, CreationDateTime
+
+      # is a xs:string
+      # length <= 35
+      # length >= 1
+      MessageId => "example",
+
+      # is a xs:dateTime
+      # is optional
+      CreationDateTime => "2006-10-06T00:23:02Z", },
+
+    # is a x0:CurrencyQueryDefinition3
+    # is optional
+    CcyQryDef =>
+    { # sequence of QueryType, CurrencyCriteria
+
+      # is a xs:string
+      # is optional
+      # Enum: ALLL CHNG DELD MODF
+      QueryType => "ALLL",
+
+      # is a x0:CurrencyCriteriaDefinition1Choice
+      # is optional
+      CurrencyCriteria =>
+      { # choice of QueryName, NewCriteria
+
+        # is a xs:string
+        # length <= 35
+        # length >= 1
+        QueryName => "example",
+
+        # is a x0:CurrencyExchangeCriteria2
+        NewCriteria =>
+        { # sequence of NewQryNm, SearchCriteria
+
+          # is a xs:string
+          # is optional
+          # length <= 35
+          # length >= 1
+          NewQryNm => "example",
+
+          # is a x0:CurrencyExchangeSearchCriteria1
+          # occurs 1 <= # <= unbounded times
+          SearchCriteria =>
+          [ { # sequence of SourceCurrency, TargetCurrency
+
+              # is a xs:string
+              # Pattern: [A-Z]{3,3}
+              SourceCurrency => "example",
+
+              # is a xs:string
+              # Pattern: [A-Z]{3,3}
+              TargetCurrency => "example", }, ], }, }, },
+
+    # is a x0:SupplementaryData1
+    # occurs any number of times
+    SupplementaryData =>
+    [ { # sequence of PlaceAndName, Envelope
+
+        # is a xs:string
+        # is optional
+        # length <= 350
+        # length >= 1
+        PlaceAndName => "example",
+
+        # is a x0:SupplementaryDataEnvelope1
+        Envelope =>
+        { # sequence of ANY
+
+          # any element in any namespace
+          ANY => "Anything", }, }, ], }, }
