@@ -8,8 +8,10 @@ cut-n-paste from the evince PDF reader.
 Many, many abbreviations are missing from that list, so added manually.
 I did not understand all abbreviations, so still some work to do.  Help me
 complete the list.  (361 to go, out of 1343)
+For this, https://www.mx-message.com is a great help.
 
-Two short versions have stayed. Those made some names increadably long, without
+Some short versions have stayed. Those made some names increadably long, without
 adding much clarity:
 * Id for Identification (abstract code)
 * Ind for Indicator (flags existence)
+* NAV for Net Asset Value
