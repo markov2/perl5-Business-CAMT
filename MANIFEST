@@ -8,7 +8,6 @@ examples/danskeci.com/README.md
 examples/danskeci.com/camt053_dk_example.xml
 examples/dutch-sepa/README.md
 examples/dutch-sepa/camt.053.001.02.xml
-examples/make-templates
 examples/show
 lib/Business/CAMT.pm
 lib/Business/CAMT/tags/README.md

@@ -9,10 +9,12 @@ use strict;
 use lib 'lib';
 use Business::CAMT  ();
 
-use Log::Report mode => 'DEBUG';
+use Log::Report; # mode => 'DEBUG';
 
 use Data::Dumper;
-$Data::Dumper::Indent = 1;
+$Data::Dumper::Indent    = 1;
+$Data::Dumper::Quotekeys = 0;
+$Data::Dumper::Sortkeys  = 1;
 
 @ARGV==1
 	or error "Usage: $0 <xml>";

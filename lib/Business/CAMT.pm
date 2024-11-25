@@ -292,20 +292,20 @@ In Perl, this leads to (C<long_tagnames> on)
   Balance => {
     Type => {
       CodeOrProperty => {
-        Code => 'CLBD'
+        Code => 'OPBD',
       }
     },
     Amount => {
-      _ => '435678.50',
-      Currency => 'SEK'
+      _ => '500000',
+      Currency => 'SEK',
     },
-    CreditDebitInd => 'CRDT'
+    CreditDebitInd => 'CRDT',
     Date => {
-      Date => '2010-10-18'
+      Date => '2010-10-15',
     },
   }
 
-The XML schema, when designed as XML, could have looked like
+The XML schema, when B<designed> as XML schema, could have looked like
 
   <Credit Code="OPDB">
     <Amount Currency="SEK">500000</Amount>
