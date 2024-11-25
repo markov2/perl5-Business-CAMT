@@ -17,6 +17,8 @@ use XML::Compile::Cache ();
 use Scalar::Util        qw(blessed);
 use List::Util          qw(first);
 
+use Business::CAMT::Message ();
+
 my $urnbase = 'urn:iso:std:iso:20022:tech:xsd';
 my $moddir  = Path::Class::File->new(__FILE__)->dir;
 my $xsddir  = $moddir->subdir('CAMT', 'xsd');
@@ -140,7 +142,9 @@ sub read($%)
 	}
 
 	my $reader = $self->schemaReader($set, $xsd_version, $ns);
-	$reader->($xml);
+	my $data   = $reader->($xml);
+
+	$data ? Business::CAMT::Message->fromData($set, $data) : undef;
 }
 
 =method schemaReader $set, $version, $ns
@@ -264,6 +268,52 @@ not guaranteed that equal types will stay that way over time.  This may cause
 instable code.  Probably, issues will not emerge because the schema files are
 generated from a central UML model.
 
+=subsection Missed chances on XML
+
+The messages are designed with an UML tool, which means: limited to the features
+of that tool and hindering the view on the quality of the schema.  This leads to
+structures like:
+
+  <Bal>
+    <Tp>
+      <CdOrPrtry>
+         <Cd>OPBD</Cd>
+      </CdOrPrtry>
+    </Tp>
+    <Amt Ccy="SEK">500000</Amt>
+    <CdtDbtInd>CRDT</CdtDbtInd>
+    <Dt>
+      <Dt>2010-10-15</Dt>
+    </Dt>
+  </Bal>
+
+In Perl, this leads to (C<long_tagnames> on)
+
+  Balance => {
+    Type => {
+      CodeOrProperty => {
+        Code => 'CLBD'
+      }
+    },
+    Amount => {
+      _ => '435678.50',
+      Currency => 'SEK'
+    },
+    CreditDebitInd => 'CRDT'
+    Date => {
+      Date => '2010-10-18'
+    },
+  }
+
+The XML schema, when designed as XML, could have looked like
+
+  <Credit Code="OPDB">
+    <Amount Currency="SEK">500000</Amount>
+    <Date>2010-10-15</Date>
+  </Credit>
+
+Also: use of substitutionGroups would have made messages so much
+clearer and easier.
 =cut
 
 1;
