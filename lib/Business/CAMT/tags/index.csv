@@ -942,7 +942,7 @@ PrvsRef,PreviousReference
 PrvsTradDtTm,PreviousTradeDateTime
 PrvsTtlNAV,PreviousTotalNAV
 PrvsTtlUnitsNb,PreviousTotalUnitsNumber
-PrvtId,PrivateId
+PrvtId,PersonId
 Prxy,Proxy
 PssblDplctInstr,PossiblyDuplicateInstruction
 PstBx,Postbox
@@ -1104,7 +1104,7 @@ SbjtInd,SubjectInd
 SchCrit,SearchCriteria
 SchdlTp,ScheduledType
 SchdldTm,ScheduledTime
-SchmeNm,SchemName
+SchmeNm,SchemeName
 SctiesForm,SecuritiesForm
 SctiesSttlmTxId,SecuritiesSettlementTransactionId
 SctiesTxRefs,SecuritiesTransactionReferences
