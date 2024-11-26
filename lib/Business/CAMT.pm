@@ -16,6 +16,7 @@ use XML::LibXML         ();
 use XML::Compile::Cache ();
 use Scalar::Util        qw(blessed);
 use List::Util          qw(first);
+use XML::Compile::Util  qw(pack_type);
 
 use Business::CAMT::Message ();
 
@@ -23,6 +24,7 @@ my $urnbase = 'urn:iso:std:iso:20022:tech:xsd';
 my $moddir  = Path::Class::File->new(__FILE__)->dir;
 my $xsddir  = $moddir->subdir('CAMT', 'xsd');
 my $tagdir  = $moddir->subdir('CAMT', 'tags');
+sub _rootElement($) { pack_type $_[1], 'Document' }  # $ns parameter
 
 # The XSD filename is like camt.052.001.12.xsd.  camt.052.001.* is expected
 # to be incompatible tiwh camt.052.002.*, but *.12.xsd can parse *.11.xsd
@@ -46,9 +48,13 @@ Use this module to manage CAMT messages, which are ISO20022 standard
 CAMT.053 is produced by banks and consumed by accountancies, showing
 transactions in bank-accounts.  See F<https://www.iso20022.org>.
 
-At the moment, this module can be used to read the XML files.  It is
-intended to also support constructing them.  However, B<I need a sponsor>
-to make that happen.  Contact the author for support.
+At the moment, this module can be used to read and write the XML message
+files.  It is intended to also support interpreting and construction
+abstraction.  However, B<I need a sponsor> to make that happen.
+Contact the author for support.  Please.
+
+I would also like to include a CAMT.053 to MT-940 converter, v.v.
+Please hire me.
 
 =chapter METHODS
 
@@ -111,7 +117,7 @@ sub init($) {
 sub schemas() { $_[0]->{RC_schemas} }
 
 #-------------------------
-=section Read
+=section Read and Write messages
 
 =method read $file|$xml, %options
 Pass a $file name, an $xml document or an $xml node.  Returned is
@@ -145,28 +151,111 @@ sub read($%)
 	}
 
 	my $reader = $self->schemaReader($set, $xsd_version, $ns);
-	my $data   = $reader->($xml);
 
-	$data ? Business::CAMT::Message->fromData($set, $data) : undef;
+	Business::CAMT::Message->fromData(
+		set     => $set,
+		version => $xsd_version,
+		data    => $reader->($xml),
+		camt    => $self,
+	);
 }
 
-=method schemaReader $set, $version, $ns
+=method create $set, $version, $data
 =cut
+
+sub create($$$)
+{	my ($self, $set, $version, $data) = @_;
+	Business::CAMT::Message->create(
+		set     => $set,
+		version => $version,
+		data    => $data,
+		camt    => $self,
+	);
+}
+
+=method write $file, $message, %options
+
+=example writing a message
+
+  my $message = $camt->create('053.001', '02', $data);
+  $camt->write('out.xml', $message);
+
+=cut
+
+sub write($$%)
+{	my ($self, $fn, $msg, %args) = @_;
+
+	my $set      = $msg->set;
+	my $versions = $xsd_files{$set}
+		or error __x"Message set '{set}' is unsupported.", set => $set;
+
+	my @versions = sort { $a <=> $b } keys %$versions;
+	my $version  = $msg->version;
+	grep $version eq $_, @versions
+		or error __x"Schema version {version} is not available, pick from {versions}.",
+			version => $version, versions => \@versions;
+
+	my $ns     = "$urnbase:camt.$set.$version";
+	my $writer = $self->schemaWriter($set, $version, $ns);
+
+	my $doc    = XML::LibXML::Document->new('1.0', 'UTF-8');
+	my $xml    = $writer->($doc, $msg);
+	$doc->setDocumentElement($xml);
+	$doc->toFile($fn, 1);
+	$xml;
+}
+
+#-------------------------
+=section Helper methods
+
+You would rarely (or never) need to use these methods in your programs: they support
+the reader and writer function.
+
+=method schemaReader $set, $version, $ns
+Produces a CODE which can be called with an XML message, to get it transformed
+into a Perl data-structure.  In this case, the $set and $version have to be
+known already; method M<read()> figures that out by itself.
+=cut
+
+sub _loadXsd($$)
+{	my ($self, $set, $version) = @_;
+	my $file = $xsd_files{$set}{$version};
+	$self->{BC_loaded}{$file}++ or $self->schemas->importDefinitions($file);
+}
 
 my %msg_readers;
 sub schemaReader($$$)
 {	my ($self, $set, $version, $ns) = @_;
-	return $msg_readers{$ns} if $msg_readers{$ns};
+	my $r = $self->{BC_r} ||= {};
+	return $r->{$ns} if $r->{$ns};
 
-	my $schemas = $self->schemas;
-	$schemas->importDefinitions($xsd_files{$set}{$version});
+	$self->_loadXsd($set, $version);
 
-	$msg_readers{$ns} = $schemas->compile(
-		READER        => "{$ns}Document",
+	$r->{$ns} = $self->schemas->compile(
+		READER        => $self->_rootElement($ns),
 		sloppy_floats => !$self->{BC_big},
 		key_rewrite   => $self->{BC_long} ? $self->tag2fullnameTable : undef,
 	);
 }
+
+=method schemaWriter $set, $version, $ns
+=cut
+
+sub schemaWriter($$$)
+{	my ($self, $set, $version, $ns) = @_;
+	my $w = $self->{BC_w} ||= {};
+	return $w->{$ns} if $w->{$ns};
+
+	$self->_loadXsd($set, $version);
+	$w->{$ns} = $self->schemas->compile(
+		WRITER        => $self->_rootElement($ns),
+		sloppy_floats => !$self->{BC_big},
+		key_rewrite   => $self->{BC_long} ? $self->tag2fullnameTable : undef,
+		ignore_unused_tags => qr/^_attrs$/,
+		prefixes      => { $ns => '' },
+	);
+}
+
 
 =method matchSchema $set, $version, %options
 Find the available schema version for the $set (like '053.001') to interpret
@@ -254,23 +343,23 @@ a C<show> script and some xml files.  Run the script with a file, to see what
 this module has to offer.  For example:
 
   cd Business-CAMT-0.01/
-  examples/show examples/danskeci.com/camt053_dk_example.xml
+  examples/show examples/danskeci.com/camt053_dk_example.xml /tmp/a.xml
 
 The script (this module) auto-detects the CAMT type which is found in the XML
-message.  Play with the module initialization parameters to see how it changes
-the output.
+message.  Play with the script to see how changes affect the output.
 
 =section Templates
 
-The release contains a C<templates/> directory, which contains a
-structural dump of each of the Perl data structure which is produced (for
-M<read()>) or consumed (for C<write>, to be implemented) by this module.
+In our GitHub repository, you find a C<templates/> directory which
+contains a structural dump of each of the Perl data structure which is
+produced (for M<read()>) or consumed (for C<write>, to be implemented)
+by this module.
 
 Be sure you understand anonymous HASHes and ARRAYs in Perl well, when you
 start playing.  Do not forget that code gets more readible when you use
 practical reference variables.
 
-This release also comes with a C<templates-long/> directory full of
+On GitHub, you will also find a C<templates-long/> directory full of
 examples.  This demonstrates what option M<new(long_tagname)> does: it
 will make the Perl datastructures readible.
 
