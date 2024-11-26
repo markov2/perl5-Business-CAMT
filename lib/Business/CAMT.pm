@@ -360,7 +360,7 @@ start playing.  Do not forget that code gets more readible when you use
 practical reference variables.
 
 On GitHub, you will also find a C<templates-long/> directory full of
-examples.  This demonstrates what option M<new(long_tagname)> does: it
+examples.  This demonstrates what option M<new(long_tagnames)> does: it
 will make the Perl datastructures readible.
 
 =section Implementation issues
