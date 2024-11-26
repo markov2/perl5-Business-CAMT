@@ -11,6 +11,7 @@ version 0.11:
 
 	Improvements:
 	- Add templates which use the long tagnames.
+	- Remove templates from the distribution.
 
 version 0.10: Mon 25 Nov 09:55:46 CET 2024
 	- initial release
