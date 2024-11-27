@@ -23,7 +23,7 @@ Business::CAMT::Message - base class for messages
   my $msg  = $camt->create(...);
 
   $msg->write('file.xml');
-  print $msg->toString;
+  print $msg->toPerl;
 
 =chapter DESCRIPTION
 
@@ -114,13 +114,13 @@ sub write(%)
 	$self->camt->write($file, $self, @_);
 }
 
-=method toString
-Convert the HASH into a string, using M<Data::Dumper>.  This is
-usefull, because you do not want to include the hidden object
+=method toPerl
+Convert the HASH into Perl code, using M<Data::Dumper>.  This is
+useful, because you do not want to include the hidden object
 attributes in your output.
 =cut
 
-sub toString()
+sub toPerl()
 {	my $self = shift;
 	my $attrs = delete $self->{_attrs};
 
