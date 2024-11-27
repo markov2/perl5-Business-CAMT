@@ -12,6 +12,7 @@ version 0.12:
 	Improvements:
 	- create templates and long-tagnames index only in case of changes.
 	- add ::Message::toJSON()
+	- improve examples/show
 
 version 0.11: Tue 26 Nov 10:01:49 CET 2024
 

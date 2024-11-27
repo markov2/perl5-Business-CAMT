@@ -17,6 +17,7 @@ WriteMakefile
     AUTHOR           => 'Mark Overmeer <markov@cpan.org>',
     PREREQ_PM        => {
 		'Data::Dumper'   => 0,
+		'JSON'           => 0,
 		'List::Util'     => 0,
         'Log::Report'    => 1.32,
 		'Path::Class'    => 0,

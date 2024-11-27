@@ -26,6 +26,8 @@ Business::CAMT::Message - base class for messages
   $msg->write('file.xml');
   print $msg->toPerl;
 
+  open my $fh, '>:raw', 'msg.json' and $fh->print($msg->toJSON);
+
 =chapter DESCRIPTION
 
 This module is the base class for objects which are able to interpret
