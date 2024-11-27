@@ -13,7 +13,7 @@ my $git_url = 'https://github.com/markov2/perl5-Business-CAMT';
 WriteMakefile
   (
     NAME             => 'Business-CAMT',
-    VERSION          => '0.12',
+    VERSION          => '0.13',
     AUTHOR           => 'Mark Overmeer <markov@cpan.org>',
     PREREQ_PM        => {
 		'Data::Dumper'   => 0,

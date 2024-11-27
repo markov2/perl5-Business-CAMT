@@ -4,7 +4,9 @@
 Unless noted otherwise, these changes where initiated and applied by
 Mark Overmeer.
 
-version 0.12:
+version 0.13:
+
+version 0.12: Wed 27 Nov 16:16:33 CET 2024
 
 	Changes:
 	- rename ::Message::toString() into ::toPerl.
