@@ -8,6 +8,7 @@ use warnings;
 
 use Log::Report 'business-camt';
 use Scalar::Util  qw/weaken/;
+use JSON          ();
 
 =encoding utf-8
 
@@ -130,6 +131,32 @@ sub toPerl()
 
 	$self->{_attrs} = $attrs;
 	$text;
+}
+
+=method toJSON %options
+Returns JSON raw text (bytes, not characters) for the data.  You may
+save this to a file (explicitly use encoding ":raw"), or write
+it to a database.  The keys get sorted, to ensure a reproducable
+result for regression tests.
+
+=option  settings HASH
+=default settings C<< {pretty => 1, canonical => 1} >>
+Pass the settings to the JSON generator object, see its manual page.
+Provided settings will overrule the defaults.
+=cut
+
+sub toJSON(%)
+{	my ($self, %args) = @_;
+	my %data  = %$self;        # Shallow copy to remove blessing
+	delete $data{_attrs};      # remove object attributes
+
+	my $json     = JSON->new;
+	my $settings = $args{settings} || {};
+	my %settings = (pretty => 1, canonical => 1, %$settings);
+	while(my ($method, $value) = each %settings)
+	{	$json->$method($value);
+	}
+	$json->encode(\%data);     # returns bytes
 }
 
 1;
