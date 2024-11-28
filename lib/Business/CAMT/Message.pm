@@ -120,7 +120,7 @@ sub write(%)
 =method toPerl
 Convert the HASH into Perl code, using M<Data::Dumper>.  This is
 useful, because you do not want to include the hidden object
-attributes in your output.
+attributes in your output: this method hides that administration.
 =cut
 
 sub toPerl()
@@ -152,12 +152,15 @@ sub toJSON(%)
 	my %data  = %$self;        # Shallow copy to remove blessing
 	delete $data{_attrs};      # remove object attributes
 
-	my $json     = JSON->new;
 	my $settings = $args{settings} || {};
 	my %settings = (pretty => 1, canonical => 1, %$settings);
+
+	# JSON parameters call methods, copied from to_json behavior
+	my $json     = JSON->new;
 	while(my ($method, $value) = each %settings)
 	{	$json->$method($value);
 	}
+
 	$json->encode(\%data);     # returns bytes
 }
 

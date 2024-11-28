@@ -368,33 +368,61 @@ will make the Perl datastructures readible.
 =subsection XML namespaces
 
 The idea behind XML namespaces to include schema versioning is
-fundamentally flawed.  The CAMT files form no exception in broken XML
-concept.  Of course, schema versions are backwards compatible, so why
-not design your versioning with that in mind?
+fundamentally flawed.  The CAMT files form no exception in this broken
+XML concept.  Of course, schema versions are mainly backwards compatible,
+so why not design your versioning with that in mind?
 
-This module bends the namespace use to hide these design mistakes into
-flexible code.  Without full knowledge about existing and future versions
-of the schemas, there is a powerfull configuration setting with M<matchSchema()>.
-Please consider to contribute discovered issues to this module.
+This module bends the namespace use to hide these design mistakes
+into flexible code.  Without full knowledge about existing and future
+versions of the schemas, there is a powerfull configuration setting
+with M<matchSchema()>.
+
+Please consider to contribute discovered incompatibility issues to this
+module, to hide them where possible.
 
 =subsection Tag abbreviations
 
-XML is very verbose anyway, so it really does not help to abbreviate tags leaving
-some vowels out.  This makes it harder to read messages and code.  It increases
-the chance on stupid typos in the code.
+XML is very verbose anyway, so it really does not help to abbreviate tags
+leaving some vowels out.  This makes it harder to read messages and code.
+It increases the chance on stupid typos in the code.
+
+When you set M<new(tag_longnames)>, then your Perl structure will use
+longer, understandable names: it gets easy to understand the message
+without reading the documentation.  This improves maintenance on the
+long run.
+
+This option will be applied both on M<read()> and M<write()>.  Of course,
+the templates will show you how it works: see the C<templates-long/>
+directory in the github repository.
 
 =subsection No common types
 
-Each schema is separate, although their type definitions are overlapping.  It is
-not guaranteed that equal types will stay that way over time.  This may cause
-instable code.  Probably, issues will not emerge because the schema files are
-generated from a central UML model.
+Each schema is separate, although their type definitions are overlapping.
+It is not guaranteed that equal types will stay that way over time.
+This may cause instable code.
+
+Probably, these issues will not emerge because the schema files are
+generated from a central UML model.  However: small changes in the data
+structure will cause multiple schemas to change to a new version.
+
+A better setup would be:
+=over 4
+=item * a schema for base types, like "Amount"
+=item * a schema for more complex (reused) structures
+=item * a schema per message, which composes the complex structures
+=back
 
 =subsection Missed chances on XML
 
-The messages are designed with an UML tool, which means: limited to the features
-of that tool and hindering the view on the quality of the schema.  This leads to
-structures like:
+The way these schema's got generated, make them very low in using more
+powerful XML schema features.  Those features would have helped the
+stability of the "interface" which these messages implement a lot.
+Done this way, XML is not much better than JSON.  To be honest, the
+schemas are littered by missed chances.
+
+The messages are designed with an UML tool, which means: limited to the
+features of that tool and hindering the view on the quality of the schema.
+This leads to structures like:
 
   <Bal>
     <Tp>
@@ -429,13 +457,15 @@ In Perl, this leads to (C<long_tagnames> on)
 
 The XML schema, when B<designed> as XML schema, could have looked like
 
-  <Credit Code="OPDB">
+  <Credit>
     <Amount Currency="SEK">500000</Amount>
-    <Date>2010-10-15</Date>
+    <Received>2010-10-15</Received>
   </Credit>
 
-Also: use of substitutionGroups would have made messages so much
-clearer and easier.
+The use of C<group>ed elements and C<substitutionGroups> would have made
+messages so much clearer and easier.  It would have reduced the message
+size much further than by leaving out the vowels from tags, as the example
+shows.
 =cut
 
 1;
