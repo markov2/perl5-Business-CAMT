@@ -26,9 +26,14 @@ my $xsddir  = $moddir->subdir('CAMT', 'xsd');
 my $tagdir  = $moddir->subdir('CAMT', 'tags');
 sub _rootElement($) { pack_type $_[1], 'Document' }  # $ns parameter
 
-# The XSD filename is like camt.052.001.12.xsd.  camt.052.001.* is expected
-# to be incompatible tiwh camt.052.002.*, but *.12.xsd can parse *.11.xsd
-my (%xsd_files, $tagtable);
+# The XSD filename is like camt.052.001.12.xsd.  camt.052.001.* is
+# expected to be incompatible with camt.052.002.*, but *.12.xsd can
+# usually parse *.11.xsd
+my %xsd_files;
+
+# Translations from abbreviated XML tags to longer names, loaded on
+# demand.
+my $tagtable;
 
 =encoding utf-8
 
@@ -457,12 +462,11 @@ In Perl, this leads to (C<long_tagnames> on)
 
 The XML schema, when B<designed> as XML schema, could have looked like
 
-  <Credit>
-    <Amount Currency="SEK">500000</Amount>
-    <Received>2010-10-15</Received>
-  </Credit>
+  <OpeningBook Date="2010-10-15CEST">
+    <Credit Currency="SEK">500000.00</Credit>
+  </OpeningBook>
 
-The use of C<group>ed elements and C<substitutionGroups> would have made
+The use of C<group>'ed elements and C<substitutionGroup>'s would have made
 messages so much clearer and easier.  It would have reduced the message
 size much further than by leaving out the vowels from tags, as the example
 shows.
