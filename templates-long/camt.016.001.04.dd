@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.016.001.04}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -15,7 +15,8 @@
 
   # is a x0:GetCurrencyExchangeRateV04
   GetCurrencyExchangeRate =>
-  { # sequence of MessageHeader, CcyQryDef, SupplementaryData
+  { # sequence of MessageHeader, CurrencyQueryDefinition,
+    #   SupplementaryData
 
     # is a x0:MessageHeader1
     MessageHeader =>
@@ -32,7 +33,7 @@
 
     # is a x0:CurrencyQueryDefinition3
     # is optional
-    CcyQryDef =>
+    CurrencyQueryDefinition =>
     { # sequence of QueryType, CurrencyCriteria
 
       # is a xs:string
@@ -52,13 +53,13 @@
 
         # is a x0:CurrencyExchangeCriteria2
         NewCriteria =>
-        { # sequence of NewQryNm, SearchCriteria
+        { # sequence of NewQueryName, SearchCriteria
 
           # is a xs:string
           # is optional
           # length <= 35
           # length >= 1
-          NewQryNm => "example",
+          NewQueryName => "example",
 
           # is a x0:CurrencyExchangeSearchCriteria1
           # occurs 1 <= # <= unbounded times

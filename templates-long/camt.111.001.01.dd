@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.111.001.01}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:22 2024
+#          on Thu Nov 28 17:11:36 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -26,9 +26,9 @@
     OriginalInvestigationRequest =>
     { # sequence of MessageId, RequestorInvestigationId,
       #   ResponderInvestigationId, EIR, RequestAction,
-      #   InvestigationType, InvestigationSubType, UndrlygInstrm,
-      #   Underlying, Requestor, Responder, RequestOriginator,
-      #   ExpectedResponder, ServiceLevel
+      #   InvestigationType, InvestigationSubType,
+      #   UnderlyingInstrument, Underlying, Requestor, Responder,
+      #   RequestOriginator, ExpectedResponder, ServiceLevel
 
       # is a xs:string
       # length <= 35
@@ -108,7 +108,7 @@
 
                 # is a x0:GenericIdentification30
                 Proprietary =>
-                { # sequence of Identification, Issuer, SchemName
+                { # sequence of Identification, Issuer, SchemeName
 
                   # is a xs:string
                   # Pattern: [a-zA-Z0-9]{4}
@@ -123,7 +123,7 @@
                   # is optional
                   # length <= 35
                   # length >= 1
-                  SchemName => "example", }, },
+                  SchemeName => "example", }, },
 
               # is a xs:string
               # is optional
@@ -217,7 +217,7 @@
             # is a x0:Party38Choice
             # is optional
             Identification =>
-            { # choice of OrganisationId, PrivateId
+            { # choice of OrganisationId, PersonId
 
               # is a x0:OrganisationIdentification29
               OrganisationId =>
@@ -237,7 +237,7 @@
                 # is a x0:GenericOrganisationIdentification1
                 # occurs any number of times
                 Other =>
-                [ { # sequence of Identification, SchemName, Issuer
+                [ { # sequence of Identification, SchemeName, Issuer
 
                     # is a xs:string
                     # length <= 35
@@ -246,7 +246,7 @@
 
                     # is a x0:OrganisationIdentificationSchemeName1Choice
                     # is optional
-                    SchemName =>
+                    SchemeName =>
                     { # choice of Code, Proprietary
 
                       # is a xs:string
@@ -266,7 +266,7 @@
                     Issuer => "example", }, ], },
 
               # is a x0:PersonIdentification13
-              PrivateId =>
+              PersonId =>
               { # sequence of DateAndPlaceOfBirth, Other
 
                 # is a x0:DateAndPlaceOfBirth1
@@ -306,9 +306,9 @@
             # is a x0:Contact4
             # is optional
             ContactDetails =>
-            { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-              #   EmailAddress, EmailPurpose, JobTitle, Responsibility,
-              #   Department, Other, PreferredMethod
+            { # sequence of NamePrefix, Name, PhoneNumber,
+              #   MobilePhoneNumber, FaxNumber, EmailAddress, EmailPurpose,
+              #   JobTitle, Responsibility, Department, Other, PreferredMethod
 
               # is a xs:string
               # is optional
@@ -329,7 +329,7 @@
               # is a xs:string
               # is optional
               # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-              MobNb => "example",
+              MobilePhoneNumber => "example",
 
               # is a xs:string
               # is optional
@@ -427,7 +427,7 @@
 
       # is a x0:UnderlyingInvestigationInstrument1Choice
       # is optional
-      UndrlygInstrm =>
+      UnderlyingInstrument =>
       { # choice of Code, Proprietary
 
         # is a xs:string
@@ -448,8 +448,8 @@
         # is a x0:UnderlyingPaymentInstruction8
         Initiation =>
         { # sequence of OriginalGroupInformation,
-          #   OriginalPaymentInformationId, OrgnlInstrId,
-          #   OriginalEndToEndId, OrgnlUETR, OrgnlInstdAmt,
+          #   OriginalPaymentInformationId, OriginalInstructionId,
+          #   OriginalEndToEndId, OriginalUETR, OriginalInstructedAmount,
           #   RequestedExecutionDate, RequestedCollectionDate,
           #   OriginalTransactionReference, OriginalServiceLevel
 
@@ -489,7 +489,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          OrgnlInstrId => "example",
+          OriginalInstructionId => "example",
 
           # is a xs:string
           # is optional
@@ -501,12 +501,12 @@
           # is optional
           # Pattern:
           #    [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}
-          OrgnlUETR => "example",
+          OriginalUETR => "example",
 
           # is a x0:ActiveOrHistoricCurrencyAndAmount
-          # OrgnlInstdAmt is simple value with attributes
+          # OriginalInstructedAmount is simple value with attributes
           # is optional
-          OrgnlInstdAmt =>
+          OriginalInstructedAmount =>
           { # is a xs:string
             # attribute Currency is required
             # Pattern: [A-Z]{3,3}
@@ -534,18 +534,20 @@
           # is a x0:OriginalTransactionReference35
           # is optional
           OriginalTransactionReference =>
-          { # sequence of IntrBkSttlmAmt, Amount, IntrBkSttlmDt,
-            #   RequestedCollectionDate, RequestedExecutionDate,
-            #   CreditorSchemeId, SettlementInformation,
-            #   PaymentTypeInformation, PaymentMethod, MndtRltdInf, RmtInf,
-            #   UltimateDebitor, Debtor, DebtorAccount, DebtorAgent,
-            #   DebtorAgentAccount, CreditorAgent, CreditorAgentAccount,
-            #   Creditor, CreditorAccount, UltimateCreditor, Purpose
+          { # sequence of InterBankSettlementAmount, Amount,
+            #   InterBankSettlementDate, RequestedCollectionDate,
+            #   RequestedExecutionDate, CreditorSchemeId,
+            #   SettlementInformation, PaymentTypeInformation,
+            #   PaymentMethod, MandateRelatedInformation,
+            #   RemittanceInformation, UltimateDebitor, Debtor,
+            #   DebtorAccount, DebtorAgent, DebtorAgentAccount,
+            #   CreditorAgent, CreditorAgentAccount, Creditor,
+            #   CreditorAccount, UltimateCreditor, Purpose
 
             # is a x0:ActiveOrHistoricCurrencyAndAmount
-            # IntrBkSttlmAmt is simple value with attributes
+            # InterBankSettlementAmount is simple value with attributes
             # is optional
-            IntrBkSttlmAmt =>
+            InterBankSettlementAmount =>
             { # is a xs:string
               # attribute Currency is required
               # Pattern: [A-Z]{3,3}
@@ -574,7 +576,7 @@
 
               # is a x0:EquivalentAmount2
               EquivalentAmount =>
-              { # sequence of Amount, CcyOfTrf
+              { # sequence of Amount, CurrencyOfTransferredAmount
 
                 # is a x0:ActiveOrHistoricCurrencyAndAmount
                 # Amount is simple value with attributes
@@ -590,11 +592,11 @@
 
                 # is a xs:string
                 # Pattern: [A-Z]{3,3}
-                CcyOfTrf => "example", }, },
+                CurrencyOfTransferredAmount => "example", }, },
 
             # is a xs:date
             # is optional
-            IntrBkSttlmDt => "2006-10-06",
+            InterBankSettlementDate => "2006-10-06",
 
             # is a xs:date
             # is optional
@@ -807,13 +809,13 @@
             # is a x0:PaymentTypeInformation27
             # is optional
             PaymentTypeInformation =>
-            { # sequence of InstrPrty, ClearChannel, ServiceLevel,
-              #   LclInstrm, SequenceType, CategoryPurpose
+            { # sequence of InstructingPriority, ClearChannel, ServiceLevel,
+              #   LocalInstrument, SequenceType, CategoryPurpose
 
               # is a xs:string
               # is optional
               # Enum: HIGH NORM
-              InstrPrty => "HIGH",
+              InstructingPriority => "HIGH",
 
               # is a xs:string
               # is optional
@@ -837,7 +839,7 @@
 
               # is a x0:LocalInstrument2Choice
               # is optional
-              LclInstrm =>
+              LocalInstrument =>
               { # choice of Code, Proprietary
 
                 # is a xs:string
@@ -877,13 +879,13 @@
 
             # is a x0:MandateRelatedData2Choice
             # is optional
-            MndtRltdInf =>
-            { # choice of DirectDebitMandate, CdtTrfMndt
+            MandateRelatedInformation =>
+            { # choice of DirectDebitMandate, CreditTransferMandate
 
               # is a x0:MandateRelatedInformation15
               # is optional
               DirectDebitMandate =>
-              { # sequence of MndtId, DateOfSignature, AmendmentInd,
+              { # sequence of MandateId, DateOfSignature, AmendmentInd,
                 #   AmendmentInformationDetails, ElectronicSignature,
                 #   FirstCollectionDate, FinalCollectionDate, Frequency, Reason,
                 #   TrackingDays
@@ -892,7 +894,7 @@
                 # is optional
                 # length <= 35
                 # length >= 1
-                MndtId => "example",
+                MandateId => "example",
 
                 # is a xs:date
                 # is optional
@@ -905,18 +907,18 @@
                 # is a x0:AmendmentInformationDetails14
                 # is optional
                 AmendmentInformationDetails =>
-                { # sequence of OrgnlMndtId, OriginalCreditorSchemeId,
+                { # sequence of OriginalMandateId, OriginalCreditorSchemeId,
                   #   OriginalCreditorAgent, OriginalCreditorAgentAccount,
                   #   OriginalDebitor, OriginalDebitorAccount,
                   #   OriginalDebitorAgent, OriginalDebitorAgentAccount,
-                  #   OrgnlFnlColltnDt, OriginalFrequency, OriginalReason,
-                  #   OriginalTrackingDays
+                  #   OriginalFinalCollectionDate, OriginalFrequency,
+                  #   OriginalReason, OriginalTrackingDays
 
                   # is a xs:string
                   # is optional
                   # length <= 35
                   # length >= 1
-                  OrgnlMndtId => "example",
+                  OriginalMandateId => "example",
 
                   # is a x0:PartyIdentification135
                   # complex structure shown above
@@ -955,7 +957,7 @@
 
                   # is a xs:date
                   # is optional
-                  OrgnlFnlColltnDt => "2006-10-06",
+                  OriginalFinalCollectionDate => "2006-10-06",
 
                   # is a x0:Frequency36Choice
                   # is optional
@@ -1042,8 +1044,8 @@
 
               # is a x0:CreditTransferMandateData1
               # is optional
-              CdtTrfMndt =>
-              { # sequence of MndtId, Type, DateOfSignature,
+              CreditTransferMandate =>
+              { # sequence of MandateId, Type, DateOfSignature,
                 #   DateOfVerification, ElectronicSignature, FirstPaymentDate,
                 #   FinalPaymentDate, Frequency, Reason
 
@@ -1051,7 +1053,7 @@
                 # is optional
                 # length <= 35
                 # length >= 1
-                MndtId => "example",
+                MandateId => "example",
 
                 # is a x0:MandateTypeInformation2
                 # complex structure shown above
@@ -1092,7 +1094,7 @@
 
             # is a x0:RemittanceInformation21
             # is optional
-            RmtInf =>
+            RemittanceInformation =>
             { # sequence of Unstructured, Structured
 
               # is a xs:string
@@ -1106,7 +1108,8 @@
               Structured =>
               [ { # sequence of ReferencedDocumentInformation,
                   #   ReferencedDocumentsAmount, CreditorReferenceInformation,
-                  #   Invoicer, Invoicee, Taxremittance, GrnshmtRmt, AddtlRmtInf
+                  #   Invoicer, Invoicee, Taxremittance, GarnishmentRemittance,
+                  #   AdditionalRemittanceInformation
 
                   # is a x0:ReferredDocumentInformation7
                   # occurs any number of times
@@ -1153,7 +1156,8 @@
                   # is optional
                   ReferencedDocumentsAmount =>
                   { # sequence of DuePayableAmount, DiscountAppliedAmount,
-                    #   CreditNoteAmount, TaxAmount, AdjustmentAmountAndReason, RmtdAmt
+                    #   CreditNoteAmount, TaxAmount, AdjustmentAmountAndReason,
+                    #   RemittedAmount
 
                     # is a x0:ActiveOrHistoricCurrencyAndAmount
                     # DuePayableAmount is simple value with attributes
@@ -1260,9 +1264,9 @@
                         AdditionalInformation => "example", }, ],
 
                     # is a x0:ActiveOrHistoricCurrencyAndAmount
-                    # RmtdAmt is simple value with attributes
+                    # RemittedAmount is simple value with attributes
                     # is optional
-                    RmtdAmt =>
+                    RemittedAmount =>
                     { # is a xs:string
                       # attribute Currency is required
                       # Pattern: [A-Z]{3,3}
@@ -1489,9 +1493,10 @@
 
                   # is a x0:Garnishment3
                   # is optional
-                  GrnshmtRmt =>
-                  { # sequence of Type, Garnishee, GrnshmtAdmstr, ReferenceNumber,
-                    #   Date, RmtdAmt, FamilyMedicalInsuranceInd, EmployeeTerminationInd
+                  GarnishmentRemittance =>
+                  { # sequence of Type, Garnishee, GarnishmentAdministrator,
+                    #   ReferenceNumber, Date, RemittedAmount,
+                    #   FamilyMedicalInsuranceInd, EmployeeTerminationInd
 
                     # is a x0:GarnishmentType1
                     # complex structure shown above
@@ -1505,7 +1510,7 @@
                     # is a x0:PartyIdentification135
                     # complex structure shown above
                     # is optional
-                    GrnshmtAdmstr => [{},],
+                    GarnishmentAdministrator => [{},],
 
                     # is a xs:string
                     # is optional
@@ -1518,9 +1523,9 @@
                     Date => "2006-10-06",
 
                     # is a x0:ActiveOrHistoricCurrencyAndAmount
-                    # RmtdAmt is simple value with attributes
+                    # RemittedAmount is simple value with attributes
                     # is optional
-                    RmtdAmt =>
+                    RemittedAmount =>
                     { # is a xs:string
                       # attribute Currency is required
                       # Pattern: [A-Z]{3,3}
@@ -1542,7 +1547,7 @@
                   # occurs 0 <= # <= 3 times
                   # length <= 140
                   # length >= 1
-                  AddtlRmtInf => [ "example", ], }, ], },
+                  AdditionalRemittanceInformation => [ "example", ], }, ], },
 
             # is a x0:Party40Choice
             # is optional
@@ -1624,9 +1629,10 @@
 
         # is a x0:UnderlyingPaymentTransaction7
         Interbank =>
-        { # sequence of OriginalGroupInformation, OrgnlInstrId,
-          #   OriginalEndToEndId, OriginalTransactionId, OrgnlUETR,
-          #   OrgnlIntrBkSttlmAmt, OrgnlIntrBkSttlmDt,
+        { # sequence of OriginalGroupInformation, OriginalInstructionId,
+          #   OriginalEndToEndId, OriginalTransactionId, OriginalUETR,
+          #   OriginalInstructionSettlementAmount,
+          #   OriginalInstructionSettlementDate,
           #   OriginalTransactionReference, OriginalServiceLevel
 
           # is a x0:UnderlyingGroupInformation1
@@ -1638,7 +1644,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          OrgnlInstrId => "example",
+          OriginalInstructionId => "example",
 
           # is a xs:string
           # is optional
@@ -1656,12 +1662,12 @@
           # is optional
           # Pattern:
           #    [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}
-          OrgnlUETR => "example",
+          OriginalUETR => "example",
 
           # is a x0:ActiveOrHistoricCurrencyAndAmount
-          # OrgnlIntrBkSttlmAmt is simple value with attributes
+          # OriginalInstructionSettlementAmount is simple value with attributes
           # is optional
-          OrgnlIntrBkSttlmAmt =>
+          OriginalInstructionSettlementAmount =>
           { # is a xs:string
             # attribute Currency is required
             # Pattern: [A-Z]{3,3}
@@ -1673,7 +1679,7 @@
 
           # is a xs:date
           # is optional
-          OrgnlIntrBkSttlmDt => "2006-10-06",
+          OriginalInstructionSettlementDate => "2006-10-06",
 
           # is a x0:OriginalTransactionReference35
           # complex structure shown above
@@ -1688,7 +1694,7 @@
         # is a x0:UnderlyingStatementEntry5
         StatementEntry =>
         { # sequence of OriginalAccount, OriginalGroupInformation,
-          #   OrgnlStmtId, OriginalEntryReference, OrgnlUETR,
+          #   OriginalStatementId, OriginalEntryReference, OriginalUETR,
           #   OriginalEntryAmount, OriginalEntryValueDate
 
           # is a x0:CashAccount40
@@ -1705,7 +1711,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          OrgnlStmtId => "example",
+          OriginalStatementId => "example",
 
           # is a xs:string
           # is optional
@@ -1717,7 +1723,7 @@
           # is optional
           # Pattern:
           #    [a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}
-          OrgnlUETR => "example",
+          OriginalUETR => "example",
 
           # is a x0:ActiveOrHistoricCurrencyAndAmount
           # OriginalEntryAmount is simple value with attributes

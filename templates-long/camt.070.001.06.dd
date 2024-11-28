@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.070.001.06}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:21 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -19,8 +19,8 @@
 
     # is a x0:MessageHeader6
     MessageHeader =>
-    { # sequence of MessageId, CreationDateTime, OrgnlBizQry,
-      #   QueryName, RequestType
+    { # sequence of MessageId, CreationDateTime,
+      #   OriginalBusinessQuery, QueryName, RequestType
 
       # is a xs:string
       # length <= 35
@@ -33,7 +33,7 @@
 
       # is a x0:OriginalBusinessQuery1
       # is optional
-      OrgnlBizQry =>
+      OriginalBusinessQuery =>
       { # sequence of MessageId, MessageNameId, CreationDateTime
 
         # is a xs:string
@@ -68,7 +68,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -79,7 +79,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -121,7 +121,7 @@
 
                 # is a x0:GenericAccountIdentification1
                 Other =>
-                { # sequence of Identification, SchemName, Issuer
+                { # sequence of Identification, SchemeName, Issuer
 
                   # is a xs:string
                   # length <= 34
@@ -130,7 +130,7 @@
 
                   # is a x0:AccountSchemeName1Choice
                   # is optional
-                  SchemName =>
+                  SchemeName =>
                   { # choice of Code, Proprietary
 
                     # is a xs:string
@@ -404,8 +404,8 @@
             StandingOrder =>
             { # sequence of Amount, CreditDebitInd, Currency, Type,
               #   AssociatedPoolAccount, Reference, Frequency, ValidityPeriod,
-              #   SystemMember, ResponsibleParty, LkSetId, LkSetOrdrId,
-              #   LkSetOrdrSeq, ExecutionType, Creditor, CreditorAccount,
+              #   SystemMember, ResponsibleParty, LinkSetId, LinkSetOrderId,
+              #   LinkSetOrderSeq, ExecutionType, Creditor, CreditorAccount,
               #   Debtor, DebtorAccount, TotalsPerStagingOrder, ZeroSweepInd
 
               # is a x0:Amount2Choice
@@ -486,19 +486,19 @@
               # is optional
               # length <= 35
               # length >= 1
-              LkSetId => "example",
+              LinkSetId => "example",
 
               # is a xs:string
               # is optional
               # length <= 35
               # length >= 1
-              LkSetOrdrId => "example",
+              LinkSetOrderId => "example",
 
               # is a xs:decimal
               # is optional
               # faction digits is 0
               # total digits is 18
-              LkSetOrdrSeq => 3.1415,
+              LinkSetOrderSeq => 3.1415,
 
               # is a x0:ExecutionType1Choice
               # is optional

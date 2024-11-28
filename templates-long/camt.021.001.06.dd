@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.021.001.06}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -20,7 +20,7 @@
     # is a x0:MessageHeader7
     MessageHeader =>
     { # sequence of MessageId, CreationDateTime, RequestType,
-      #   OrgnlBizQry, QueryName
+      #   OriginalBusinessQuery, QueryName
 
       # is a xs:string
       # length <= 35
@@ -48,7 +48,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -59,7 +59,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -69,7 +69,7 @@
 
       # is a x0:OriginalBusinessQuery1
       # is optional
-      OrgnlBizQry =>
+      OriginalBusinessQuery =>
       { # sequence of MessageId, MessageNameId, CreationDateTime
 
         # is a xs:string
@@ -125,12 +125,12 @@
       # is a x0:GeneralBusinessReport6
       # occurs 1 <= # <= unbounded times
       BusinessReport =>
-      [ { # sequence of BizInfRef, GeneralBusinessOrError
+      [ { # sequence of BusinessInformationReference, GeneralBusinessOrError
 
           # is a xs:string
           # length <= 35
           # length >= 1
-          BizInfRef => "example",
+          BusinessInformationReference => "example",
 
           # is a x0:GeneralBusinessOrError8Choice
           GeneralBusinessOrError =>

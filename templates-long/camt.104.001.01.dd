@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.104.001.01}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:22 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -65,7 +65,7 @@
 
       # is a x0:GenericFinancialIdentification1
       Other =>
-      { # sequence of Identification, SchemName, Issuer
+      { # sequence of Identification, SchemeName, Issuer
 
         # is a xs:string
         # length <= 35
@@ -74,7 +74,7 @@
 
         # is a x0:FinancialIdentificationSchemeName1Choice
         # is optional
-        SchemName =>
+        SchemeName =>
         { # choice of Code, Proprietary
 
           # is a xs:string

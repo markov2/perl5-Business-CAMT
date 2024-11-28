@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.057.001.08}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:21 2024
+#          on Thu Nov 28 17:11:34 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -64,7 +64,7 @@
 
               # is a x0:GenericIdentification30
               Proprietary =>
-              { # sequence of Identification, Issuer, SchemName
+              { # sequence of Identification, Issuer, SchemeName
 
                 # is a xs:string
                 # Pattern: [a-zA-Z0-9]{4}
@@ -79,7 +79,7 @@
                 # is optional
                 # length <= 35
                 # length >= 1
-                SchemName => "example", }, },
+                SchemeName => "example", }, },
 
             # is a xs:string
             # is optional
@@ -185,7 +185,7 @@
           # is a x0:Party52Choice
           # is optional
           Identification =>
-          { # choice of OrganisationId, PrivateId
+          { # choice of OrganisationId, PersonId
 
             # is a x0:OrganisationIdentification39
             OrganisationId =>
@@ -205,7 +205,7 @@
               # is a x0:GenericOrganisationIdentification3
               # occurs any number of times
               Other =>
-              [ { # sequence of Identification, SchemName, Issuer
+              [ { # sequence of Identification, SchemeName, Issuer
 
                   # is a xs:string
                   # length <= 256
@@ -214,7 +214,7 @@
 
                   # is a x0:OrganisationIdentificationSchemeName1Choice
                   # is optional
-                  SchemName =>
+                  SchemeName =>
                   { # choice of Code, Proprietary
 
                     # is a xs:string
@@ -234,7 +234,7 @@
                   Issuer => "example", }, ], },
 
             # is a x0:PersonIdentification18
-            PrivateId =>
+            PersonId =>
             { # sequence of DateAndPlaceOfBirth, Other
 
               # is a x0:DateAndPlaceOfBirth1
@@ -274,9 +274,10 @@
           # is a x0:Contact13
           # is optional
           ContactDetails =>
-          { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-            #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
-            #   Responsibility, Department, Other, PreferredMethod
+          { # sequence of NamePrefix, Name, PhoneNumber,
+            #   MobilePhoneNumber, FaxNumber, URLAddress, EmailAddress,
+            #   EmailPurpose, JobTitle, Responsibility, Department, Other,
+            #   PreferredMethod
 
             # is a xs:string
             # is optional
@@ -297,7 +298,7 @@
             # is a xs:string
             # is optional
             # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-            MobNb => "example",
+            MobilePhoneNumber => "example",
 
             # is a xs:string
             # is optional
@@ -308,7 +309,7 @@
             # is optional
             # length <= 2048
             # length >= 1
-            URLAdr => "example",
+            URLAddress => "example",
 
             # is a xs:string
             # is optional
@@ -553,7 +554,8 @@
       [ { # sequence of Identification, EndToEndId, UETR, Account,
           #   AccountOwner, AccountServicer, RelatedAccount, Amount,
           #   ExpectedValueDate, Debtor, DebtorAgent, IntermediaryAgent,
-          #   Purpose, RelatedRemoteInformation, RmtInf, UndrlygAllcn
+          #   Purpose, RelatedRemoteInformation, RemittanceInformation,
+          #   UndrlygAllcn
 
           # is a xs:string
           # length <= 35
@@ -641,17 +643,17 @@
           # is a x0:RemittanceLocation8
           # is optional
           RelatedRemoteInformation =>
-          { # sequence of RmtId, RmtLctnDtls
+          { # sequence of RemittanceId, RemittanceLocationDetails
 
             # is a xs:string
             # is optional
             # length <= 35
             # length >= 1
-            RmtId => "example",
+            RemittanceId => "example",
 
             # is a x0:RemittanceLocationData2
             # occurs any number of times
-            RmtLctnDtls =>
+            RemittanceLocationDetails =>
             [ { # sequence of Method, ElectronicAddress, PostalAddress
 
                 # is a xs:string
@@ -671,7 +673,7 @@
 
           # is a x0:RemittanceInformation22
           # is optional
-          RmtInf =>
+          RemittanceInformation =>
           { # sequence of Unstructured, Structured
 
             # is a xs:string
@@ -685,7 +687,8 @@
             Structured =>
             [ { # sequence of ReferencedDocumentInformation,
                 #   ReferencedDocumentsAmount, CreditorReferenceInformation,
-                #   Invoicer, Invoicee, Taxremittance, GrnshmtRmt, AddtlRmtInf
+                #   Invoicer, Invoicee, Taxremittance, GarnishmentRemittance,
+                #   AdditionalRemittanceInformation
 
                 # is a x0:ReferredDocumentInformation8
                 # occurs any number of times
@@ -734,11 +737,11 @@
                         # is a x0:RemittanceAmount4
                         # is optional
                         Amount =>
-                        { # sequence of RmtAmtAndTp, AdjustmentAmountAndReason
+                        { # sequence of RemittanceAmountAndType, AdjustmentAmountAndReason
 
                           # is a x0:DocumentAmount1
                           # occurs any number of times
-                          RmtAmtAndTp =>
+                          RemittanceAmountAndType =>
                           [ { # sequence of Type, Amount
 
                               # is a x0:DocumentAmountType1Choice
@@ -1088,9 +1091,10 @@
 
                 # is a x0:Garnishment4
                 # is optional
-                GrnshmtRmt =>
-                { # sequence of Type, Garnishee, GrnshmtAdmstr, ReferenceNumber,
-                  #   Date, RmtdAmt, FamilyMedicalInsuranceInd, EmployeeTerminationInd
+                GarnishmentRemittance =>
+                { # sequence of Type, Garnishee, GarnishmentAdministrator,
+                  #   ReferenceNumber, Date, RemittedAmount,
+                  #   FamilyMedicalInsuranceInd, EmployeeTerminationInd
 
                   # is a x0:GarnishmentType1
                   # complex structure shown above
@@ -1104,7 +1108,7 @@
                   # is a x0:PartyIdentification272
                   # complex structure shown above
                   # is optional
-                  GrnshmtAdmstr => [{},],
+                  GarnishmentAdministrator => [{},],
 
                   # is a xs:string
                   # is optional
@@ -1117,9 +1121,9 @@
                   Date => "2006-10-06",
 
                   # is a x0:ActiveOrHistoricCurrencyAndAmount
-                  # RmtdAmt is simple value with attributes
+                  # RemittedAmount is simple value with attributes
                   # is optional
-                  RmtdAmt =>
+                  RemittedAmount =>
                   { # is a xs:string
                     # attribute Currency is required
                     # Pattern: [A-Z]{3,3}
@@ -1141,7 +1145,7 @@
                 # occurs 0 <= # <= 3 times
                 # length <= 140
                 # length >= 1
-                AddtlRmtInf => [ "example", ], }, ], },
+                AdditionalRemittanceInformation => [ "example", ], }, ], },
 
           # is a x0:TransactionAllocation1
           # occurs any number of times
@@ -1182,7 +1186,7 @@
               # occurs any number of times
               RelatedReferences =>
               [ { # choice of SecuritiesSettlementTransactionId,
-                  #   IntraPosMvmntId, IntraBalMvmntId,
+                  #   IntraPositionMovementId, IntraBalanceMovementId,
                   #   AccountServicerTransactionId,
                   #   MarketInfrastructureTransactionId,
                   #   CounterPartyMarketInfrastructureTransactionId, PoolId,
@@ -1196,12 +1200,12 @@
                   # is a xs:string
                   # length <= 35
                   # length >= 1
-                  IntraPosMvmntId => "example",
+                  IntraPositionMovementId => "example",
 
                   # is a xs:string
                   # length <= 35
                   # length >= 1
-                  IntraBalMvmntId => "example",
+                  IntraBalanceMovementId => "example",
 
                   # is a xs:string
                   # length <= 35

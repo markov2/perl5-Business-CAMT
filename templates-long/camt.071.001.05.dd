@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.071.001.05}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:21 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -61,7 +61,7 @@
 
               # is a x0:GenericAccountIdentification1
               Other =>
-              { # sequence of Identification, SchemName, Issuer
+              { # sequence of Identification, SchemeName, Issuer
 
                 # is a xs:string
                 # length <= 34
@@ -70,7 +70,7 @@
 
                 # is a x0:AccountSchemeName1Choice
                 # is optional
-                SchemName =>
+                SchemeName =>
                 { # choice of Code, Proprietary
 
                   # is a xs:string
@@ -201,7 +201,7 @@
 
                   # is a x0:GenericIdentification30
                   Proprietary =>
-                  { # sequence of Identification, Issuer, SchemName
+                  { # sequence of Identification, Issuer, SchemeName
 
                     # is a xs:string
                     # Pattern: [a-zA-Z0-9]{4}
@@ -216,7 +216,7 @@
                     # is optional
                     # length <= 35
                     # length >= 1
-                    SchemName => "example", }, },
+                    SchemeName => "example", }, },
 
                 # is a xs:string
                 # is optional

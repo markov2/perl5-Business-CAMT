@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.106.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:22 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -101,7 +101,7 @@
 
               # is a x0:GenericIdentification30
               Proprietary =>
-              { # sequence of Identification, Issuer, SchemName
+              { # sequence of Identification, Issuer, SchemeName
 
                 # is a xs:string
                 # Pattern: [a-zA-Z0-9]{4}
@@ -116,7 +116,7 @@
                 # is optional
                 # length <= 35
                 # length >= 1
-                SchemName => "example", }, },
+                SchemeName => "example", }, },
 
             # is a xs:string
             # is optional
@@ -222,7 +222,7 @@
           # is a x0:GenericFinancialIdentification1
           # is optional
           Other =>
-          { # sequence of Identification, SchemName, Issuer
+          { # sequence of Identification, SchemeName, Issuer
 
             # is a xs:string
             # length <= 35
@@ -231,7 +231,7 @@
 
             # is a x0:FinancialIdentificationSchemeName1Choice
             # is optional
-            SchemName =>
+            SchemeName =>
             { # choice of Code, Proprietary
 
               # is a xs:string
@@ -384,8 +384,8 @@
       { # sequence of ChargesId, RecordId, ChargesRequestor,
         #   UnderlyingTransaction, Amount, CreditDebitInd, ValueDate,
         #   DebtorAgent, DebtorAgentAccount, ChargesAccountAgent,
-        #   ChargesAccountAgentAccount, Type, InstrForInstdAgt,
-        #   AdditionalInformation
+        #   ChargesAccountAgentAccount, Type,
+        #   InstructionForInstructedAgent, AdditionalInformation
 
         # is a xs:string
         # is optional
@@ -407,10 +407,10 @@
         # is a x0:TransactionReferences7
         UnderlyingTransaction =>
         { # sequence of MessageId, MessageNameId,
-          #   AccountServicerReference, PaymentInformationId, InstrId,
-          #   EndToEndId, UETR, TransactionId, MndtId, ChequeNumber,
-          #   ClearSystemReference, AccountOwnerTransactionId,
-          #   AccountServicerTransactionId,
+          #   AccountServicerReference, PaymentInformationId,
+          #   InstructingId, EndToEndId, UETR, TransactionId, MandateId,
+          #   ChequeNumber, ClearSystemReference,
+          #   AccountOwnerTransactionId, AccountServicerTransactionId,
           #   MarketInfrastructureTransactionId, ProcessingId, Proprietary
 
           # is a xs:string
@@ -441,7 +441,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          InstrId => "example",
+          InstructingId => "example",
 
           # is a xs:string
           # is optional
@@ -465,7 +465,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          MndtId => "example",
+          MandateId => "example",
 
           # is a xs:string
           # is optional
@@ -563,8 +563,8 @@
 
         # is a x0:InstructionForInstructedAgent1
         # is optional
-        InstrForInstdAgt =>
-        { # sequence of Code, InstrInf
+        InstructionForInstructedAgent =>
+        { # sequence of Code, InstructingInformation
 
           # is a xs:string
           # is optional
@@ -576,7 +576,7 @@
           # is optional
           # length <= 140
           # length >= 1
-          InstrInf => "example", },
+          InstructingInformation => "example", },
 
         # is a xs:string
         # is optional
@@ -618,7 +618,7 @@
             #   UnderlyingTransaction, TotalChargesPerRecord,
             #   ChargesBreakdown, ValueDate, DebtorAgent,
             #   DebtorAgentAccount, ChargesAccountAgent,
-            #   ChargesAccountAgentAccount, InstrForInstdAgt,
+            #   ChargesAccountAgentAccount, InstructionForInstructedAgent,
             #   AdditionalInformation
 
             # is a xs:string
@@ -725,7 +725,7 @@
             # is a x0:InstructionForInstructedAgent1
             # complex structure shown above
             # is optional
-            InstrForInstdAgt => [{},],
+            InstructionForInstructedAgent => [{},],
 
             # is a xs:string
             # is optional

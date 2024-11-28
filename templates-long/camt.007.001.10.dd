@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.007.001.10}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -66,8 +66,8 @@
 
           # is a x0:LongPaymentIdentification4
           LongBusinessId =>
-          { # sequence of TransactionId, UETR, IntrBkSttlmAmt,
-            #   IntrBkSttlmDt, PaymentMethod, InstructingAgent,
+          { # sequence of TransactionId, UETR, InterBankSettlementAmount,
+            #   InterBankSettlementDate, PaymentMethod, InstructingAgent,
             #   InstructedAgent, EntryType, EndToEndId
 
             # is a xs:string
@@ -86,19 +86,19 @@
             # faction digits is 5
             # value >= 0
             # total digits is 18
-            IntrBkSttlmAmt => 3.1415,
+            InterBankSettlementAmount => 3.1415,
 
             # is a xs:date
-            IntrBkSttlmDt => "2006-10-06",
+            InterBankSettlementDate => "2006-10-06",
 
             # is a x0:PaymentOrigin1Choice
             # is optional
             PaymentMethod =>
-            { # choice of FINMT, XMLMessageName, Proprietary, Instrument
+            { # choice of FINMessageType, XMLMessageName, Proprietary, Instrument
 
               # is a xs:string
               # Pattern: [0-9]{1,3}
-              FINMT => "example",
+              FINMessageType => "example",
 
               # is a xs:string
               # length <= 35
@@ -184,7 +184,7 @@
 
                     # is a x0:GenericIdentification30
                     Proprietary =>
-                    { # sequence of Identification, Issuer, SchemName
+                    { # sequence of Identification, Issuer, SchemeName
 
                       # is a xs:string
                       # Pattern: [a-zA-Z0-9]{4}
@@ -199,7 +199,7 @@
                       # is optional
                       # length <= 35
                       # length >= 1
-                      SchemName => "example", }, },
+                      SchemeName => "example", }, },
 
                   # is a xs:string
                   # is optional
@@ -305,7 +305,7 @@
                 # is a x0:GenericFinancialIdentification1
                 # is optional
                 Other =>
-                { # sequence of Identification, SchemName, Issuer
+                { # sequence of Identification, SchemeName, Issuer
 
                   # is a xs:string
                   # length <= 35
@@ -314,7 +314,7 @@
 
                   # is a x0:FinancialIdentificationSchemeName1Choice
                   # is optional
-                  SchemName =>
+                  SchemeName =>
                   { # choice of Code, Proprietary
 
                     # is a xs:string
@@ -377,7 +377,8 @@
 
           # is a x0:ShortPaymentIdentification4
           ShortBusinessId =>
-          { # sequence of TransactionId, UETR, IntrBkSttlmDt, InstructingAgent
+          { # sequence of TransactionId, UETR, InterBankSettlementDate,
+            #   InstructingAgent
 
             # is a xs:string
             # is optional
@@ -392,7 +393,7 @@
             UETR => "example",
 
             # is a xs:date
-            IntrBkSttlmDt => "2006-10-06",
+            InterBankSettlementDate => "2006-10-06",
 
             # is a x0:BranchAndFinancialInstitutionIdentification8
             # complex structure shown above

@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.069.001.05}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:21 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -42,7 +42,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -53,7 +53,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -83,21 +83,21 @@
 
         # is a x0:StandingOrderCriteria5
         NewCriteria =>
-        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+        { # sequence of NewQueryName, SearchCriteria, ReturnCriteria
 
           # is a xs:string
           # is optional
           # length <= 35
           # length >= 1
-          NewQryNm => "example",
+          NewQueryName => "example",
 
           # is a x0:StandingOrderSearchCriteria5
           # occurs any number of times
           SearchCriteria =>
           [ { # sequence of KeyAttributesInd, StandingOrderId, Type,
               #   Account, Currency, ValidityPeriod, SystemMember,
-              #   ResponsibleParty, AssociatedPoolAccount, LkSetId,
-              #   LkSetOrdrId, LkSetOrdrSeq, ZeroSweepInd
+              #   ResponsibleParty, AssociatedPoolAccount, LinkSetId,
+              #   LinkSetOrderId, LinkSetOrderSeq, ZeroSweepInd
 
               # is a xs:boolean
               # is optional
@@ -138,7 +138,7 @@
 
                   # is a x0:GenericAccountIdentification1
                   Other =>
-                  { # sequence of Identification, SchemName, Issuer
+                  { # sequence of Identification, SchemeName, Issuer
 
                     # is a xs:string
                     # length <= 34
@@ -147,7 +147,7 @@
 
                     # is a x0:AccountSchemeName1Choice
                     # is optional
-                    SchemName =>
+                    SchemeName =>
                     { # choice of Code, Proprietary
 
                       # is a xs:string
@@ -443,19 +443,19 @@
               # is optional
               # length <= 35
               # length >= 1
-              LkSetId => "example",
+              LinkSetId => "example",
 
               # is a xs:string
               # is optional
               # length <= 35
               # length >= 1
-              LkSetOrdrId => "example",
+              LinkSetOrderId => "example",
 
               # is a xs:decimal
               # is optional
               # faction digits is 0
               # total digits is 18
-              LkSetOrdrSeq => 3.1415,
+              LinkSetOrderSeq => 3.1415,
 
               # is a xs:boolean
               # is optional
@@ -467,8 +467,9 @@
           { # sequence of StandingOrderIdInd, TypeInd, SystemMemberInd,
             #   ResponsiblePartyInd, CurrencyInd, DebtorAccountInd,
             #   CreditorAccountInd, AssociatedPoolAccount, FrequencyInd,
-            #   ExecutionTypeInd, ValidityForInd, ValidToInd, LkSetIdInd,
-            #   LkSetOrdrIdInd, LkSetOrdrSeqInd, TotalAmountInd, ZeroSweepInd
+            #   ExecutionTypeInd, ValidityForInd, ValidToInd, LinkSetIdInd,
+            #   LinkSetOrderIdInd, LinkSetOrderSeqInd, TotalAmountInd,
+            #   ZeroSweepInd
 
             # is a xs:boolean
             # is optional
@@ -520,15 +521,15 @@
 
             # is a xs:boolean
             # is optional
-            LkSetIdInd => "true",
+            LinkSetIdInd => "true",
 
             # is a xs:boolean
             # is optional
-            LkSetOrdrIdInd => "true",
+            LinkSetOrderIdInd => "true",
 
             # is a xs:boolean
             # is optional
-            LkSetOrdrSeqInd => "true",
+            LinkSetOrderSeqInd => "true",
 
             # is a xs:boolean
             # is optional

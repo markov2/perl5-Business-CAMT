@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.004.001.10}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -20,7 +20,7 @@
     # is a x0:MessageHeader7
     MessageHeader =>
     { # sequence of MessageId, CreationDateTime, RequestType,
-      #   OrgnlBizQry, QueryName
+      #   OriginalBusinessQuery, QueryName
 
       # is a xs:string
       # length <= 35
@@ -48,7 +48,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -59,7 +59,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -69,7 +69,7 @@
 
       # is a x0:OriginalBusinessQuery1
       # is optional
-      OrgnlBizQry =>
+      OriginalBusinessQuery =>
       { # sequence of MessageId, MessageNameId, CreationDateTime
 
         # is a xs:string
@@ -112,7 +112,7 @@
 
             # is a x0:GenericAccountIdentification1
             Other =>
-            { # sequence of Identification, SchemName, Issuer
+            { # sequence of Identification, SchemeName, Issuer
 
               # is a xs:string
               # length <= 34
@@ -121,7 +121,7 @@
 
               # is a x0:AccountSchemeName1Choice
               # is optional
-              SchemName =>
+              SchemeName =>
               { # choice of Code, Proprietary
 
                 # is a xs:string
@@ -147,8 +147,8 @@
             # is a x0:CashAccountData1
             Account =>
             { # sequence of Name, Type, Currency, Proxy,
-              #   CurrentMultilateralLimit, Owner, Servicer, MulBal,
-              #   CurrentBilateralLimit, StandingOrder
+              #   CurrentMultilateralLimit, Owner, Servicer,
+              #   MultilateralBalance, CurrentBilateralLimit, StandingOrder
 
               # is a xs:string
               # is optional
@@ -359,7 +359,7 @@
                 # is a x0:Party52Choice
                 # is optional
                 Identification =>
-                { # choice of OrganisationId, PrivateId
+                { # choice of OrganisationId, PersonId
 
                   # is a x0:OrganisationIdentification39
                   OrganisationId =>
@@ -382,7 +382,7 @@
                     Other => [{},], },
 
                   # is a x0:PersonIdentification18
-                  PrivateId =>
+                  PersonId =>
                   { # sequence of DateAndPlaceOfBirth, Other
 
                     # is a x0:DateAndPlaceOfBirth1
@@ -422,9 +422,10 @@
                 # is a x0:Contact13
                 # is optional
                 ContactDetails =>
-                { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-                  #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
-                  #   Responsibility, Department, Other, PreferredMethod
+                { # sequence of NamePrefix, Name, PhoneNumber,
+                  #   MobilePhoneNumber, FaxNumber, URLAddress, EmailAddress,
+                  #   EmailPurpose, JobTitle, Responsibility, Department, Other,
+                  #   PreferredMethod
 
                   # is a xs:string
                   # is optional
@@ -445,7 +446,7 @@
                   # is a xs:string
                   # is optional
                   # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-                  MobNb => "example",
+                  MobilePhoneNumber => "example",
 
                   # is a xs:string
                   # is optional
@@ -456,7 +457,7 @@
                   # is optional
                   # length <= 2048
                   # length >= 1
-                  URLAdr => "example",
+                  URLAddress => "example",
 
                   # is a xs:string
                   # is optional
@@ -589,7 +590,7 @@
 
               # is a x0:CashBalance13
               # occurs any number of times
-              MulBal =>
+              MultilateralBalance =>
               [ { # sequence of Amount, CreditDebitInd, Type, Status, ValueDate,
                   #   ProcessingDate, NumberOfPayments, RestrictionType
 
@@ -667,7 +668,8 @@
               # is a x0:BilateralLimit4
               # occurs any number of times
               CurrentBilateralLimit =>
-              [ { # sequence of CounterPartyId, LimitAmount, CreditDebitInd, BilBal
+              [ { # sequence of CounterPartyId, LimitAmount, CreditDebitInd,
+                  #   BilateralBalance
 
                   # is a x0:BranchAndFinancialInstitutionIdentification8
                   # complex structure shown above
@@ -683,7 +685,7 @@
 
                   # is a x0:CashBalance11
                   # occurs any number of times
-                  BilBal =>
+                  BilateralBalance =>
                   [ { # sequence of Amount, CreditDebitInd, Type, Status, ValueDate,
                       #   NumberOfPayments
 
@@ -723,8 +725,8 @@
               StandingOrder =>
               [ { # sequence of Amount, CreditDebitInd, Currency, Type,
                   #   AssociatedPoolAccount, Reference, Frequency, ValidityPeriod,
-                  #   SystemMember, ResponsibleParty, LkSetId, LkSetOrdrId,
-                  #   LkSetOrdrSeq, ExecutionType, Creditor, CreditorAccount,
+                  #   SystemMember, ResponsibleParty, LinkSetId, LinkSetOrderId,
+                  #   LinkSetOrderSeq, ExecutionType, Creditor, CreditorAccount,
                   #   Debtor, DebtorAccount, TotalsPerStagingOrder, ZeroSweepInd
 
                   # is a x0:Amount2Choice
@@ -787,19 +789,19 @@
                   # is optional
                   # length <= 35
                   # length >= 1
-                  LkSetId => "example",
+                  LinkSetId => "example",
 
                   # is a xs:string
                   # is optional
                   # length <= 35
                   # length >= 1
-                  LkSetOrdrId => "example",
+                  LinkSetOrderId => "example",
 
                   # is a xs:decimal
                   # is optional
                   # faction digits is 0
                   # total digits is 18
-                  LkSetOrdrSeq => 3.1415,
+                  LinkSetOrderSeq => 3.1415,
 
                   # is a x0:ExecutionType1Choice
                   # is optional

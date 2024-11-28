@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.023.001.07}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -15,9 +15,9 @@
 
   # is a x0:BackupPaymentV07
   BackupPayment =>
-  { # sequence of MessageHeader, OriginalMessageId, InstrInf,
-    #   TransferredAmount, Creditor, CreditorAgent, DebtorAgent,
-    #   SupplementaryData
+  { # sequence of MessageHeader, OriginalMessageId,
+    #   InstructingInformation, TransferredAmount, Creditor,
+    #   CreditorAgent, DebtorAgent, SupplementaryData
 
     # is a x0:MessageHeader1
     MessageHeader =>
@@ -39,7 +39,7 @@
 
     # is a x0:PaymentInstruction13
     # is optional
-    InstrInf =>
+    InstructingInformation =>
     { # sequence of RequestedExecutionDateTime, PaymentType
 
       # is a xs:dateTime
@@ -145,7 +145,7 @@
 
         # is a x0:GenericFinancialIdentification1
         Other =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -154,7 +154,7 @@
 
           # is a x0:FinancialIdentificationSchemeName1Choice
           # is optional
-          SchemName =>
+          SchemeName =>
           { # choice of Code, Proprietary
 
             # is a xs:string

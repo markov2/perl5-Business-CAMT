@@ -7,7 +7,7 @@ cut-n-paste from the evince PDF reader.
 
 Many, many abbreviations are missing from that list, so added manually.
 I did not understand all abbreviations, so still some work to do.  Help me
-complete the list.  (114 to go, out of 1343)
+complete the list.  (3 to go, out of 1343)
 For this, https://www.mx-message.com is a great help (even with its older
 and limited number of messages)
 

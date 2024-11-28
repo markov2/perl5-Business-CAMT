@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.018.001.05}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -15,7 +15,8 @@
 
   # is a x0:GetBusinessDayInformationV05
   GetBusinessDayInformation =>
-  { # sequence of MessageHeader, BizDayInfQryDef, SupplementaryData
+  { # sequence of MessageHeader,
+    #   BusinessDayInformationQueryDefinitions, SupplementaryData
 
     # is a x0:MessageHeader9
     MessageHeader =>
@@ -47,7 +48,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -58,7 +59,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -68,7 +69,7 @@
 
     # is a x0:BusinessDayQuery2
     # is optional
-    BizDayInfQryDef =>
+    BusinessDayInformationQueryDefinitions =>
     { # sequence of QueryType, Criteria
 
       # is a xs:string
@@ -88,13 +89,13 @@
 
         # is a x0:BusinessDayCriteria2
         NewCriteria =>
-        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+        { # sequence of NewQueryName, SearchCriteria, ReturnCriteria
 
           # is a xs:string
           # is optional
           # length <= 35
           # length >= 1
-          NewQryNm => "example",
+          NewQueryName => "example",
 
           # is a x0:BusinessDaySearchCriteria2
           # occurs any number of times

@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.080.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:22 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -11,10 +11,10 @@
 # xmlns:xs        http://www.w3.org/2001/XMLSchema
 
 # is a x0:Document
-{ # sequence of IntraBalMvmntModQry
+{ # sequence of IntraBalanceMovementModificationQuery
 
   # is a x0:IntraBalanceMovementModificationQueryV02
-  IntraBalMvmntModQry =>
+  IntraBalanceMovementModificationQuery =>
   { # sequence of Identification, QueryDefinition, SupplementaryData
 
     # is a x0:DocumentIdentification51
@@ -94,7 +94,7 @@
 
             # is a x0:GenericIdentification30
             Proprietary =>
-            { # sequence of Identification, Issuer, SchemName
+            { # sequence of Identification, Issuer, SchemeName
 
               # is a xs:string
               # Pattern: [a-zA-Z0-9]{4}
@@ -109,12 +109,12 @@
               # is optional
               # length <= 35
               # length >= 1
-              SchemName => "example", }, }, ],
+              SchemeName => "example", }, }, ],
 
         # is a x0:AccountIdentificationSearchCriteria2Choice
         # occurs any number of times
         CashAccount =>
-        [ { # choice of Equal, CTTxt, NotContainText
+        [ { # choice of Equal, ContainText, NotContainText
 
             # is a x0:AccountIdentification4Choice
             Equal =>
@@ -126,7 +126,7 @@
 
               # is a x0:GenericAccountIdentification1
               Other =>
-              { # sequence of Identification, SchemName, Issuer
+              { # sequence of Identification, SchemeName, Issuer
 
                 # is a xs:string
                 # length <= 34
@@ -135,7 +135,7 @@
 
                 # is a x0:AccountSchemeName1Choice
                 # is optional
-                SchemName =>
+                SchemeName =>
                 { # choice of Code, Proprietary
 
                   # is a xs:string
@@ -157,7 +157,7 @@
             # is a xs:string
             # length <= 35
             # length >= 1
-            CTTxt => "example",
+            ContainText => "example",
 
             # is a xs:string
             # length <= 35

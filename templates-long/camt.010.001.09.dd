@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.010.001.09}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -20,7 +20,7 @@
     # is a x0:MessageHeader7
     MessageHeader =>
     { # sequence of MessageId, CreationDateTime, RequestType,
-      #   OrgnlBizQry, QueryName
+      #   OriginalBusinessQuery, QueryName
 
       # is a xs:string
       # length <= 35
@@ -48,7 +48,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -59,7 +59,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -69,7 +69,7 @@
 
       # is a x0:OriginalBusinessQuery1
       # is optional
-      OrgnlBizQry =>
+      OriginalBusinessQuery =>
       { # sequence of MessageId, MessageNameId, CreationDateTime
 
         # is a xs:string
@@ -108,8 +108,8 @@
 
             # is a x0:LimitIdentification8
             LimitId =>
-            { # sequence of SystemId, BilLmtCtrPtyId, Type, AccountOwner,
-              #   AccountId
+            { # sequence of SystemId, BilateralLimitCounterPartyId, Type,
+              #   AccountOwner, AccountId
 
               # is a x0:SystemIdentification2Choice
               # is optional
@@ -136,7 +136,7 @@
 
               # is a x0:BranchAndFinancialInstitutionIdentification8
               # is optional
-              BilLmtCtrPtyId =>
+              BilateralLimitCounterPartyId =>
               { # sequence of FinancialInstitutionId, BranchId
 
                 # is a x0:FinancialInstitutionIdentification23
@@ -311,7 +311,7 @@
                   # is a x0:GenericFinancialIdentification1
                   # is optional
                   Other =>
-                  { # sequence of Identification, SchemName, Issuer
+                  { # sequence of Identification, SchemeName, Issuer
 
                     # is a xs:string
                     # length <= 35
@@ -320,7 +320,7 @@
 
                     # is a x0:FinancialIdentificationSchemeName1Choice
                     # is optional
-                    SchemName =>
+                    SchemeName =>
                     { # choice of Code, Proprietary
 
                       # is a xs:string
@@ -405,7 +405,8 @@
               # is a x0:Limit7
               Limit =>
               { # sequence of Amount, CreditDebitInd, Status, StartDateTime,
-                #   UsdAmt, UsdAmtCdtDbtInd, UsdPctg, RmngAmt
+                #   UsedAmount, UsedAmountCreditDebitInd, UsedPercentage,
+                #   RemainingAmount
 
                 # is a x0:Amount2Choice
                 Amount =>
@@ -453,23 +454,23 @@
                 # is a x0:Amount2Choice
                 # complex structure shown above
                 # is optional
-                UsdAmt => [{},],
+                UsedAmount => [{},],
 
                 # is a xs:string
                 # is optional
                 # Enum: CRDT DBIT
-                UsdAmtCdtDbtInd => "CRDT",
+                UsedAmountCreditDebitInd => "CRDT",
 
                 # is a xs:decimal
                 # is optional
                 # faction digits is 10
                 # total digits is 11
-                UsdPctg => 3.1415,
+                UsedPercentage => 3.1415,
 
                 # is a x0:Amount2Choice
                 # complex structure shown above
                 # is optional
-                RmngAmt => [{},], },
+                RemainingAmount => [{},], },
 
               # is a x0:ErrorHandling5
               # occurs 1 <= # <= unbounded times

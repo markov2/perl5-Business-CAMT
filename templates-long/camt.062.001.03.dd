@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.062.001.03}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:21 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -24,7 +24,7 @@
 
       # is a x0:NameAndAddress8
       NameAndAddress =>
-      { # sequence of Name, Address, AltrntvIdr
+      { # sequence of Name, Address, AlternativeIdentifier
 
         # is a xs:string
         # length <= 350
@@ -86,11 +86,11 @@
         # occurs 0 <= # <= 10 times
         # length <= 35
         # length >= 1
-        AltrntvIdr => [ "example", ], },
+        AlternativeIdentifier => [ "example", ], },
 
       # is a x0:PartyIdentification44
       AnyBIC =>
-      { # sequence of AnyBIC, AltrntvIdr
+      { # sequence of AnyBIC, AlternativeIdentifier
 
         # is a xs:string
         # Pattern:
@@ -101,7 +101,7 @@
         # occurs 0 <= # <= 10 times
         # length <= 35
         # length >= 1
-        AltrntvIdr => [ "example", ], },
+        AlternativeIdentifier => [ "example", ], },
 
       # is a x0:PartyIdentification59
       # probably a recursive complex
@@ -176,11 +176,11 @@
     # is a x0:PayInFactors1
     # is optional
     PayInScheduleFactors =>
-    { # sequence of AggtShrtPosLmt, CcyFctrs
+    { # sequence of AggregateShortPositionLimit, CurrencyFactors
 
       # is a x0:ActiveCurrencyAndAmount
-      # AggtShrtPosLmt is simple value with attributes
-      AggtShrtPosLmt =>
+      # AggregateShortPositionLimit is simple value with attributes
+      AggregateShortPositionLimit =>
       { # is a xs:string
         # attribute Currency is required
         # Pattern: [A-Z]{3,3}
@@ -192,9 +192,9 @@
 
       # is a x0:CurrencyFactors1
       # occurs 1 <= # <= unbounded times
-      CcyFctrs =>
+      CurrencyFactors =>
       [ { # sequence of Currency, ShortPositionLimit,
-          #   MinimumPaymentInAmount, VoltlyMrgn, Rate
+          #   MinimumPaymentInAmount, VolatilityMargin, Rate
 
           # is a xs:string
           # Pattern: [A-Z]{3,3}
@@ -215,7 +215,7 @@
           # is a xs:decimal
           # faction digits is 10
           # total digits is 11
-          VoltlyMrgn => 3.1415,
+          VolatilityMargin => 3.1415,
 
           # is a x0:AgreedRate2
           # is optional

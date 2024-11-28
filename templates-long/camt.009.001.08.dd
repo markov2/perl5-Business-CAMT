@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.009.001.08}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -15,7 +15,8 @@
 
   # is a x0:GetLimitV08
   GetLimit =>
-  { # sequence of MessageHeader, LmtQryDef, SupplementaryData
+  { # sequence of MessageHeader, LimitQueryDefinitions,
+    #   SupplementaryData
 
     # is a x0:MessageHeader9
     MessageHeader =>
@@ -47,7 +48,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -58,7 +59,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -68,7 +69,7 @@
 
     # is a x0:LimitQuery5
     # is optional
-    LmtQryDef =>
+    LimitQueryDefinitions =>
     { # sequence of QueryType, LimitCriteria
 
       # is a xs:string
@@ -88,20 +89,21 @@
 
         # is a x0:LimitCriteria7
         NewCriteria =>
-        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+        { # sequence of NewQueryName, SearchCriteria, ReturnCriteria
 
           # is a xs:string
           # is optional
           # length <= 35
           # length >= 1
-          NewQryNm => "example",
+          NewQueryName => "example",
 
           # is a x0:LimitSearchCriteria7
           # occurs any number of times
           SearchCriteria =>
-          [ { # sequence of SystemId, BilLmtCtrPtyId, DefaultLimitType,
-              #   CurrentLimitType, AccountOwner, AccountId, UsdAmt, UsdPctg,
-              #   LimitCurrency, LimitAmount, LmtVldAsOfDt
+          [ { # sequence of SystemId, BilateralLimitCounterPartyId,
+              #   DefaultLimitType, CurrentLimitType, AccountOwner, AccountId,
+              #   UsedAmount, UsedPercentage, LimitCurrency, LimitAmount,
+              #   LimitValidAsOfDate
 
               # is a x0:SystemIdentification2Choice
               # is optional
@@ -128,7 +130,7 @@
 
               # is a x0:BranchAndFinancialInstitutionIdentification8
               # occurs any number of times
-              BilLmtCtrPtyId =>
+              BilateralLimitCounterPartyId =>
               [ { # sequence of FinancialInstitutionId, BranchId
 
                   # is a x0:FinancialInstitutionIdentification23
@@ -303,7 +305,7 @@
                     # is a x0:GenericFinancialIdentification1
                     # is optional
                     Other =>
-                    { # sequence of Identification, SchemName, Issuer
+                    { # sequence of Identification, SchemeName, Issuer
 
                       # is a xs:string
                       # length <= 35
@@ -312,7 +314,7 @@
 
                       # is a x0:FinancialIdentificationSchemeName1Choice
                       # is optional
-                      SchemName =>
+                      SchemeName =>
                       { # choice of Code, Proprietary
 
                         # is a xs:string
@@ -398,11 +400,11 @@
 
               # is a x0:ActiveAmountRange3Choice
               # is optional
-              UsdAmt =>
-              { # choice of ImpldCcyAndAmtRg, CurrencyAndAmountRange
+              UsedAmount =>
+              { # choice of ImpliedCurrencyAndAmountRange, CurrencyAndAmountRange
 
                 # is a x0:ImpliedCurrencyAndAmountRange1
-                ImpldCcyAndAmtRg =>
+                ImpliedCurrencyAndAmountRange =>
                 { # sequence of Amount, CreditDebitInd
 
                   # is a x0:ImpliedCurrencyAmountRange1Choice
@@ -412,13 +414,13 @@
 
                     # is a x0:AmountRangeBoundary1
                     FromAmount =>
-                    { # sequence of BdryAmt, Included
+                    { # sequence of BouderyAmount, Included
 
                       # is a xs:decimal
                       # faction digits is 5
                       # value >= 0
                       # total digits is 18
-                      BdryAmt => 3.1415,
+                      BouderyAmount => 3.1415,
 
                       # is a xs:boolean
                       Included => "true", },
@@ -475,17 +477,17 @@
 
               # is a x0:PercentageRange1Choice
               # is optional
-              UsdPctg =>
+              UsedPercentage =>
               { # choice of From, To, FromTo, Equal, NotEqual
 
                 # is a x0:PercentageRangeBoundary1
                 From =>
-                { # sequence of BdryRate, Included
+                { # sequence of BouderyRate, Included
 
                   # is a xs:decimal
                   # faction digits is 10
                   # total digits is 11
-                  BdryRate => 3.1415,
+                  BouderyRate => 3.1415,
 
                   # is a xs:boolean
                   Included => "true", },
@@ -528,7 +530,7 @@
 
               # is a x0:DateAndPeriod2Choice
               # is optional
-              LmtVldAsOfDt =>
+              LimitValidAsOfDate =>
               { # choice of Date, Period, FromDate, ToDate
 
                 # is a xs:date
@@ -553,7 +555,8 @@
           # is a x0:LimitReturnCriteria2
           # is optional
           ReturnCriteria =>
-          { # sequence of StartDateTimeInd, StatusInd, UsdAmtInd, UsdPctgInd
+          { # sequence of StartDateTimeInd, StatusInd, UsedAmountInd,
+            #   UsedPercentageInd
 
             # is a xs:boolean
             # is optional
@@ -565,11 +568,11 @@
 
             # is a xs:boolean
             # is optional
-            UsdAmtInd => "true",
+            UsedAmountInd => "true",
 
             # is a xs:boolean
             # is optional
-            UsdPctgInd => "true", }, }, }, },
+            UsedPercentageInd => "true", }, }, }, },
 
     # is a x0:SupplementaryData1
     # occurs any number of times

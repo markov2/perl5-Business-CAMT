@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.003.001.08}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -14,7 +14,8 @@
 
   # is a x0:GetAccountV08
   GetAccount =>
-  { # sequence of MessageHeader, AcctQryDef, SupplementaryData
+  { # sequence of MessageHeader, AccountQueryDefinition,
+    #   SupplementaryData
 
     # is a x0:MessageHeader9
     MessageHeader =>
@@ -46,7 +47,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -57,7 +58,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -67,7 +68,7 @@
 
     # is a x0:AccountQuery4
     # is optional
-    AcctQryDef =>
+    AccountQueryDefinition =>
     { # sequence of QueryType, AccountCriteria
 
       # is a xs:string
@@ -87,13 +88,13 @@
 
         # is a x0:AccountCriteria8
         NewCriteria =>
-        { # sequence of NewQryNm, SearchCriteria, ReturnCriteria
+        { # sequence of NewQueryName, SearchCriteria, ReturnCriteria
 
           # is a xs:string
           # is optional
           # length <= 35
           # length >= 1
-          NewQryNm => "example",
+          NewQueryName => "example",
 
           # is a x0:CashAccountSearchCriteria8
           # occurs any number of times
@@ -104,7 +105,7 @@
               # is a x0:AccountIdentificationSearchCriteria2Choice
               # occurs any number of times
               AccountId =>
-              [ { # choice of Equal, CTTxt, NotContainText
+              [ { # choice of Equal, ContainText, NotContainText
 
                   # is a x0:AccountIdentification4Choice
                   Equal =>
@@ -116,7 +117,7 @@
 
                     # is a x0:GenericAccountIdentification1
                     Other =>
-                    { # sequence of Identification, SchemName, Issuer
+                    { # sequence of Identification, SchemeName, Issuer
 
                       # is a xs:string
                       # length <= 34
@@ -125,7 +126,7 @@
 
                       # is a x0:AccountSchemeName1Choice
                       # is optional
-                      SchemName =>
+                      SchemeName =>
                       { # choice of Code, Proprietary
 
                         # is a xs:string
@@ -147,7 +148,7 @@
                   # is a xs:string
                   # length <= 35
                   # length >= 1
-                  CTTxt => "example",
+                  ContainText => "example",
 
                   # is a xs:string
                   # length <= 35
@@ -478,7 +479,7 @@
                 # is a x0:Party52Choice
                 # is optional
                 Identification =>
-                { # choice of OrganisationId, PrivateId
+                { # choice of OrganisationId, PersonId
 
                   # is a x0:OrganisationIdentification39
                   OrganisationId =>
@@ -501,7 +502,7 @@
                     Other => [{},], },
 
                   # is a x0:PersonIdentification18
-                  PrivateId =>
+                  PersonId =>
                   { # sequence of DateAndPlaceOfBirth, Other
 
                     # is a x0:DateAndPlaceOfBirth1
@@ -541,9 +542,10 @@
                 # is a x0:Contact13
                 # is optional
                 ContactDetails =>
-                { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-                  #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
-                  #   Responsibility, Department, Other, PreferredMethod
+                { # sequence of NamePrefix, Name, PhoneNumber,
+                  #   MobilePhoneNumber, FaxNumber, URLAddress, EmailAddress,
+                  #   EmailPurpose, JobTitle, Responsibility, Department, Other,
+                  #   PreferredMethod
 
                   # is a xs:string
                   # is optional
@@ -564,7 +566,7 @@
                   # is a xs:string
                   # is optional
                   # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-                  MobNb => "example",
+                  MobilePhoneNumber => "example",
 
                   # is a xs:string
                   # is optional
@@ -575,7 +577,7 @@
                   # is optional
                   # length <= 2048
                   # length >= 1
-                  URLAdr => "example",
+                  URLAddress => "example",
 
                   # is a xs:string
                   # is optional
@@ -625,9 +627,10 @@
           # is a x0:CashAccountReturnCriteria5
           # is optional
           ReturnCriteria =>
-          { # sequence of NameInd, CurrencyInd, TypeInd, MulLmtInd,
-            #   MulBalRtrCrit, BilLmtInd, BilBalRtrCrit, StandingOrderInd,
-            #   AccountOwnerInd, AccountServicerInd
+          { # sequence of NameInd, CurrencyInd, TypeInd,
+            #   MultilateralLimitInd, MultilateralBalanceReturnCriteria,
+            #   BilateralLimitInd, BilateralBalanceReturnCriteria,
+            #   StandingOrderInd, AccountOwnerInd, AccountServicerInd
 
             # is a xs:boolean
             # is optional
@@ -643,11 +646,11 @@
 
             # is a xs:boolean
             # is optional
-            MulLmtInd => "true",
+            MultilateralLimitInd => "true",
 
             # is a x0:CashBalanceReturnCriteria2
             # is optional
-            MulBalRtrCrit =>
+            MultilateralBalanceReturnCriteria =>
             { # sequence of TypeInd, StatusInd, ValueDateInd,
               #   ProcessingDateInd, NumberOfPaymentsInd
 
@@ -668,12 +671,12 @@
 
             # is a xs:boolean
             # is optional
-            BilLmtInd => "true",
+            BilateralLimitInd => "true",
 
             # is a x0:CashBalanceReturnCriteria2
             # complex structure shown above
             # is optional
-            BilBalRtrCrit => [{},],
+            BilateralBalanceReturnCriteria => [{},],
 
             # is a xs:boolean
             # is optional

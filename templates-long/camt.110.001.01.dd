@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.110.001.01}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:22 2024
+#          on Thu Nov 28 17:11:36 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -118,7 +118,7 @@
 
                 # is a x0:GenericAccountIdentification1
                 Other =>
-                { # sequence of Identification, SchemName, Issuer
+                { # sequence of Identification, SchemeName, Issuer
 
                   # is a xs:string
                   # length <= 34
@@ -127,7 +127,7 @@
 
                   # is a x0:AccountSchemeName1Choice
                   # is optional
-                  SchemName =>
+                  SchemeName =>
                   { # choice of Code, Proprietary
 
                     # is a xs:string
@@ -314,7 +314,7 @@
 
                     # is a x0:GenericIdentification30
                     Proprietary =>
-                    { # sequence of Identification, Issuer, SchemName
+                    { # sequence of Identification, Issuer, SchemeName
 
                       # is a xs:string
                       # Pattern: [a-zA-Z0-9]{4}
@@ -329,7 +329,7 @@
                       # is optional
                       # length <= 35
                       # length >= 1
-                      SchemName => "example", }, },
+                      SchemeName => "example", }, },
 
                   # is a xs:string
                   # is optional
@@ -508,9 +508,9 @@
                 # is a x0:Contact4
                 # is optional
                 ContactDetails =>
-                { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-                  #   EmailAddress, EmailPurpose, JobTitle, Responsibility,
-                  #   Department, Other, PreferredMethod
+                { # sequence of NamePrefix, Name, PhoneNumber,
+                  #   MobilePhoneNumber, FaxNumber, EmailAddress, EmailPurpose,
+                  #   JobTitle, Responsibility, Department, Other, PreferredMethod
 
                   # is a xs:string
                   # is optional
@@ -531,7 +531,7 @@
                   # is a xs:string
                   # is optional
                   # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-                  MobNb => "example",
+                  MobilePhoneNumber => "example",
 
                   # is a xs:string
                   # is optional

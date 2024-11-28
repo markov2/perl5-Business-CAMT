@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.005.001.11}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:19 2024
+#          on Thu Nov 28 17:11:32 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -48,7 +48,7 @@
 
         # is a x0:GenericIdentification1
         Proprietary =>
-        { # sequence of Identification, SchemName, Issuer
+        { # sequence of Identification, SchemeName, Issuer
 
           # is a xs:string
           # length <= 35
@@ -59,7 +59,7 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example",
+          SchemeName => "example",
 
           # is a xs:string
           # is optional
@@ -89,19 +89,20 @@
 
         # is a x0:TransactionCriteria11
         NewCriteria =>
-        { # sequence of NewQryNm, SearchCriteria, StatementReport,
+        { # sequence of NewQueryName, SearchCriteria, StatementReport,
           #   ReturnCriteria
 
           # is a xs:string
           # is optional
           # length <= 35
           # length >= 1
-          NewQryNm => "example",
+          NewQueryName => "example",
 
           # is a x0:TransactionSearchCriteria11
           # occurs any number of times
           SearchCriteria =>
-          [ { # sequence of PaymentTo, PaymentFrom, PaymentSchedule, AcctNtrySch
+          [ { # sequence of PaymentTo, PaymentFrom, PaymentSchedule,
+              #   AccountEntrySearch
 
               # is a x0:SystemSearch5
               # occurs any number of times
@@ -300,7 +301,7 @@
                         # is a x0:GenericFinancialIdentification1
                         # is optional
                         Other =>
-                        { # sequence of Identification, SchemName, Issuer
+                        { # sequence of Identification, SchemeName, Issuer
 
                           # is a xs:string
                           # length <= 35
@@ -309,7 +310,7 @@
 
                           # is a x0:FinancialIdentificationSchemeName1Choice
                           # is optional
-                          SchemName =>
+                          SchemeName =>
                           { # choice of Code, Proprietary
 
                             # is a xs:string
@@ -383,10 +384,10 @@
               PaymentSchedule =>
               { # sequence of MessageId, RequestedExecutionDate, PaymentId,
                 #   Status, InstructedAmount, InstructedAmountCurrency,
-                #   CreditDebitInd, IntrBkSttlmAmt, IntrBkSttlmAmtCcy,
-                #   PaymentMethod, PaymentType, Priority,
-                #   ProcessingValidityTime, Instruction, TransactionId, UETR,
-                #   IntrBkSttlmDt, EndToEndId, Parties
+                #   CreditDebitInd, InterBankSettlementAmount,
+                #   InterBankSettlementAmountCurrency, PaymentMethod,
+                #   PaymentType, Priority, ProcessingValidityTime, Instruction,
+                #   TransactionId, UETR, InterBankSettlementDate, EndToEndId, Parties
 
                 # is a xs:string
                 # occurs any number of times
@@ -477,8 +478,8 @@
 
                     # is a x0:LongPaymentIdentification4
                     LongBusinessId =>
-                    { # sequence of TransactionId, UETR, IntrBkSttlmAmt,
-                      #   IntrBkSttlmDt, PaymentMethod, InstructingAgent,
+                    { # sequence of TransactionId, UETR, InterBankSettlementAmount,
+                      #   InterBankSettlementDate, PaymentMethod, InstructingAgent,
                       #   InstructedAgent, EntryType, EndToEndId
 
                       # is a xs:string
@@ -497,19 +498,19 @@
                       # faction digits is 5
                       # value >= 0
                       # total digits is 18
-                      IntrBkSttlmAmt => 3.1415,
+                      InterBankSettlementAmount => 3.1415,
 
                       # is a xs:date
-                      IntrBkSttlmDt => "2006-10-06",
+                      InterBankSettlementDate => "2006-10-06",
 
                       # is a x0:PaymentOrigin1Choice
                       # is optional
                       PaymentMethod =>
-                      { # choice of FINMT, XMLMessageName, Proprietary, Instrument
+                      { # choice of FINMessageType, XMLMessageName, Proprietary, Instrument
 
                         # is a xs:string
                         # Pattern: [0-9]{1,3}
-                        FINMT => "example",
+                        FINMessageType => "example",
 
                         # is a xs:string
                         # length <= 35
@@ -546,7 +547,8 @@
 
                     # is a x0:ShortPaymentIdentification4
                     ShortBusinessId =>
-                    { # sequence of TransactionId, UETR, IntrBkSttlmDt, InstructingAgent
+                    { # sequence of TransactionId, UETR, InterBankSettlementDate,
+                      #   InstructingAgent
 
                       # is a xs:string
                       # is optional
@@ -561,7 +563,7 @@
                       UETR => "example",
 
                       # is a xs:date
-                      IntrBkSttlmDt => "2006-10-06",
+                      InterBankSettlementDate => "2006-10-06",
 
                       # is a x0:BranchAndFinancialInstitutionIdentification8
                       # complex structure shown above
@@ -611,10 +613,10 @@
                 # is a x0:ActiveOrHistoricAmountRange2Choice
                 # occurs any number of times
                 InstructedAmount =>
-                [ { # choice of ImpldCcyAndAmtRg, CurrencyAndAmountRange
+                [ { # choice of ImpliedCurrencyAndAmountRange, CurrencyAndAmountRange
 
                     # is a x0:ImpliedCurrencyAndAmountRange1
-                    ImpldCcyAndAmtRg =>
+                    ImpliedCurrencyAndAmountRange =>
                     { # sequence of Amount, CreditDebitInd
 
                       # is a x0:ImpliedCurrencyAmountRange1Choice
@@ -624,13 +626,13 @@
 
                         # is a x0:AmountRangeBoundary1
                         FromAmount =>
-                        { # sequence of BdryAmt, Included
+                        { # sequence of BouderyAmount, Included
 
                           # is a xs:decimal
                           # faction digits is 5
                           # value >= 0
                           # total digits is 18
-                          BdryAmt => 3.1415,
+                          BouderyAmount => 3.1415,
 
                           # is a xs:boolean
                           Included => "true", },
@@ -697,12 +699,12 @@
 
                 # is a x0:ActiveAmountRange3Choice
                 # occurs any number of times
-                IntrBkSttlmAmt =>
-                [ { # choice of ImpldCcyAndAmtRg, CurrencyAndAmountRange
+                InterBankSettlementAmount =>
+                [ { # choice of ImpliedCurrencyAndAmountRange, CurrencyAndAmountRange
 
                     # is a x0:ImpliedCurrencyAndAmountRange1
                     # complex structure shown above
-                    ImpldCcyAndAmtRg => {},
+                    ImpliedCurrencyAndAmountRange => {},
 
                     # is a x0:ActiveCurrencyAndAmountRange3
                     # complex structure shown above
@@ -711,7 +713,7 @@
                 # is a xs:string
                 # occurs any number of times
                 # Pattern: [A-Z]{3,3}
-                IntrBkSttlmAmtCcy => [ "example", ],
+                InterBankSettlementAmountCurrency => [ "example", ],
 
                 # is a x0:PaymentOrigin1Choice
                 # complex structure shown above
@@ -771,7 +773,7 @@
 
                 # is a xs:date
                 # occurs any number of times
-                IntrBkSttlmDt => [ "2006-10-06", ],
+                InterBankSettlementDate => [ "2006-10-06", ],
 
                 # is a xs:string
                 # occurs any number of times
@@ -822,7 +824,7 @@
                       # is a x0:Party52Choice
                       # is optional
                       Identification =>
-                      { # choice of OrganisationId, PrivateId
+                      { # choice of OrganisationId, PersonId
 
                         # is a x0:OrganisationIdentification39
                         OrganisationId =>
@@ -845,7 +847,7 @@
                           Other => [{},], },
 
                         # is a x0:PersonIdentification18
-                        PrivateId =>
+                        PersonId =>
                         { # sequence of DateAndPlaceOfBirth, Other
 
                           # is a x0:DateAndPlaceOfBirth1
@@ -885,9 +887,10 @@
                       # is a x0:Contact13
                       # is optional
                       ContactDetails =>
-                      { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-                        #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
-                        #   Responsibility, Department, Other, PreferredMethod
+                      { # sequence of NamePrefix, Name, PhoneNumber,
+                        #   MobilePhoneNumber, FaxNumber, URLAddress, EmailAddress,
+                        #   EmailPurpose, JobTitle, Responsibility, Department, Other,
+                        #   PreferredMethod
 
                         # is a xs:string
                         # is optional
@@ -908,7 +911,7 @@
                         # is a xs:string
                         # is optional
                         # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-                        MobNb => "example",
+                        MobilePhoneNumber => "example",
 
                         # is a xs:string
                         # is optional
@@ -919,7 +922,7 @@
                         # is optional
                         # length <= 2048
                         # length >= 1
-                        URLAdr => "example",
+                        URLAddress => "example",
 
                         # is a xs:string
                         # is optional
@@ -1017,7 +1020,7 @@
 
               # is a x0:CashAccountEntrySearch8
               # is optional
-              AcctNtrySch =>
+              AccountEntrySearch =>
               { # sequence of AccountId, EntryAmount, EntryAmountCurrency,
                 #   CreditDebitInd, EntryStatus, EntryDate, AccountOwner,
                 #   AccountServicer
@@ -1143,11 +1146,12 @@
             # is optional
             PaymentReturnCriteria =>
             { # sequence of MessageIdInd, RequestedExecutionDateInd,
-              #   InstrInd, InstrStsRtrCrit, InstructedAmountInd,
-              #   CreditDebitInd, IntrBkSttlmAmtInd, PriorityInd,
+              #   InstructingInd, InstructingStatusReturnCriteria,
+              #   InstructedAmountInd, CreditDebitInd,
+              #   InterBankSettlementAmountInd, PriorityInd,
               #   ProcessingValidityTimeInd, PurposeInd, InstructionCopyInd,
               #   PaymentMessageTypeInd, PaymentTypeInd, TransactionIdInd,
-              #   IntrBkSttlmDtInd, EndToEndIdInd, PaymentMethodInd,
+              #   InterBankSettlementInd, EndToEndIdInd, PaymentMethodInd,
               #   DebtorInd, DebtorAgentInd, InstructingReimbursementAgentInd,
               #   InstructedReembursementAgentInd, IntermediaryInd,
               #   CreditorAgentInd, CreditorInd
@@ -1162,11 +1166,11 @@
 
               # is a xs:boolean
               # is optional
-              InstrInd => "true",
+              InstructingInd => "true",
 
               # is a x0:InstructionStatusReturnCriteria1
               # is optional
-              InstrStsRtrCrit =>
+              InstructingStatusReturnCriteria =>
               { # sequence of PaymentInstructionStatusInd,
                 #   PaymentInstructionStatusDateTimeInd,
                 #   PaymentInstructionStatusReasonInd
@@ -1192,7 +1196,7 @@
 
               # is a xs:boolean
               # is optional
-              IntrBkSttlmAmtInd => "true",
+              InterBankSettlementAmountInd => "true",
 
               # is a xs:boolean
               # is optional
@@ -1224,7 +1228,7 @@
 
               # is a xs:boolean
               # is optional
-              IntrBkSttlmDtInd => "true",
+              InterBankSettlementInd => "true",
 
               # is a xs:boolean
               # is optional

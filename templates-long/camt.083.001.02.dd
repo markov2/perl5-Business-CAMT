@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.083.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:22 2024
+#          on Thu Nov 28 17:11:35 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -11,10 +11,10 @@
 # xmlns:xs        http://www.w3.org/2001/XMLSchema
 
 # is a x0:Document
-{ # sequence of IntraBalMvmntCxlRpt
+{ # sequence of IntraBalanceMovementCancellationReport
 
   # is a x0:IntraBalanceMovementCancellationReportV02
-  IntraBalMvmntCxlRpt =>
+  IntraBalanceMovementCancellationReport =>
   { # sequence of Identification, Pagination,
     #   ReportGeneralDetails, ReportOrError, SupplementaryData
 
@@ -78,8 +78,8 @@
     # is a x0:IntraBalanceReport5
     ReportGeneralDetails =>
     { # sequence of ReportNumber, QueryReference, ReportId,
-      #   ReportDateTime, ReportProducer, QueryType, Frequency, UpdTp,
-      #   ActivityInd
+      #   ReportDateTime, ReportProducer, QueryType, Frequency,
+      #   UpdateType, ActivityInd
 
       # is a x0:Number3Choice
       # is optional
@@ -153,7 +153,7 @@
 
         # is a x0:GenericIdentification30
         Proprietary =>
-        { # sequence of Identification, Issuer, SchemName
+        { # sequence of Identification, Issuer, SchemeName
 
           # is a xs:string
           # Pattern: [a-zA-Z0-9]{4}
@@ -168,10 +168,10 @@
           # is optional
           # length <= 35
           # length >= 1
-          SchemName => "example", }, },
+          SchemeName => "example", }, },
 
       # is a x0:UpdateType15Choice
-      UpdTp =>
+      UpdateType =>
       { # choice of Code, Proprietary
 
         # is a xs:string
@@ -438,7 +438,7 @@
               # is a x0:GenericFinancialIdentification1
               # is optional
               Other =>
-              { # sequence of Identification, SchemName, Issuer
+              { # sequence of Identification, SchemeName, Issuer
 
                 # is a xs:string
                 # length <= 35
@@ -447,7 +447,7 @@
 
                 # is a x0:FinancialIdentificationSchemeName1Choice
                 # is optional
-                SchemName =>
+                SchemeName =>
                 { # choice of Code, Proprietary
 
                   # is a xs:string
@@ -595,7 +595,7 @@
           Cancellation =>
           [ { # sequence of CashAccount, CashAccountOwner,
               #   CashAccountServicer, ProcessingStatus, RequestReference,
-              #   StatusDate, TransactionId, UndrlygIntraBal
+              #   StatusDate, TransactionId, UnderlyingIntraBalance
 
               # is a x0:CashAccount40
               # complex structure shown above
@@ -665,9 +665,10 @@
 
               # is a x0:IntraBalance5
               # is optional
-              UndrlygIntraBal =>
+              UnderlyingIntraBalance =>
               { # sequence of SettlementAmount, SettlementDate, BallanceFrom,
-                #   BallanceTotal, CashSubBalanceId, Priority, InstrPrcgAddtlDtls
+                #   BallanceTotal, CashSubBalanceId, Priority,
+                #   InstructingProcessingAdditionalDetails
 
                 # is a x0:Amount2Choice
                 SettlementAmount =>
@@ -706,11 +707,11 @@
                   # is a x0:AmountAndQuantityBreakdown1
                   # occurs any number of times
                   QuantityBreakdown =>
-                  [ { # sequence of LotNb, LotAmt, LotQty, CashSubBalanceType
+                  [ { # sequence of LotNumber, LotAmount, LotQuantity, CashSubBalanceType
 
                       # is a x0:GenericIdentification37
                       # is optional
-                      LotNb =>
+                      LotNumber =>
                       { # sequence of Identification, Issuer
 
                         # is a xs:string
@@ -726,7 +727,7 @@
 
                       # is a x0:AmountAndDirection5
                       # is optional
-                      LotAmt =>
+                      LotAmount =>
                       { # sequence of Amount, CreditDebit
 
                         # is a x0:ActiveCurrencyAndAmount
@@ -748,8 +749,8 @@
 
                       # is a x0:FinancialInstrumentQuantity1Choice
                       # is optional
-                      LotQty =>
-                      { # choice of Unit, FaceAmout, AmtsdVal
+                      LotQuantity =>
+                      { # choice of Unit, FaceAmout, AmortisedValue
 
                         # is a xs:decimal
                         # faction digits is 17
@@ -766,7 +767,7 @@
                         # faction digits is 5
                         # value >= 0
                         # total digits is 18
-                        AmtsdVal => 3.1415, },
+                        AmortisedValue => 3.1415, },
 
                       # is a x0:GenericIdentification30
                       # complex structure shown above
@@ -799,7 +800,7 @@
                 # is optional
                 # length <= 350
                 # length >= 1
-                InstrPrcgAddtlDtls => "example", }, }, ], }, ],
+                InstructingProcessingAdditionalDetails => "example", }, }, ], }, ],
 
       # is a x0:ErrorHandling5
       # occurs 1 <= # <= unbounded times

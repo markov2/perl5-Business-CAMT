@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.052.001.12}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Mon Nov 25 15:46:20 2024
+#          on Thu Nov 28 17:11:34 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -20,7 +20,7 @@
     # is a x0:GroupHeader116
     GroupHeader =>
     { # sequence of MessageId, CreationDateTime, MessageRecipient,
-      #   MessagePagination, OrgnlBizQry, AdditionalInformation
+      #   MessagePagination, OriginalBusinessQuery, AdditionalInformation
 
       # is a xs:string
       # length <= 35
@@ -61,7 +61,7 @@
 
             # is a x0:GenericIdentification30
             Proprietary =>
-            { # sequence of Identification, Issuer, SchemName
+            { # sequence of Identification, Issuer, SchemeName
 
               # is a xs:string
               # Pattern: [a-zA-Z0-9]{4}
@@ -76,7 +76,7 @@
               # is optional
               # length <= 35
               # length >= 1
-              SchemName => "example", }, },
+              SchemeName => "example", }, },
 
           # is a xs:string
           # is optional
@@ -182,7 +182,7 @@
         # is a x0:Party52Choice
         # is optional
         Identification =>
-        { # choice of OrganisationId, PrivateId
+        { # choice of OrganisationId, PersonId
 
           # is a x0:OrganisationIdentification39
           OrganisationId =>
@@ -202,7 +202,7 @@
             # is a x0:GenericOrganisationIdentification3
             # occurs any number of times
             Other =>
-            [ { # sequence of Identification, SchemName, Issuer
+            [ { # sequence of Identification, SchemeName, Issuer
 
                 # is a xs:string
                 # length <= 256
@@ -211,7 +211,7 @@
 
                 # is a x0:OrganisationIdentificationSchemeName1Choice
                 # is optional
-                SchemName =>
+                SchemeName =>
                 { # choice of Code, Proprietary
 
                   # is a xs:string
@@ -231,7 +231,7 @@
                 Issuer => "example", }, ], },
 
           # is a x0:PersonIdentification18
-          PrivateId =>
+          PersonId =>
           { # sequence of DateAndPlaceOfBirth, Other
 
             # is a x0:DateAndPlaceOfBirth1
@@ -271,9 +271,10 @@
         # is a x0:Contact13
         # is optional
         ContactDetails =>
-        { # sequence of NamePrefix, Name, PhoneNumber, MobNb, FaxNumber,
-          #   URLAdr, EmailAddress, EmailPurpose, JobTitle,
-          #   Responsibility, Department, Other, PreferredMethod
+        { # sequence of NamePrefix, Name, PhoneNumber,
+          #   MobilePhoneNumber, FaxNumber, URLAddress, EmailAddress,
+          #   EmailPurpose, JobTitle, Responsibility, Department, Other,
+          #   PreferredMethod
 
           # is a xs:string
           # is optional
@@ -294,7 +295,7 @@
           # is a xs:string
           # is optional
           # Pattern: \+[0-9]{1,3}-[0-9()+\-]{1,30}
-          MobNb => "example",
+          MobilePhoneNumber => "example",
 
           # is a xs:string
           # is optional
@@ -305,7 +306,7 @@
           # is optional
           # length <= 2048
           # length >= 1
-          URLAdr => "example",
+          URLAddress => "example",
 
           # is a xs:string
           # is optional
@@ -361,7 +362,7 @@
 
       # is a x0:OriginalBusinessQuery1
       # is optional
-      OrgnlBizQry =>
+      OriginalBusinessQuery =>
       { # sequence of MessageId, MessageNameId, CreationDateTime
 
         # is a xs:string
@@ -684,7 +685,7 @@
             # is a x0:Rate4
             # occurs any number of times
             Rate =>
-            [ { # sequence of Type, ValidityRegion
+            [ { # sequence of Type, ValidityRange
 
                 # is a x0:RateType4Choice
                 # complex structure shown above
@@ -692,7 +693,7 @@
 
                 # is a x0:ActiveOrHistoricCurrencyAndAmountRange2
                 # is optional
-                ValidityRegion =>
+                ValidityRange =>
                 { # sequence of Amount, CreditDebitInd, Currency
 
                   # is a x0:ImpliedCurrencyAmountRange1Choice
@@ -702,13 +703,13 @@
 
                     # is a x0:AmountRangeBoundary1
                     FromAmount =>
-                    { # sequence of BdryAmt, Included
+                    { # sequence of BouderyAmount, Included
 
                       # is a xs:decimal
                       # faction digits is 5
                       # value >= 0
                       # total digits is 18
-                      BdryAmt => 3.1415,
+                      BouderyAmount => 3.1415,
 
                       # is a xs:boolean
                       Included => "true", },
@@ -887,7 +888,7 @@
         # is optional
         TransactionsSummery =>
         { # sequence of totalEntries, TotalCreditEntries,
-          #   TotalDebitEntries, TtlNtriesPerBkTxCd
+          #   TotalDebitEntries, TotalEntriesPerBankTransactionCode
 
           # is a x0:NumberAndSumOfTransactions4
           # is optional
@@ -943,7 +944,7 @@
 
           # is a x0:TotalsPerBankTransactionCode5
           # occurs any number of times
-          TtlNtriesPerBkTxCd =>
+          TotalEntriesPerBankTransactionCode =>
           [ { # sequence of NumberOfEntries, Sum, TotalNetEntry,
               #   CreditEntries, DebitEntries, ForecastInd,
               #   BankTransactionCode, Availability, Date
@@ -1121,7 +1122,7 @@
             # is optional
             AmountDetails =>
             { # sequence of InstructedAmount, TransactionAmount,
-              #   CounterValueAmount, AnncdPstngAmt, ProprietaryAmount
+              #   CounterValueAmount, AnnouncedPostingAmount, ProprietaryAmount
 
               # is a x0:AmountAndCurrencyExchangeDetails5
               # is optional
@@ -1195,7 +1196,7 @@
               # is a x0:AmountAndCurrencyExchangeDetails5
               # complex structure shown above
               # is optional
-              AnncdPstngAmt => [{},],
+              AnnouncedPostingAmount => [{},],
 
               # is a x0:AmountAndCurrencyExchangeDetails6
               # occurs any number of times
@@ -1371,16 +1372,16 @@
                   # is a x0:CardSecurityInformation1
                   # is optional
                   CardSecurityCode =>
-                  { # sequence of CSCMgmt, CSCVal
+                  { # sequence of CSCManagement, CSCValue
 
                     # is a xs:string
                     # Enum: BYPS NCSC PRST UNRD
-                    CSCMgmt => "PRST",
+                    CSCManagement => "PRST",
 
                     # is a xs:string
                     # is optional
                     # Pattern: [0-9]{3,4}
-                    CSCVal => "example", }, },
+                    CSCValue => "example", }, },
 
                 # is a xs:string
                 # is optional
@@ -1390,7 +1391,7 @@
                 # is a x0:GenericIdentification1
                 # is optional
                 CardBrand =>
-                { # sequence of Identification, SchemName, Issuer
+                { # sequence of Identification, SchemeName, Issuer
 
                   # is a xs:string
                   # length <= 35
@@ -1401,7 +1402,7 @@
                   # is optional
                   # length <= 35
                   # length >= 1
-                  SchemName => "example",
+                  SchemeName => "example",
 
                   # is a xs:string
                   # is optional
@@ -1485,8 +1486,8 @@
                 # is a x0:PointOfInteractionComponent1
                 # occurs any number of times
                 Component =>
-                [ { # sequence of POIComponentType, ManufacturerId, Model, VrsnNb,
-                    #   SerialNumber, ApprovalNumber
+                [ { # sequence of POIComponentType, ManufacturerId, Model,
+                    #   VersionNumber, SerialNumber, ApprovalNumber
 
                     # is a xs:string
                     # Enum: CHIT EMVK EMVO MRIT PEDV SECM SOFT
@@ -1508,7 +1509,7 @@
                     # is optional
                     # length <= 16
                     # length >= 1
-                    VrsnNb => "example",
+                    VersionNumber => "example",
 
                     # is a xs:string
                     # is optional
@@ -1526,7 +1527,7 @@
               # is optional
               AggregatedEntry =>
               { # sequence of AdditionalService, TransactionCategory,
-                #   SaleReconsiliationId, SequenceNumberRegion, TransactionDateRegion
+                #   SaleReconsiliationId, SequenceNumberRange, TransactionDateRange
 
                 # is a xs:string
                 # is optional
@@ -1548,7 +1549,7 @@
 
                 # is a x0:CardSequenceNumberRange1
                 # is optional
-                SequenceNumberRegion =>
+                SequenceNumberRange =>
                 { # sequence of FirstTransaction, LastTransaction
 
                   # is a xs:string
@@ -1565,7 +1566,7 @@
 
                 # is a x0:DateOrDateTimePeriod1Choice
                 # is optional
-                TransactionDateRegion =>
+                TransactionDateRange =>
                 { # choice of Date, DateTime
 
                   # is a x0:DatePeriod2
@@ -1632,21 +1633,22 @@
                 TransactionDetails =>
                 [ { # sequence of References, Amount, CreditDebitInd,
                     #   AmountDetails, Availability, BankTransactionCode, Charges,
-                    #   Interest, RltdPties, RelatedAgents, LclInstrm,
+                    #   Interest, RelatedParties, RelatedAgents, LocalInstrument,
                     #   PaymentTypeInformation, Purpose, RelatedRemoteInformation,
-                    #   RmtInf, RelatedDates, RelatedPrice, RelatedQuantities,
-                    #   FinancialInstrumentId, Tax, ReturnInformation,
-                    #   CorporateAction, SafekeepingAccount, CashDeposit,
-                    #   CardTransaction, AdditionalTransactionInformation,
-                    #   SupplementaryData
+                    #   RemittanceInformation, RelatedDates, RelatedPrice,
+                    #   RelatedQuantities, FinancialInstrumentId, Tax,
+                    #   ReturnInformation, CorporateAction, SafekeepingAccount,
+                    #   CashDeposit, CardTransaction,
+                    #   AdditionalTransactionInformation, SupplementaryData
 
                     # is a x0:TransactionReferences6
                     # is optional
                     References =>
                     { # sequence of MessageId, AccountServicerReference,
-                      #   PaymentInformationId, InstrId, EndToEndId, UETR,
-                      #   TransactionId, MndtId, ChequeNumber, ClearSystemReference,
-                      #   AccountOwnerTransactionId, AccountServicerTransactionId,
+                      #   PaymentInformationId, InstructingId, EndToEndId, UETR,
+                      #   TransactionId, MandateId, ChequeNumber,
+                      #   ClearSystemReference, AccountOwnerTransactionId,
+                      #   AccountServicerTransactionId,
                       #   MarketInfrastructureTransactionId, ProcessingId, Proprietary
 
                       # is a xs:string
@@ -1671,7 +1673,7 @@
                       # is optional
                       # length <= 35
                       # length >= 1
-                      InstrId => "example",
+                      InstructingId => "example",
 
                       # is a xs:string
                       # is optional
@@ -1695,7 +1697,7 @@
                       # is optional
                       # length <= 35
                       # length >= 1
-                      MndtId => "example",
+                      MandateId => "example",
 
                       # is a xs:string
                       # is optional
@@ -1783,7 +1785,7 @@
 
                     # is a x0:TransactionParties12
                     # is optional
-                    RltdPties =>
+                    RelatedParties =>
                     { # sequence of InitiatingParty, Debtor, DebtorAccount,
                       #   UltimateDebitor, Creditor, CreditorAccount,
                       #   UltimateCreditor, TradingParty, Proprietary
@@ -1911,7 +1913,7 @@
 
                     # is a x0:LocalInstrument2Choice
                     # is optional
-                    LclInstrm =>
+                    LocalInstrument =>
                     { # choice of Code, Proprietary
 
                       # is a xs:string
@@ -1927,13 +1929,13 @@
                     # is a x0:PaymentTypeInformation27
                     # is optional
                     PaymentTypeInformation =>
-                    { # sequence of InstrPrty, ClearChannel, ServiceLevel,
-                      #   LclInstrm, SequenceType, CategoryPurpose
+                    { # sequence of InstructingPriority, ClearChannel, ServiceLevel,
+                      #   LocalInstrument, SequenceType, CategoryPurpose
 
                       # is a xs:string
                       # is optional
                       # Enum: HIGH NORM
-                      InstrPrty => "HIGH",
+                      InstructingPriority => "HIGH",
 
                       # is a xs:string
                       # is optional
@@ -1958,7 +1960,7 @@
                       # is a x0:LocalInstrument2Choice
                       # complex structure shown above
                       # is optional
-                      LclInstrm => [{},],
+                      LocalInstrument => [{},],
 
                       # is a xs:string
                       # is optional
@@ -1998,17 +2000,17 @@
                     # is a x0:RemittanceLocation8
                     # occurs 0 <= # <= 10 times
                     RelatedRemoteInformation =>
-                    [ { # sequence of RmtId, RmtLctnDtls
+                    [ { # sequence of RemittanceId, RemittanceLocationDetails
 
                         # is a xs:string
                         # is optional
                         # length <= 35
                         # length >= 1
-                        RmtId => "example",
+                        RemittanceId => "example",
 
                         # is a x0:RemittanceLocationData2
                         # occurs any number of times
-                        RmtLctnDtls =>
+                        RemittanceLocationDetails =>
                         [ { # sequence of Method, ElectronicAddress, PostalAddress
 
                             # is a xs:string
@@ -2028,7 +2030,7 @@
 
                     # is a x0:RemittanceInformation22
                     # is optional
-                    RmtInf =>
+                    RemittanceInformation =>
                     { # sequence of Unstructured, Structured
 
                       # is a xs:string
@@ -2042,7 +2044,8 @@
                       Structured =>
                       [ { # sequence of ReferencedDocumentInformation,
                           #   ReferencedDocumentsAmount, CreditorReferenceInformation,
-                          #   Invoicer, Invoicee, Taxremittance, GrnshmtRmt, AddtlRmtInf
+                          #   Invoicer, Invoicee, Taxremittance, GarnishmentRemittance,
+                          #   AdditionalRemittanceInformation
 
                           # is a x0:ReferredDocumentInformation8
                           # occurs any number of times
@@ -2096,11 +2099,11 @@
                           # is a x0:RemittanceAmount4
                           # is optional
                           ReferencedDocumentsAmount =>
-                          { # sequence of RmtAmtAndTp, AdjustmentAmountAndReason
+                          { # sequence of RemittanceAmountAndType, AdjustmentAmountAndReason
 
                             # is a x0:DocumentAmount1
                             # occurs any number of times
-                            RmtAmtAndTp =>
+                            RemittanceAmountAndType =>
                             [ { # sequence of Type, Amount
 
                                 # is a x0:DocumentAmountType1Choice
@@ -2316,9 +2319,10 @@
 
                           # is a x0:Garnishment4
                           # is optional
-                          GrnshmtRmt =>
-                          { # sequence of Type, Garnishee, GrnshmtAdmstr, ReferenceNumber,
-                            #   Date, RmtdAmt, FamilyMedicalInsuranceInd, EmployeeTerminationInd
+                          GarnishmentRemittance =>
+                          { # sequence of Type, Garnishee, GarnishmentAdministrator,
+                            #   ReferenceNumber, Date, RemittedAmount,
+                            #   FamilyMedicalInsuranceInd, EmployeeTerminationInd
 
                             # is a x0:GarnishmentType1
                             # complex structure shown above
@@ -2332,7 +2336,7 @@
                             # is a x0:PartyIdentification272
                             # complex structure shown above
                             # is optional
-                            GrnshmtAdmstr => [{},],
+                            GarnishmentAdministrator => [{},],
 
                             # is a xs:string
                             # is optional
@@ -2345,9 +2349,9 @@
                             Date => "2006-10-06",
 
                             # is a x0:ActiveOrHistoricCurrencyAndAmount
-                            # RmtdAmt is simple value with attributes
+                            # RemittedAmount is simple value with attributes
                             # is optional
-                            RmtdAmt =>
+                            RemittedAmount =>
                             { # is a xs:string
                               # attribute Currency is required
                               # Pattern: [A-Z]{3,3}
@@ -2369,13 +2373,14 @@
                           # occurs 0 <= # <= 3 times
                           # length <= 140
                           # length >= 1
-                          AddtlRmtInf => [ "example", ], }, ], },
+                          AdditionalRemittanceInformation => [ "example", ], }, ], },
 
                     # is a x0:TransactionDates3
                     # is optional
                     RelatedDates =>
-                    { # sequence of AcceptationDateTime, TradActvtyCtrctlSttlmDt,
-                      #   TradeDate, IntrBkSttlmDt, StartDate, EndDate,
+                    { # sequence of AcceptationDateTime,
+                      #   TradeActivityContractualSettlementDate, TradeDate,
+                      #   InterBankSettlementDate, StartDate, EndDate,
                       #   TransactionDateTime, Proprietary
 
                       # is a xs:dateTime
@@ -2384,7 +2389,7 @@
 
                       # is a xs:date
                       # is optional
-                      TradActvtyCtrctlSttlmDt => "2006-10-06",
+                      TradeActivityContractualSettlementDate => "2006-10-06",
 
                       # is a xs:date
                       # is optional
@@ -2392,7 +2397,7 @@
 
                       # is a xs:date
                       # is optional
-                      IntrBkSttlmDt => "2006-10-06",
+                      InterBankSettlementDate => "2006-10-06",
 
                       # is a xs:date
                       # is optional
@@ -2453,11 +2458,11 @@
                     # is a x0:TransactionQuantities3Choice
                     # occurs any number of times
                     RelatedQuantities =>
-                    [ { # choice of Quantity, OrgnlAndCurFaceAmt, Proprietary
+                    [ { # choice of Quantity, OriginalAndCurrentFaceAmount, Proprietary
 
                         # is a x0:FinancialInstrumentQuantity1Choice
                         Quantity =>
-                        { # choice of Unit, FaceAmout, AmtsdVal
+                        { # choice of Unit, FaceAmout, AmortisedValue
 
                           # is a xs:decimal
                           # faction digits is 17
@@ -2474,11 +2479,11 @@
                           # faction digits is 5
                           # value >= 0
                           # total digits is 18
-                          AmtsdVal => 3.1415, },
+                          AmortisedValue => 3.1415, },
 
                         # is a x0:OriginalAndCurrentQuantities1
-                        OrgnlAndCurFaceAmt =>
-                        { # sequence of FaceAmout, AmtsdVal
+                        OriginalAndCurrentFaceAmount =>
+                        { # sequence of FaceAmout, AmortisedValue
 
                           # is a xs:decimal
                           # faction digits is 5
@@ -2490,7 +2495,7 @@
                           # faction digits is 5
                           # value >= 0
                           # total digits is 18
-                          AmtsdVal => 3.1415, },
+                          AmortisedValue => 3.1415, },
 
                         # is a x0:ProprietaryQuantity1
                         # complex structure shown above
@@ -2613,11 +2618,11 @@
                     # is a x0:CashDeposit1
                     # occurs any number of times
                     CashDeposit =>
-                    [ { # sequence of NoteDnmtn, NumberOfNotes, Amount
+                    [ { # sequence of NoteDenomination, NumberOfNotes, Amount
 
                         # is a x0:ActiveCurrencyAndAmount
-                        # NoteDnmtn is simple value with attributes
-                        NoteDnmtn =>
+                        # NoteDenomination is simple value with attributes
+                        NoteDenomination =>
                         { # is a xs:string
                           # attribute Currency is required
                           # Pattern: [A-Z]{3,3}

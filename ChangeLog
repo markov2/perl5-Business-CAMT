@@ -8,6 +8,7 @@ version 0.13:
 
 	Improvements:
 	- more rant about the missed chances in the schemas.
+	- only 3 long tagnames are still unclear (too new for docs)
 
 version 0.12: Wed 27 Nov 16:16:33 CET 2024
 
