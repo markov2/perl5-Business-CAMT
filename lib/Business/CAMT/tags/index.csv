@@ -34,7 +34,7 @@ ActlDt,ActualDate
 Actn,Action
 ActnRsn,ActionReason
 ActvtyInd,ActivityInd
-AddtlBal,AdditionalBallance
+AddtlBal,AdditionalBalance
 AddtlCardData,AdditionalCardData
 AddtlCxlRsnInf,AdditionalCancellationReasonInformation
 AddtlIncrrctInf,AdditionalIncorrectInformation
@@ -95,13 +95,13 @@ BIC,BIC
 BICFI,BICFI
 BICOrBEI,BICOrBEI
 Bal,Balance
-BalAdjstmnt,BallanceAdjustment
-BalAmt,BallanceAmount
-BalFr,BallanceFrom
-BalReqrdAcctAmt,BallanceRequestedAccountAmount
-BalReqrdAmt,BallanceRequestedAmount
-BalTo,BallanceTotal
-BalTp,BallanceType
+BalAdjstmnt,BalanceAdjustment
+BalAmt,BalanceAmount
+BalFr,BalanceFrom
+BalReqrdAcctAmt,BalanceRequestedAccountAmount
+BalReqrdAmt,BalanceRequestedAmount
+BalTo,BalanceTotal
+BalTp,BalanceType
 BaseCcyItm,BaseCurrencyItem
 BckpPmt,BackupPayment
 BdryAmt,BouderyAmount
@@ -600,7 +600,7 @@ LastTx,LastTransaction
 LclInstrm,LocalInstrument
 Lctn,Location
 LglNm,LegalName
-LglNttyIdr,LegalEntityId
+LglNttyIdr,LegalEntityIdentifier
 LglSeqNb,LegalSequenceNumber
 LineDtls,LineDetails
 LineWidth,LineWidth
@@ -1001,7 +1001,7 @@ ReqOrgtr,RequestOriginator
 ReqRef,RequestReference
 ReqToModfyPmt,RequestToModifyPayment
 ReqTp,RequestType
-ReqdBalTp,RequestedBallanceType
+ReqdBalTp,RequestedBalanceType
 ReqdColltnDt,RequestedCollectionDate
 ReqdCompstn,RequestedComposition
 ReqdDbtAuthstn,RequestedDebitAuthorisation
@@ -1033,7 +1033,7 @@ RltdPties,RelatedParties
 RltdQties,RelatedQuantities
 RltdRef,RelatedReference
 RltdRefs,RelatedReferences
-RltdRmtInf,RelatedRemoteInformation
+RltdRmtInf,RelatedRemittanceInformation
 RmngAmt,RemainingAmount
 RmngSttlmAmt,RemainingSettlementAmount
 RmtAmtAndTp,RemittanceAmountAndType
@@ -1176,7 +1176,7 @@ SttlmPlc,SettlementPlace
 SttlmSsnIdr,SettlementSessionIdentifier
 SttlmSts,SettlementStatus
 SttlmTmIndctn,SettlementTimeIndication
-SubBal,SubBallance
+SubBal,SubBalance
 SubDept,SubDepartment
 SubFmlyCd,SubFamilyCode
 SubSvc,SubService
@@ -1215,7 +1215,7 @@ TaxDueToRgn,TaxDueToRegion
 TaxId,TaxId
 TaxRegnNb,TaxRegionNumber
 TaxRgn,TaxRegion
-TaxRmt,Taxremittance
+TaxRmt,TaxRemittance
 TaxRsn,TaxReason
 TaxTp,TaxType
 TaxblBaseAmt,TaxableBaseAmount
