@@ -53,13 +53,14 @@ Use this module to manage CAMT messages, which are ISO20022 standard
 CAMT.053 is produced by banks and consumed by accountancies, showing
 transactions in bank-accounts.  See F<https://www.iso20022.org>.
 
-At the moment, this module can be used to read and write the XML message
-files.  It is intended to also support interpreting and construction
-abstraction.  However, B<I need a sponsor> to make that happen.
-Contact the author for support.  Please.
+At the moment, this module can be used to read and write the XML
+message files, perfectly validates and predictable.  It is intended to
+also support abstraction in interpreting and constructing the content.
+However, B<I need a sponsor> to make that happen.  Contact the author
+for support.  Please.
 
-I would also like to include a CAMT.053 to MT-940 converter, v.v.
-Please hire me.
+I would also like to include a CAMT.053 to CSV and MT-940 converter,
+v.v.  Please hire me.
 
 =chapter METHODS
 
@@ -117,6 +118,9 @@ sub init($) {
 =section Accessors
 
 =method schemas
+Returns the M<XML::Compile::Schema> object, which collects the
+compiled message XSDs.  The XSDs get automatically loaded when
+messages are encountered which need them.
 =cut
 
 sub schemas() { $_[0]->{RC_schemas} }
@@ -125,7 +129,7 @@ sub schemas() { $_[0]->{RC_schemas} }
 =section Read and Write messages
 
 =method read $file|$xml, %options
-Pass a $file name, an $xml document or an $xml node.  Returned is
+Pass a $file name, an $xml document or an $xml element.  Returned is
 a HASH blessed in class 'Business::CAMT::CAMT<nr>', for instance
 C<Business::CAMT::CAMT053>.
 
@@ -136,8 +140,14 @@ C<Business::CAMT::CAMT053>.
 sub read($%)
 {	my ($self, $src, %args) = @_;
 
-	my $dom = blessed $src ? $src : XML::LibXML->load_xml(location => $src);
+	my $dom
+	  = ! ref $src ? XML::LibXML->load_xml($src =~ /\<.*\>/ ? (string => $src) : (location => $src))
+	  : $src->isa('IO::Handle') || $src->isa('GLOB') ? XML::LibXML->load_xml(IO => $src)
+	  : $src->isa('XML::LibXML::Node') ? $src
+	  : error "Unrecognized input";
+
 	my $xml = $dom->isa('XML::LibXML::Document') ? $dom->documentElement : $dom;
+
 	my $ns  = $xml->namespaceURI;
 	my ($set, $version) = $ns =~ m!^\Q$urnbase\E:camt\.([0-9]{3}\.[0-9]{3})\.([0-9]+)$!
 		or error __"Not a CAMT file.";
@@ -149,8 +159,7 @@ sub read($%)
 		or error __"No compatible schema version available.";
 
 	if($xsd_version != $version)
-	{	# implement backwards compatibility
-		trace "Using $set schema version $xsd_version to read a version $version message.";
+	{	trace "Using $set schema version $xsd_version to read a version $version message.";
 		$ns = "$urnbase:camt.$set.$xsd_version";
 		$xml->setNamespaceDeclURI('', $ns);
 	}
@@ -166,6 +175,13 @@ sub read($%)
 }
 
 =method create $set, $version, $data
+Create a new message, to be written later.  The C<$data> is the content of
+the message, in a structure as can be found in the example templates.
+
+=example of create
+  my $camt = Business::CAMT->new(...);
+  my $msg  = $camt->create('053.001', '02', \%data);
+  $msg->write('file.xml');
 =cut
 
 sub create($$$)
@@ -179,11 +195,14 @@ sub create($$$)
 }
 
 =method write $file, $message, %options
+Write a constructed C<$message> (an extension of M<Business::CAMT::Message>)
+to a file in XML format.  The message can also be written as JSON or Perl
+data-structure, via the message itself.
 
 =example writing a message
-
   my $message = $camt->create('053.001', '02', $data);
   $camt->write('out.xml', $message);
+  $message->write('out.xml');   # same
 
 =cut
 
@@ -470,6 +489,7 @@ The use of C<group>'ed elements and C<substitutionGroup>'s would have made
 messages so much clearer and easier.  It would have reduced the message
 size much further than by leaving out the vowels from tags, as the example
 shows.
+
 =cut
 
 1;
