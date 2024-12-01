@@ -174,6 +174,24 @@ sub read($%)
 	);
 }
 
+=method fromHASH \%data, %options
+=requires type VERSION
+=cut
+
+sub fromHASH($%)
+{	my ($self, $data, %args) = @_;
+	my $type = $args{type} or panic;
+	my ($set, $version) = $type =~ /^(?:camt\.)?([0-9]+\.[0-9]+)\.([0-9]+)$/
+		or error __x"Unknown message '{type}'", type => $type;
+
+	Business::CAMT::Message->fromData(
+		set     => $set,
+		version => $version,
+		data    => $data,
+		camt    => $self,
+	);
+}
+
 =method create $set, $version, $data
 Create a new message, to be written later.  The C<$data> is the content of
 the message, in a structure as can be found in the example templates.
@@ -225,7 +243,11 @@ sub write($$%)
 	my $doc    = XML::LibXML::Document->new('1.0', 'UTF-8');
 	my $xml    = $writer->($doc, $msg);
 	$doc->setDocumentElement($xml);
-	$doc->toFile($fn, 1);
+
+	if(ref $fn eq 'GLOB')
+         { $doc->toFH($fn, 1) }
+	else { $doc->toFile($fn, 1) }
+
 	$xml;
 }
 
