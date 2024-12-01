@@ -1,0 +1,195 @@
+{
+   "BankToCustomerStatement" : {
+      "GroupHeader" : {
+         "CreationDateTime" : "2010-10-18T17:00:00+01:00",
+         "MessageId" : "AAAASESS-FP-STAT001",
+         "MessagePagination" : {
+            "LastPageInd" : 1,
+            "PageNumber" : "1"
+         }
+      },
+      "Statement" : [
+         {
+            "Account" : {
+               "Identification" : {
+                  "Other" : {
+                     "Identification" : "50000000054910000003"
+                  }
+               },
+               "Owner" : {
+                  "Name" : "FINPETROL"
+               },
+               "Servicer" : {
+                  "FinancialInstitutionId" : {
+                     "Name" : "AAAA BANKEN",
+                     "PostalAddress" : {
+                        "Country" : "SE"
+                     }
+                  }
+               }
+            },
+            "Balance" : [
+               {
+                  "Amount" : {
+                     "Currency" : "SEK",
+                     "_" : "500000"
+                  },
+                  "CreditDebitInd" : "CRDT",
+                  "Date" : {
+                     "Date" : "2010-10-15"
+                  },
+                  "Type" : {
+                     "CodeOrProperty" : {
+                        "Code" : "OPBD"
+                     }
+                  }
+               },
+               {
+                  "Amount" : {
+                     "Currency" : "SEK",
+                     "_" : "435678.50"
+                  },
+                  "CreditDebitInd" : "CRDT",
+                  "Date" : {
+                     "Date" : "2010-10-18"
+                  },
+                  "Type" : {
+                     "CodeOrProperty" : {
+                        "Code" : "CLBD"
+                     }
+                  }
+               }
+            ],
+            "CreationDateTime" : "2010-10-18T17:00:00+01:00",
+            "Entry" : [
+               {
+                  "AccountServicerReference" : "AAAASESS-FP-CN_98765/01",
+                  "Amount" : {
+                     "Currency" : "SEK",
+                     "_" : "105678.50"
+                  },
+                  "BankTransactionCode" : {
+                     "Domain" : {
+                        "Code" : "PAYM",
+                        "Family" : {
+                           "Code" : "0001",
+                           "SubFamilyCode" : "0005"
+                        }
+                     }
+                  },
+                  "BookingDate" : {
+                     "DateTime" : "2010-10-18T13:15:00+01:00"
+                  },
+                  "CreditDebitInd" : "CRDT",
+                  "EntryDetails" : [
+                     {
+                        "TransactionDetails" : [
+                           {
+                              "References" : {
+                                 "EndToEndId" : "MUELL/FINP/RA12345"
+                              },
+                              "RelatedParties" : {
+                                 "Debtor" : {
+                                    "Name" : "MUELLER"
+                                 }
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "Status" : "BOOK",
+                  "ValueDate" : {
+                     "Date" : "2010-10-18"
+                  }
+               },
+               {
+                  "AccountServicerReference" : "AAAASESS-FP-ACCR-01",
+                  "Amount" : {
+                     "Currency" : "SEK",
+                     "_" : "200000"
+                  },
+                  "BankTransactionCode" : {
+                     "Domain" : {
+                        "Code" : "PAYM",
+                        "Family" : {
+                           "Code" : "0001",
+                           "SubFamilyCode" : "0003"
+                        }
+                     }
+                  },
+                  "BookingDate" : {
+                     "DateTime" : "2010-10-18T10:15:00+01:00"
+                  },
+                  "CreditDebitInd" : "DBIT",
+                  "EntryDetails" : [
+                     {
+                        "Batch" : {
+                           "MessageId" : "FINP-0055",
+                           "NumberOfTransactions" : "20",
+                           "PaymentInformationId" : "FINP-0055/001"
+                        }
+                     }
+                  ],
+                  "Status" : "BOOK",
+                  "ValueDate" : {
+                     "Date" : "2010-10-18"
+                  }
+               },
+               {
+                  "AccountServicerReference" : "AAAASESS-FP-CONF-FX",
+                  "Amount" : {
+                     "Currency" : "SEK",
+                     "_" : "30000"
+                  },
+                  "BankTransactionCode" : {
+                     "Domain" : {
+                        "Code" : "TREA",
+                        "Family" : {
+                           "Code" : "0002",
+                           "SubFamilyCode" : "0000"
+                        }
+                     }
+                  },
+                  "BookingDate" : {
+                     "DateTime" : "2010-10-18T15:15:00+01:00"
+                  },
+                  "CreditDebitInd" : "CRDT",
+                  "EntryDetails" : [
+                     {
+                        "TransactionDetails" : [
+                           {
+                              "AmountDetails" : {
+                                 "CounterValueAmount" : {
+                                    "Amount" : {
+                                       "Currency" : "EUR",
+                                       "_" : "3255"
+                                    },
+                                    "CurrencyExchange" : {
+                                       "ExchangeRate" : "0.1085",
+                                       "SourceCurrency" : "EUR"
+                                    }
+                                 }
+                              },
+                              "References" : {
+                                 "EndToEndId" : "AAAASS1085FINPSS",
+                                 "InstructingId" : "FP-004567-FX"
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "Status" : "BOOK",
+                  "ValueDate" : {
+                     "Date" : "2010-10-18"
+                  }
+               }
+            ],
+            "FromToDate" : {
+               "FromDateTime" : "2010-10-18T08:00:00+01:00",
+               "ToDateTime" : "2010-10-18T17:00:00+01:00"
+            },
+            "Identification" : "AAAASESS-FP-STAT001"
+         }
+      ]
+   }
+}

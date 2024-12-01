@@ -1,0 +1,195 @@
+{
+   "BkToCstmrStmt" : {
+      "GrpHdr" : {
+         "CreDtTm" : "2010-10-18T17:00:00+01:00",
+         "MsgId" : "AAAASESS-FP-STAT001",
+         "MsgPgntn" : {
+            "LastPgInd" : 1,
+            "PgNb" : "1"
+         }
+      },
+      "Stmt" : [
+         {
+            "Acct" : {
+               "Id" : {
+                  "Othr" : {
+                     "Id" : "50000000054910000003"
+                  }
+               },
+               "Ownr" : {
+                  "Nm" : "FINPETROL"
+               },
+               "Svcr" : {
+                  "FinInstnId" : {
+                     "Nm" : "AAAA BANKEN",
+                     "PstlAdr" : {
+                        "Ctry" : "SE"
+                     }
+                  }
+               }
+            },
+            "Bal" : [
+               {
+                  "Amt" : {
+                     "Ccy" : "SEK",
+                     "_" : "500000"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "Dt" : {
+                     "Dt" : "2010-10-15"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "OPBD"
+                     }
+                  }
+               },
+               {
+                  "Amt" : {
+                     "Ccy" : "SEK",
+                     "_" : "435678.50"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "Dt" : {
+                     "Dt" : "2010-10-18"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "CLBD"
+                     }
+                  }
+               }
+            ],
+            "CreDtTm" : "2010-10-18T17:00:00+01:00",
+            "FrToDt" : {
+               "FrDtTm" : "2010-10-18T08:00:00+01:00",
+               "ToDtTm" : "2010-10-18T17:00:00+01:00"
+            },
+            "Id" : "AAAASESS-FP-STAT001",
+            "Ntry" : [
+               {
+                  "AcctSvcrRef" : "AAAASESS-FP-CN_98765/01",
+                  "Amt" : {
+                     "Ccy" : "SEK",
+                     "_" : "105678.50"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PAYM",
+                        "Fmly" : {
+                           "Cd" : "0001",
+                           "SubFmlyCd" : "0005"
+                        }
+                     }
+                  },
+                  "BookgDt" : {
+                     "DtTm" : "2010-10-18T13:15:00+01:00"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "Refs" : {
+                                 "EndToEndId" : "MUELL/FINP/RA12345"
+                              },
+                              "RltdPties" : {
+                                 "Dbtr" : {
+                                    "Nm" : "MUELLER"
+                                 }
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2010-10-18"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "AAAASESS-FP-ACCR-01",
+                  "Amt" : {
+                     "Ccy" : "SEK",
+                     "_" : "200000"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PAYM",
+                        "Fmly" : {
+                           "Cd" : "0001",
+                           "SubFmlyCd" : "0003"
+                        }
+                     }
+                  },
+                  "BookgDt" : {
+                     "DtTm" : "2010-10-18T10:15:00+01:00"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "NtryDtls" : [
+                     {
+                        "Btch" : {
+                           "MsgId" : "FINP-0055",
+                           "NbOfTxs" : "20",
+                           "PmtInfId" : "FINP-0055/001"
+                        }
+                     }
+                  ],
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2010-10-18"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "AAAASESS-FP-CONF-FX",
+                  "Amt" : {
+                     "Ccy" : "SEK",
+                     "_" : "30000"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "TREA",
+                        "Fmly" : {
+                           "Cd" : "0002",
+                           "SubFmlyCd" : "0000"
+                        }
+                     }
+                  },
+                  "BookgDt" : {
+                     "DtTm" : "2010-10-18T15:15:00+01:00"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "AmtDtls" : {
+                                 "CntrValAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "EUR",
+                                       "_" : "3255"
+                                    },
+                                    "CcyXchg" : {
+                                       "SrcCcy" : "EUR",
+                                       "XchgRate" : "0.1085"
+                                    }
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "AAAASS1085FINPSS",
+                                 "InstrId" : "FP-004567-FX"
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2010-10-18"
+                  }
+               }
+            ]
+         }
+      ]
+   }
+}

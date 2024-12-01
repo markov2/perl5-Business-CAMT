@@ -1,4 +1,7 @@
 #!/usr/bin/env perl
+# This code is part of Perl distribution Business::CAMT.  It is licensed under
+# the same terms as Perl itself: https://spdx.org/licenses/Artistic-2.0.html
+
 # Create all templates in the examples/templates directory
 
 use warnings;

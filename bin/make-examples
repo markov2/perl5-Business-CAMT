@@ -1,0 +1,19 @@
+#!/bin/bash
+# This code is part of Perl distribution Business::CAMT.  It is licensed under
+# the same terms as Perl itself: https://spdx.org/licenses/Artistic-2.0.html
+
+# Create some example files
+
+CAMT=bin/camt
+
+$CAMT    examples/dutch-sepa/camt.053.001.02.xml      examples/dutch-sepa/converted-to.json
+$CAMT    examples/dutch-sepa/camt.053.001.02.xml      examples/dutch-sepa/converted-to.dd
+$CAMT -l examples/dutch-sepa/camt.053.001.02.xml      examples/dutch-sepa/converted-to-long.json
+$CAMT -l examples/dutch-sepa/camt.053.001.02.xml      examples/dutch-sepa/converted-to-long.dd
+
+$CAMT    examples/danskeci.com/camt053_dk_example.xml examples/danskeci.com/converted-to.json
+$CAMT    examples/danskeci.com/camt053_dk_example.xml examples/danskeci.com/converted-to.dd
+$CAMT -l examples/danskeci.com/camt053_dk_example.xml examples/danskeci.com/converted-to-long.json
+$CAMT -l examples/danskeci.com/camt053_dk_example.xml examples/danskeci.com/converted-to-long.dd
+
+exit 0

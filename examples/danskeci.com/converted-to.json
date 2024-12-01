@@ -1,0 +1,681 @@
+{
+   "BkToCstmrStmt" : {
+      "GrpHdr" : {
+         "CreDtTm" : "2023-04-20T23:24:31",
+         "MsgId" : "XXX24Y4XXX1Y000000001"
+      },
+      "Stmt" : [
+         {
+            "Acct" : {
+               "Ccy" : "DKK",
+               "Id" : {
+                  "IBAN" : "DK8030000001234567"
+               },
+               "Nm" : "Danske Corporate",
+               "Ownr" : {
+                  "Id" : {
+                     "OrgId" : {
+                        "Othr" : [
+                           {
+                              "Id" : "0012345678",
+                              "SchmeNm" : {
+                                 "Cd" : "CUST"
+                              }
+                           }
+                        ]
+                     }
+                  },
+                  "Nm" : "Account owner",
+                  "PstlAdr" : {
+                     "BldgNb" : "20",
+                     "Ctry" : "DK",
+                     "PstCd" : "1234",
+                     "StrtNm" : "Streetname",
+                     "TwnNm" : "Townname"
+                  }
+               },
+               "Svcr" : {
+                  "FinInstnId" : {
+                     "BIC" : "DABADKKK"
+                  }
+               }
+            },
+            "Bal" : [
+               {
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "12345.67"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "Dt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "OPBD"
+                     }
+                  }
+               },
+               {
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "23456.78"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "Dt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "CLBD"
+                     }
+                  }
+               },
+               {
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "12345.67"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "Dt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "OPAV"
+                     }
+                  }
+               },
+               {
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "23456.78"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "Dt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "CLAV"
+                     }
+                  }
+               },
+               {
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "12345.67"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "Dt" : {
+                     "Dt" : "2023-04-19"
+                  },
+                  "Tp" : {
+                     "CdOrPrtry" : {
+                        "Cd" : "PRCD"
+                     }
+                  }
+               }
+            ],
+            "CreDtTm" : "2023-04-20T23:24:31",
+            "ElctrncSeqNb" : "1",
+            "FrToDt" : {
+               "FrDtTm" : "2023-04-20T00:00:00",
+               "ToDtTm" : "2023-04-20T23:59:59"
+            },
+            "Id" : "XXX24Y4XXX1Y000000001",
+            "LglSeqNb" : "1",
+            "Ntry" : [
+               {
+                  "AcctSvcrRef" : "012X123456789012",
+                  "AddtlInfInd" : {
+                     "MsgNmId" : "O1XXXXXXX67X1X"
+                  },
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "591.15"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PMNT",
+                        "Fmly" : {
+                           "Cd" : "RCDT",
+                           "SubFmlyCd" : "XBCT"
+                        }
+                     },
+                     "Prtry" : {
+                        "Cd" : "BETAL. 3825-0123456789",
+                        "Issr" : "DBA"
+                     }
+                  },
+                  "BookgDt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "AddtlTxInf" : "Beregnede gebyrer: DKK 38,00 Gebyr konto: 1234567890",
+                              "AmtDtls" : {
+                                 "InstdAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "591.15"
+                                    }
+                                 },
+                                 "PrtryAmt" : [
+                                    {
+                                       "Amt" : {
+                                          "Ccy" : "DKK",
+                                          "_" : "591.15"
+                                       },
+                                       "Tp" : "IBS"
+                                    }
+                                 ],
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "591.15"
+                                    }
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "NOTPROVIDED",
+                                 "TxId" : "3825-0123456789"
+                              },
+                              "RltdAgts" : {
+                                 "DbtrAgt" : {
+                                    "FinInstnId" : {
+                                       "BIC" : "SWEDSESS",
+                                       "Nm" : "SWEDBANK AB (PUBL)",
+                                       "PstlAdr" : {
+                                          "AdrLine" : [
+                                             "First address line",
+                                             "Second address line",
+                                             "Third address line"
+                                          ]
+                                       }
+                                    }
+                                 }
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-04-18T01:01:01"
+                              },
+                              "RltdPties" : {
+                                 "Cdtr" : {
+                                    "Nm" : "Creditor",
+                                    "PstlAdr" : {
+                                       "AdrLine" : [
+                                          "First address line"
+                                       ]
+                                    }
+                                 },
+                                 "Dbtr" : {
+                                    "Nm" : "Debtor",
+                                    "PstlAdr" : {
+                                       "AdrLine" : [
+                                          "First addressline"
+                                       ],
+                                       "Ctry" : "SE"
+                                    }
+                                 },
+                                 "DbtrAcct" : {
+                                    "Id" : {
+                                       "IBAN" : "SE5180000810512345678901"
+                                    }
+                                 }
+                              },
+                              "RmtInf" : {
+                                 "Ustrd" : [
+                                    "Unstructured remittance information"
+                                 ]
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "NtryRef" : "1",
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2023-04-20"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "FISAM.POST",
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "1101.88"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PMNT",
+                        "Fmly" : {
+                           "Cd" : "RCDT",
+                           "SubFmlyCd" : "VCOM"
+                        }
+                     },
+                     "Prtry" : {
+                        "Cd" : "DIV.INDB.KORT 87654321 / 71",
+                        "Issr" : "DBA"
+                     }
+                  },
+                  "BookgDt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "NtryDtls" : [
+                     {
+                        "Btch" : {
+                           "NbOfTxs" : "2"
+                        },
+                        "TxDtls" : [
+                           {
+                              "AmtDtls" : {
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "528.94"
+                                    }
+                                 }
+                              },
+                              "BkTxCd" : {
+                                 "Prtry" : {
+                                    "Cd" : "71/0000123456789012345"
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "NOTPROVIDED"
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-04-19T01:01:01"
+                              },
+                              "RltdPties" : {
+                                 "CdtrAcct" : {
+                                    "Id" : {
+                                       "Othr" : {
+                                          "Id" : "87654321"
+                                       }
+                                    }
+                                 }
+                              },
+                              "RmtInf" : {
+                                 "Strd" : [
+                                    {
+                                       "CdtrRefInf" : {
+                                          "Ref" : "71/0000123456789012345",
+                                          "Tp" : {
+                                             "CdOrPrtry" : {
+                                                "Cd" : "SCOR"
+                                             }
+                                          }
+                                       }
+                                    }
+                                 ]
+                              }
+                           },
+                           {
+                              "AmtDtls" : {
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "572.94"
+                                    }
+                                 }
+                              },
+                              "BkTxCd" : {
+                                 "Prtry" : {
+                                    "Cd" : "71/0000543210987654321"
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "NOTPROVIDED"
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-04-19T01:01:01"
+                              },
+                              "RltdPties" : {
+                                 "CdtrAcct" : {
+                                    "Id" : {
+                                       "Othr" : {
+                                          "Id" : "87654321"
+                                       }
+                                    }
+                                 }
+                              },
+                              "RmtInf" : {
+                                 "Strd" : [
+                                    {
+                                       "CdtrRefInf" : {
+                                          "Ref" : "71/0000543210987654321",
+                                          "Tp" : {
+                                             "CdOrPrtry" : {
+                                                "Cd" : "SCOR"
+                                             }
+                                          }
+                                       }
+                                    }
+                                 ]
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "NtryRef" : "2",
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2023-04-20"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "1234569988",
+                  "AddtlInfInd" : {
+                     "MsgNmId" : "XXXXXXYYYYOO1X"
+                  },
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "150.86"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PMNT",
+                        "Fmly" : {
+                           "Cd" : "RCDT",
+                           "SubFmlyCd" : "DMCT"
+                        }
+                     },
+                     "Prtry" : {
+                        "Cd" : "81223344",
+                        "Issr" : "DBA"
+                     }
+                  },
+                  "BookgDt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "AmtDtls" : {
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "150.86"
+                                    }
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "NOTPROVIDED"
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-04-20T01:01:01"
+                              },
+                              "RltdPties" : {
+                                 "Dbtr" : {
+                                    "Nm" : "Debtor",
+                                    "PstlAdr" : {
+                                       "AdrLine" : [
+                                          "First address line",
+                                          "Second address line"
+                                       ]
+                                    }
+                                 },
+                                 "DbtrAcct" : {
+                                    "Id" : {
+                                       "Othr" : {
+                                          "Id" : "3100 1234567890"
+                                       }
+                                    }
+                                 }
+                              },
+                              "RmtInf" : {
+                                 "Ustrd" : [
+                                    "Invoice number 11223344",
+                                    "Invoice number 11223345",
+                                    "Invoice number 11223346"
+                                 ]
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "NtryRef" : "3",
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2023-04-20"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "1712345678",
+                  "AddtlInfInd" : {
+                     "MsgNmId" : "XXXXX5XX8XX1X"
+                  },
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "344278.01"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PMNT",
+                        "Fmly" : {
+                           "Cd" : "ICDT",
+                           "SubFmlyCd" : "XBCT"
+                        }
+                     },
+                     "Prtry" : {
+                        "Cd" : "DBT.XXXX YYX 1-1234567890",
+                        "Issr" : "DBA"
+                     }
+                  },
+                  "BookgDt" : {
+                     "Dt" : "2023-04-19"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "AddtlTxInf" : "Vores gebyr: DKK 1,00",
+                              "AmtDtls" : {
+                                 "InstdAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "EUR",
+                                       "_" : "46064.52"
+                                    }
+                                 },
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "344278.01"
+                                    },
+                                    "CcyXchg" : {
+                                       "SrcCcy" : "EUR",
+                                       "TrgtCcy" : "DKK",
+                                       "UnitCcy" : "EUR",
+                                       "XchgRate" : "7.4738000"
+                                    }
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "EndToEndId",
+                                 "InstrId" : "Instruction Id",
+                                 "PmtInfId" : "Payment Information ID",
+                                 "TxId" : "3001-123456789012"
+                              },
+                              "RltdAgts" : {
+                                 "CdtrAgt" : {
+                                    "FinInstnId" : {
+                                       "BIC" : "ABNANL2A"
+                                    }
+                                 }
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-04-19T01:01:01"
+                              },
+                              "RltdPties" : {
+                                 "Cdtr" : {
+                                    "Nm" : "Creditor",
+                                    "PstlAdr" : {
+                                       "AdrLine" : [
+                                          "First addressline",
+                                          "Second addressline"
+                                       ],
+                                       "Ctry" : "NL"
+                                    }
+                                 },
+                                 "CdtrAcct" : {
+                                    "Id" : {
+                                       "IBAN" : "NL11ABNA1234567890"
+                                    }
+                                 }
+                              },
+                              "RmtInf" : {
+                                 "Ustrd" : [
+                                    "Unstructured remittance information"
+                                 ]
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "NtryRef" : "4",
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2023-04-19"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "0000000000",
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "1320.00"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PMNT",
+                        "Fmly" : {
+                           "Cd" : "MCRD",
+                           "SubFmlyCd" : "POSP"
+                        }
+                     },
+                     "Prtry" : {
+                        "Cd" : "DKSSL 1234 1234567ZZ1XXXXX09Y",
+                        "Issr" : "DBA"
+                     }
+                  },
+                  "BookgDt" : {
+                     "Dt" : "2023-04-20"
+                  },
+                  "CdtDbtInd" : "CRDT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "AmtDtls" : {
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "1320.00"
+                                    }
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "NOTPROVIDED"
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-04-20T01:01:01"
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "NtryRef" : "5",
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2023-04-20"
+                  }
+               },
+               {
+                  "AcctSvcrRef" : "2112345678",
+                  "AddtlInfInd" : {
+                     "MsgNmId" : "UVDPMCV1BLZU1B"
+                  },
+                  "Amt" : {
+                     "Ccy" : "DKK",
+                     "_" : "2060.00"
+                  },
+                  "BkTxCd" : {
+                     "Domn" : {
+                        "Cd" : "PMNT",
+                        "Fmly" : {
+                           "Cd" : "ICDT",
+                           "SubFmlyCd" : "DMCT"
+                        }
+                     },
+                     "Prtry" : {
+                        "Cd" : "TELESERVICE 1722334455",
+                        "Issr" : "DBA"
+                     }
+                  },
+                  "BookgDt" : {
+                     "Dt" : "2023-05-09"
+                  },
+                  "CdtDbtInd" : "DBIT",
+                  "NtryDtls" : [
+                     {
+                        "TxDtls" : [
+                           {
+                              "AmtDtls" : {
+                                 "TxAmt" : {
+                                    "Amt" : {
+                                       "Ccy" : "DKK",
+                                       "_" : "2060.00"
+                                    }
+                                 }
+                              },
+                              "Refs" : {
+                                 "EndToEndId" : "NOTPROVIDED"
+                              },
+                              "RltdDts" : {
+                                 "AccptncDtTm" : "2023-05-09T01:01:01"
+                              },
+                              "RltdPties" : {
+                                 "CdtrAcct" : {
+                                    "Id" : {
+                                       "Othr" : {
+                                          "Id" : "82123456"
+                                       }
+                                    }
+                                 }
+                              }
+                           }
+                        ]
+                     }
+                  ],
+                  "NtryRef" : "6",
+                  "Sts" : "BOOK",
+                  "ValDt" : {
+                     "Dt" : "2023-05-09"
+                  }
+               }
+            ],
+            "TxsSummry" : {
+               "TtlCdtNtries" : {
+                  "NbOfNtries" : "4",
+                  "Sum" : "3163.89"
+               },
+               "TtlDbtNtries" : {
+                  "NbOfNtries" : "2",
+                  "Sum" : "346338.01"
+               },
+               "TtlNtries" : {
+                  "CdtDbtInd" : "DBIT",
+                  "NbOfNtries" : "6",
+                  "TtlNetNtryAmt" : "343174.12"
+               }
+            }
+         }
+      ]
+   }
+}

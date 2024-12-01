@@ -12,6 +12,7 @@ version 0.13:
 	- some corrections for long tagnames.
 	- read() accepts file-handles and strings too.
 	- implement bin/camt
+	- generate json and dd from example messages
 
 version 0.12: Wed 27 Nov 16:16:33 CET 2024
 

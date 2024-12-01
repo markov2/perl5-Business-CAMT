@@ -1,0 +1,681 @@
+$VAR1 = bless( {
+  BankToCustomerStatement => {
+    GroupHeader => {
+      CreationDateTime => '2023-04-20T23:24:31',
+      MessageId => 'XXX24Y4XXX1Y000000001'
+    },
+    Statement => [
+      {
+        Account => {
+          Currency => 'DKK',
+          Identification => {
+            IBAN => 'DK8030000001234567'
+          },
+          Name => 'Danske Corporate',
+          Owner => {
+            Identification => {
+              OrganisationId => {
+                Other => [
+                  {
+                    Identification => '0012345678',
+                    SchemeName => {
+                      Code => 'CUST'
+                    }
+                  }
+                ]
+              }
+            },
+            Name => 'Account owner',
+            PostalAddress => {
+              BuildingNumber => '20',
+              Country => 'DK',
+              PostalCode => '1234',
+              SteetName => 'Streetname',
+              TownName => 'Townname'
+            }
+          },
+          Servicer => {
+            FinancialInstitutionId => {
+              BIC => 'DABADKKK'
+            }
+          }
+        },
+        Balance => [
+          {
+            Amount => {
+              Currency => 'DKK',
+              _ => '12345.67'
+            },
+            CreditDebitInd => 'DBIT',
+            Date => {
+              Date => '2023-04-20'
+            },
+            Type => {
+              CodeOrProperty => {
+                Code => 'OPBD'
+              }
+            }
+          },
+          {
+            Amount => {
+              Currency => 'DKK',
+              _ => '23456.78'
+            },
+            CreditDebitInd => 'DBIT',
+            Date => {
+              Date => '2023-04-20'
+            },
+            Type => {
+              CodeOrProperty => {
+                Code => 'CLBD'
+              }
+            }
+          },
+          {
+            Amount => {
+              Currency => 'DKK',
+              _ => '12345.67'
+            },
+            CreditDebitInd => 'DBIT',
+            Date => {
+              Date => '2023-04-20'
+            },
+            Type => {
+              CodeOrProperty => {
+                Code => 'OPAV'
+              }
+            }
+          },
+          {
+            Amount => {
+              Currency => 'DKK',
+              _ => '23456.78'
+            },
+            CreditDebitInd => 'DBIT',
+            Date => {
+              Date => '2023-04-20'
+            },
+            Type => {
+              CodeOrProperty => {
+                Code => 'CLAV'
+              }
+            }
+          },
+          {
+            Amount => {
+              Currency => 'DKK',
+              _ => '12345.67'
+            },
+            CreditDebitInd => 'DBIT',
+            Date => {
+              Date => '2023-04-19'
+            },
+            Type => {
+              CodeOrProperty => {
+                Code => 'PRCD'
+              }
+            }
+          }
+        ],
+        CreationDateTime => '2023-04-20T23:24:31',
+        ElectronicSequenceNumber => 1,
+        Entry => [
+          {
+            AccountServicerReference => '012X123456789012',
+            AdditionalInformationInd => {
+              MessageNameId => 'O1XXXXXXX67X1X'
+            },
+            Amount => {
+              Currency => 'DKK',
+              _ => '591.15'
+            },
+            BankTransactionCode => {
+              Domain => {
+                Code => 'PMNT',
+                Family => {
+                  Code => 'RCDT',
+                  SubFamilyCode => 'XBCT'
+                }
+              },
+              Proprietary => {
+                Code => 'BETAL. 3825-0123456789',
+                Issuer => 'DBA'
+              }
+            },
+            BookingDate => {
+              Date => '2023-04-20'
+            },
+            CreditDebitInd => 'CRDT',
+            EntryDetails => [
+              {
+                TransactionDetails => [
+                  {
+                    AdditionalTransactionInformation => 'Beregnede gebyrer: DKK 38,00 Gebyr konto: 1234567890',
+                    AmountDetails => {
+                      InstructedAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '591.15'
+                        }
+                      },
+                      ProprietaryAmount => [
+                        {
+                          Amount => {
+                            Currency => 'DKK',
+                            _ => '591.15'
+                          },
+                          Type => 'IBS'
+                        }
+                      ],
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '591.15'
+                        }
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'NOTPROVIDED',
+                      TransactionId => '3825-0123456789'
+                    },
+                    RelatedAgents => {
+                      DebtorAgent => {
+                        FinancialInstitutionId => {
+                          BIC => 'SWEDSESS',
+                          Name => 'SWEDBANK AB (PUBL)',
+                          PostalAddress => {
+                            AddressLine => [
+                              'First address line',
+                              'Second address line',
+                              'Third address line'
+                            ]
+                          }
+                        }
+                      }
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-04-18T01:01:01'
+                    },
+                    RelatedParties => {
+                      Creditor => {
+                        Name => 'Creditor',
+                        PostalAddress => {
+                          AddressLine => [
+                            'First address line'
+                          ]
+                        }
+                      },
+                      Debtor => {
+                        Name => 'Debtor',
+                        PostalAddress => {
+                          AddressLine => [
+                            'First addressline'
+                          ],
+                          Country => 'SE'
+                        }
+                      },
+                      DebtorAccount => {
+                        Identification => {
+                          IBAN => 'SE5180000810512345678901'
+                        }
+                      }
+                    },
+                    RemittanceInformation => {
+                      Unstructured => [
+                        'Unstructured remittance information'
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            EntryReference => '1',
+            Status => 'BOOK',
+            ValueDate => {
+              Date => '2023-04-20'
+            }
+          },
+          {
+            AccountServicerReference => 'FISAM.POST',
+            Amount => {
+              Currency => 'DKK',
+              _ => '1101.88'
+            },
+            BankTransactionCode => {
+              Domain => {
+                Code => 'PMNT',
+                Family => {
+                  Code => 'RCDT',
+                  SubFamilyCode => 'VCOM'
+                }
+              },
+              Proprietary => {
+                Code => 'DIV.INDB.KORT 87654321 / 71',
+                Issuer => 'DBA'
+              }
+            },
+            BookingDate => {
+              Date => '2023-04-20'
+            },
+            CreditDebitInd => 'CRDT',
+            EntryDetails => [
+              {
+                Batch => {
+                  NumberOfTransactions => '2'
+                },
+                TransactionDetails => [
+                  {
+                    AmountDetails => {
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '528.94'
+                        }
+                      }
+                    },
+                    BankTransactionCode => {
+                      Proprietary => {
+                        Code => '71/0000123456789012345'
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'NOTPROVIDED'
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-04-19T01:01:01'
+                    },
+                    RelatedParties => {
+                      CreditorAccount => {
+                        Identification => {
+                          Other => {
+                            Identification => '87654321'
+                          }
+                        }
+                      }
+                    },
+                    RemittanceInformation => {
+                      Structured => [
+                        {
+                          CreditorReferenceInformation => {
+                            Reference => '71/0000123456789012345',
+                            Type => {
+                              CodeOrProperty => {
+                                Code => 'SCOR'
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    AmountDetails => {
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '572.94'
+                        }
+                      }
+                    },
+                    BankTransactionCode => {
+                      Proprietary => {
+                        Code => '71/0000543210987654321'
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'NOTPROVIDED'
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-04-19T01:01:01'
+                    },
+                    RelatedParties => {
+                      CreditorAccount => {
+                        Identification => {
+                          Other => {
+                            Identification => '87654321'
+                          }
+                        }
+                      }
+                    },
+                    RemittanceInformation => {
+                      Structured => [
+                        {
+                          CreditorReferenceInformation => {
+                            Reference => '71/0000543210987654321',
+                            Type => {
+                              CodeOrProperty => {
+                                Code => 'SCOR'
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            EntryReference => '2',
+            Status => 'BOOK',
+            ValueDate => {
+              Date => '2023-04-20'
+            }
+          },
+          {
+            AccountServicerReference => '1234569988',
+            AdditionalInformationInd => {
+              MessageNameId => 'XXXXXXYYYYOO1X'
+            },
+            Amount => {
+              Currency => 'DKK',
+              _ => '150.86'
+            },
+            BankTransactionCode => {
+              Domain => {
+                Code => 'PMNT',
+                Family => {
+                  Code => 'RCDT',
+                  SubFamilyCode => 'DMCT'
+                }
+              },
+              Proprietary => {
+                Code => '81223344',
+                Issuer => 'DBA'
+              }
+            },
+            BookingDate => {
+              Date => '2023-04-20'
+            },
+            CreditDebitInd => 'CRDT',
+            EntryDetails => [
+              {
+                TransactionDetails => [
+                  {
+                    AmountDetails => {
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '150.86'
+                        }
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'NOTPROVIDED'
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-04-20T01:01:01'
+                    },
+                    RelatedParties => {
+                      Debtor => {
+                        Name => 'Debtor',
+                        PostalAddress => {
+                          AddressLine => [
+                            'First address line',
+                            'Second address line'
+                          ]
+                        }
+                      },
+                      DebtorAccount => {
+                        Identification => {
+                          Other => {
+                            Identification => '3100 1234567890'
+                          }
+                        }
+                      }
+                    },
+                    RemittanceInformation => {
+                      Unstructured => [
+                        'Invoice number 11223344',
+                        'Invoice number 11223345',
+                        'Invoice number 11223346'
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            EntryReference => '3',
+            Status => 'BOOK',
+            ValueDate => {
+              Date => '2023-04-20'
+            }
+          },
+          {
+            AccountServicerReference => '1712345678',
+            AdditionalInformationInd => {
+              MessageNameId => 'XXXXX5XX8XX1X'
+            },
+            Amount => {
+              Currency => 'DKK',
+              _ => '344278.01'
+            },
+            BankTransactionCode => {
+              Domain => {
+                Code => 'PMNT',
+                Family => {
+                  Code => 'ICDT',
+                  SubFamilyCode => 'XBCT'
+                }
+              },
+              Proprietary => {
+                Code => 'DBT.XXXX YYX 1-1234567890',
+                Issuer => 'DBA'
+              }
+            },
+            BookingDate => {
+              Date => '2023-04-19'
+            },
+            CreditDebitInd => 'DBIT',
+            EntryDetails => [
+              {
+                TransactionDetails => [
+                  {
+                    AdditionalTransactionInformation => 'Vores gebyr: DKK 1,00',
+                    AmountDetails => {
+                      InstructedAmount => {
+                        Amount => {
+                          Currency => 'EUR',
+                          _ => '46064.52'
+                        }
+                      },
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '344278.01'
+                        },
+                        CurrencyExchange => {
+                          ExchangeRate => '7.4738000',
+                          SourceCurrency => 'EUR',
+                          TargetCurrency => 'DKK',
+                          UnitCurrency => 'EUR'
+                        }
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'EndToEndId',
+                      InstructingId => 'Instruction Id',
+                      PaymentInformationId => 'Payment Information ID',
+                      TransactionId => '3001-123456789012'
+                    },
+                    RelatedAgents => {
+                      CreditorAgent => {
+                        FinancialInstitutionId => {
+                          BIC => 'ABNANL2A'
+                        }
+                      }
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-04-19T01:01:01'
+                    },
+                    RelatedParties => {
+                      Creditor => {
+                        Name => 'Creditor',
+                        PostalAddress => {
+                          AddressLine => [
+                            'First addressline',
+                            'Second addressline'
+                          ],
+                          Country => 'NL'
+                        }
+                      },
+                      CreditorAccount => {
+                        Identification => {
+                          IBAN => 'NL11ABNA1234567890'
+                        }
+                      }
+                    },
+                    RemittanceInformation => {
+                      Unstructured => [
+                        'Unstructured remittance information'
+                      ]
+                    }
+                  }
+                ]
+              }
+            ],
+            EntryReference => '4',
+            Status => 'BOOK',
+            ValueDate => {
+              Date => '2023-04-19'
+            }
+          },
+          {
+            AccountServicerReference => '0000000000',
+            Amount => {
+              Currency => 'DKK',
+              _ => '1320.00'
+            },
+            BankTransactionCode => {
+              Domain => {
+                Code => 'PMNT',
+                Family => {
+                  Code => 'MCRD',
+                  SubFamilyCode => 'POSP'
+                }
+              },
+              Proprietary => {
+                Code => 'DKSSL 1234 1234567ZZ1XXXXX09Y',
+                Issuer => 'DBA'
+              }
+            },
+            BookingDate => {
+              Date => '2023-04-20'
+            },
+            CreditDebitInd => 'CRDT',
+            EntryDetails => [
+              {
+                TransactionDetails => [
+                  {
+                    AmountDetails => {
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '1320.00'
+                        }
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'NOTPROVIDED'
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-04-20T01:01:01'
+                    }
+                  }
+                ]
+              }
+            ],
+            EntryReference => '5',
+            Status => 'BOOK',
+            ValueDate => {
+              Date => '2023-04-20'
+            }
+          },
+          {
+            AccountServicerReference => '2112345678',
+            AdditionalInformationInd => {
+              MessageNameId => 'UVDPMCV1BLZU1B'
+            },
+            Amount => {
+              Currency => 'DKK',
+              _ => '2060.00'
+            },
+            BankTransactionCode => {
+              Domain => {
+                Code => 'PMNT',
+                Family => {
+                  Code => 'ICDT',
+                  SubFamilyCode => 'DMCT'
+                }
+              },
+              Proprietary => {
+                Code => 'TELESERVICE 1722334455',
+                Issuer => 'DBA'
+              }
+            },
+            BookingDate => {
+              Date => '2023-05-09'
+            },
+            CreditDebitInd => 'DBIT',
+            EntryDetails => [
+              {
+                TransactionDetails => [
+                  {
+                    AmountDetails => {
+                      TransactionAmount => {
+                        Amount => {
+                          Currency => 'DKK',
+                          _ => '2060.00'
+                        }
+                      }
+                    },
+                    References => {
+                      EndToEndId => 'NOTPROVIDED'
+                    },
+                    RelatedDates => {
+                      AcceptationDateTime => '2023-05-09T01:01:01'
+                    },
+                    RelatedParties => {
+                      CreditorAccount => {
+                        Identification => {
+                          Other => {
+                            Identification => '82123456'
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            ],
+            EntryReference => '6',
+            Status => 'BOOK',
+            ValueDate => {
+              Date => '2023-05-09'
+            }
+          }
+        ],
+        FromToDate => {
+          FromDateTime => '2023-04-20T00:00:00',
+          ToDateTime => '2023-04-20T23:59:59'
+        },
+        Identification => 'XXX24Y4XXX1Y000000001',
+        LegalSequenceNumber => 1,
+        TransactionsSummery => {
+          TotalCreditEntries => {
+            NumberOfEntries => '4',
+            Sum => '3163.89'
+          },
+          TotalDebitEntries => {
+            NumberOfEntries => '2',
+            Sum => '346338.01'
+          },
+          totalEntries => {
+            CreditDebitInd => 'DBIT',
+            NumberOfEntries => '6',
+            TotalNetEntryAmount => '343174.12'
+          }
+        }
+      }
+    ]
+  }
+}, 'Business::CAMT::CAMT053' );
