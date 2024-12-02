@@ -449,7 +449,7 @@ XML is very verbose anyway, so it really does not help to abbreviate tags
 leaving some vowels out.  This makes it harder to read messages and code.
 It increases the chance on stupid typos in the code.
 
-When you set M<new(tag_longnames)>, then your Perl structure will use
+When you set M<new(long_tagnames)>, then your Perl structure will use
 longer, understandable names: it gets easy to understand the message
 without reading the documentation.  This improves maintenance on the
 long run.

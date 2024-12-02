@@ -4,7 +4,7 @@
 Unless noted otherwise, these changes where initiated and applied by
 Mark Overmeer.
 
-version 0.13:
+version 0.13: Mon  2 Dec 09:23:52 CET 2024
 
 	Changes:
 	- combine set and version arguments to create()
