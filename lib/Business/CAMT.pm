@@ -44,7 +44,13 @@ Business::CAMT - ISO20022 Cash Management (CAMT) messages
 =chapter SYNOPSIS
 
   my $camt = Business::CAMT->new;
-  my $data = $camt->read($file|$xml);
+  my $msg  = $camt->read($file|$xml);
+  print $msg->toPerl;
+  print $msg->toJSON;
+
+  my $message = $camt->create('053.001.02', $data);
+  $camt->write('out.xml', $message);
+  $message->write('out.xml');   # same
 
 =chapter DESCRIPTION
 
@@ -54,13 +60,12 @@ CAMT.053 is produced by banks and consumed by accountancies, showing
 transactions in bank-accounts.  See F<https://www.iso20022.org>.
 
 At the moment, this module can be used to read and write the XML
-message files, perfectly validates and predictable.  It is intended to
+message files, perfectly validated and predictable.  It is intended to
 also support abstraction in interpreting and constructing the content.
-However, B<I need a sponsor> to make that happen.  Contact the author
-for support.  Please.
 
-I would also like to include a CAMT.053 to CSV and MT-940 converter,
-v.v.  Please hire me.
+However, B<I need a sponsor> to make that happen.  Contact the author
+for support.  Please.  I would also like to include a CAMT.053 to CSV
+and MT-940 converter, v.v.  Please hire me.
 
 =chapter METHODS
 
@@ -69,7 +74,8 @@ v.v.  Please hire me.
 =c_method new %options
 Create a new CAMT processing object.
 
-Reuse this object to avoid recompilation of the message reader.
+Reuse this object to avoid recompilation of the message processor, which
+is pretty expensive.
 
 =option  match_schema $rule
 =default match_schema 'NEWER'
@@ -93,14 +99,15 @@ while translating the UML into an XSD.  When set to C<true>, this option
 will give you the nice long names in Perl.
 =cut
 
-sub new {
-    my $class = shift;
-    (bless {}, $class)->init( {@_} );
+sub new(%)
+{	my ($class, %args) = @_;
+    (bless {}, $class)->init(\%args);
 }
 
-sub init($) {
-	my ($self, $args) = @_;
+sub init($)
+{	my ($self, $args) = @_;
 
+	# Collect the names of all CAMT schemes in this distribution
 	foreach my $f (grep !$_->is_dir && $_->basename =~ /\.xsd$/, $xsddir->children)
 	{	$f->basename =~ /^camt\.([0-9]{3}\.[0-9]{3})\.([0-9]+)\.xsd$/ or panic $f;
 		$xsd_files{$1}{$2} = $f->stringify;
@@ -175,14 +182,19 @@ sub read($%)
 }
 
 =method fromHASH \%data, %options
+Create a M<Business::CAMT::Message> object of the given C<type>.  It is not
+checked whether the type schema exists until an attempt is made to write the
+message.
+
 =requires type VERSION
+Something like C<camt.053.001.02> or C<053.001.02>.
 =cut
 
 sub fromHASH($%)
 {	my ($self, $data, %args) = @_;
 	my $type = $args{type} or panic;
 	my ($set, $version) = $type =~ /^(?:camt\.)?([0-9]+\.[0-9]+)\.([0-9]+)$/
-		or error __x"Unknown message '{type}'", type => $type;
+		or error __x"Unknown message type '{type}'", type => $type;
 
 	Business::CAMT::Message->fromData(
 		set     => $set,
@@ -192,18 +204,23 @@ sub fromHASH($%)
 	);
 }
 
-=method create $set, $version, $data
+=method create $type, $data, %options
 Create a new message, to be written later.  The C<$data> is the content of
 the message, in a structure as can be found in the example templates.
 
+The C<$type> is either in the form C<camt.053.001.02> or C<053.001.02>.
+
 =example of create
   my $camt = Business::CAMT->new(...);
-  my $msg  = $camt->create('053.001', '02', \%data);
+  my $msg  = $camt->create('053.001.02', \%data);
   $msg->write('file.xml');
 =cut
 
-sub create($$$)
-{	my ($self, $set, $version, $data) = @_;
+sub create($$%)
+{	my ($self, $type, $data) = @_;
+	my ($set, $version) = $type =~ /^(?:camt\.)?([0-9]+\.[0-9]+)\.([0-9]+)$/
+		or error __x"Unknown message type '{type}'", type => $type;
+
 	Business::CAMT::Message->create(
 		set     => $set,
 		version => $version,
@@ -218,7 +235,7 @@ to a file in XML format.  The message can also be written as JSON or Perl
 data-structure, via the message itself.
 
 =example writing a message
-  my $message = $camt->create('053.001', '02', $data);
+  my $message = $camt->create('053.001.02', $data);
   $camt->write('out.xml', $message);
   $message->write('out.xml');   # same
 

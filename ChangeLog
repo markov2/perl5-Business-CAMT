@@ -6,6 +6,9 @@ Mark Overmeer.
 
 version 0.13:
 
+	Changes:
+	- combine set and version arguments to create()
+
 	Improvements:
 	- more rant about the missed chances in the schemas.
 	- only 3 long tagnames are still unclear (too new for docs)
