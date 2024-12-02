@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.068.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:35 2024
+#          on Sun Dec  1 23:10:59 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -435,8 +435,8 @@
     # is a x0:IntraBalance6
     IntraBalance =>
     { # sequence of SettledAmount, PreviouslySettledAmount,
-      #   RemainingSettlementAmount, SettlementDate, BallanceFrom,
-      #   BallanceTotal, CashSubBalanceId,
+      #   RemainingSettlementAmount, SettlementDate, BalanceFrom,
+      #   BalanceTotal, CashSubBalanceId,
       #   InstructingProcessingAdditionalDetails
 
       # is a x0:Amount2Choice
@@ -477,7 +477,7 @@
       SettlementDate => {},
 
       # is a x0:CashSubBalanceTypeAndQuantityBreakdown3
-      BallanceFrom =>
+      BalanceFrom =>
       { # sequence of Type, QuantityBreakdown
 
         # is a x0:CashBalanceType3Choice
@@ -556,7 +556,7 @@
 
       # is a x0:CashSubBalanceTypeAndQuantityBreakdown3
       # complex structure shown above
-      BallanceTotal => {},
+      BalanceTotal => {},
 
       # is a x0:GenericIdentification37
       # complex structure shown above

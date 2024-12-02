@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.044.001.03}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:33 2024
+#          on Sun Dec  1 23:10:58 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -170,8 +170,8 @@
       # is a x0:Fund2
       # occurs any number of times
       FundOrSubFundDetails =>
-      [ { # sequence of Name, LegalEntityId, Identification, Currency,
-          #   TradeDateTime, PreviousTradeDateTime, TotalNAV,
+      [ { # sequence of Name, LegalEntityIdentifier, Identification,
+          #   Currency, TradeDateTime, PreviousTradeDateTime, TotalNAV,
           #   PreviousTotalNAV, TotalUnitsNumber,
           #   PreviousTotalUnitsNumber, PercentageOfFundTotalNAV,
           #   CashInForecastDetails, CashOutForecastDetails,
@@ -186,7 +186,7 @@
           # is a xs:string
           # is optional
           # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
-          LegalEntityId => "example",
+          LegalEntityIdentifier => "example",
 
           # is a x0:OtherIdentification4
           # is optional
@@ -570,7 +570,7 @@
           # occurs any number of times
           CashOutForecastDetails =>
           [ { # sequence of CashSettlementDate, SubTotalAmount,
-              #   SubTotalUnitsNumber, ExceptionalCashFlowInd, AdditionalBallance
+              #   SubTotalUnitsNumber, ExceptionalCashFlowInd, AdditionalBalance
 
               # is a xs:date
               CashSettlementDate => "2006-10-06",
@@ -599,7 +599,7 @@
 
               # is a x0:FundBalance1
               # is optional
-              AdditionalBallance =>
+              AdditionalBalance =>
               { # sequence of TotalUnitsForUnitOrders,
                 #   TotalUnitsForCashOrders, TotalCashForUnitOrders,
                 #   TotalCashForCashOrders

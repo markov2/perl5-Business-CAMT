@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.059.001.08}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:34 2024
+#          on Sun Dec  1 23:10:59 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -631,7 +631,7 @@
               OriginalItemReference =>
               { # sequence of Account, AccountOwner, AccountServicer,
                 #   RelatedAccount, Debtor, DebtorAgent, IntermediaryAgent,
-                #   Purpose, RelatedRemoteInformation, RemittanceInformation
+                #   Purpose, RelatedRemittanceInformation, RemittanceInformation
 
                 # is a x0:CashAccount40
                 # complex structure shown above
@@ -685,7 +685,7 @@
 
                 # is a x0:RemittanceLocation8
                 # is optional
-                RelatedRemoteInformation =>
+                RelatedRemittanceInformation =>
                 { # sequence of RemittanceId, RemittanceLocationDetails
 
                   # is a xs:string
@@ -730,7 +730,7 @@
                   Structured =>
                   [ { # sequence of ReferencedDocumentInformation,
                       #   ReferencedDocumentsAmount, CreditorReferenceInformation,
-                      #   Invoicer, Invoicee, Taxremittance, GarnishmentRemittance,
+                      #   Invoicer, Invoicee, TaxRemittance, GarnishmentRemittance,
                       #   AdditionalRemittanceInformation
 
                       # is a x0:ReferredDocumentInformation8
@@ -870,7 +870,7 @@
 
                       # is a x0:TaxData1
                       # is optional
-                      Taxremittance =>
+                      TaxRemittance =>
                       { # sequence of Creditor, Debtor, UltimateDebitor,
                         #   AdministrationZone, ReferenceNumber, Method,
                         #   TotalTaxableBaseAmount, TotalTaxAmount, Date,

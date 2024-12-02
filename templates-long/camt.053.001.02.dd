@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.053.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:34 2024
+#          on Sun Dec  1 23:10:58 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -1123,7 +1123,7 @@
                 TransactionDetails =>
                 [ { # sequence of References, AmountDetails, Availability,
                     #   BankTransactionCode, Charges, Interest, RelatedParties,
-                    #   RelatedAgents, Purpose, RelatedRemoteInformation,
+                    #   RelatedAgents, Purpose, RelatedRemittanceInformation,
                     #   RemittanceInformation, RelatedDates, RelatedPrice,
                     #   RelatedQuantities, FinancialInstrumentId, Tax,
                     #   ReturnInformation, CorporateAction, SafekeepingAccount,
@@ -1349,7 +1349,7 @@
 
                     # is a x0:RemittanceLocation2
                     # occurs 0 <= # <= 10 times
-                    RelatedRemoteInformation =>
+                    RelatedRemittanceInformation =>
                     [ { # sequence of RemittanceId, RemittanceLocationMethod,
                         #   RemittanceLocationElectronicAddress,
                         #   RemittanceLocationPostalAddress

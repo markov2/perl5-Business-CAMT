@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.078.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:35 2024
+#          on Sun Dec  1 23:10:59 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -74,7 +74,7 @@
       # is a x0:IntraBalanceQueryCriteria11
       SearchCriteria =>
       { # sequence of References, Status, CashAccount,
-        #   CashAccountOwner, CashAccountServicer, BallanceType,
+        #   CashAccountOwner, CashAccountServicer, BalanceType,
         #   CashSubBalanceId, SettlementAmount, SettledAmount,
         #   SettlementCurrency, IntendedSettlementDate,
         #   EffectiveSettlementDate, Priority, MessageOriginator,
@@ -517,12 +517,12 @@
 
         # is a x0:IntraBalanceType3
         # occurs any number of times
-        BallanceType =>
-        [ { # sequence of BallanceFrom, BallanceTotal
+        BalanceType =>
+        [ { # sequence of BalanceFrom, BalanceTotal
 
             # is a x0:CashSubBalanceTypeAndQuantityBreakdown3
             # is optional
-            BallanceFrom =>
+            BalanceFrom =>
             { # sequence of Type, QuantityBreakdown
 
               # is a x0:CashBalanceType3Choice
@@ -602,7 +602,7 @@
             # is a x0:CashSubBalanceTypeAndQuantityBreakdown3
             # complex structure shown above
             # is optional
-            BallanceTotal => [{},], }, ],
+            BalanceTotal => [{},], }, ],
 
         # is a x0:GenericIdentification37
         # complex structure shown above

@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.052.001.12}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:34 2024
+#          on Sun Dec  1 23:10:58 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -1634,12 +1634,13 @@
                 [ { # sequence of References, Amount, CreditDebitInd,
                     #   AmountDetails, Availability, BankTransactionCode, Charges,
                     #   Interest, RelatedParties, RelatedAgents, LocalInstrument,
-                    #   PaymentTypeInformation, Purpose, RelatedRemoteInformation,
-                    #   RemittanceInformation, RelatedDates, RelatedPrice,
-                    #   RelatedQuantities, FinancialInstrumentId, Tax,
-                    #   ReturnInformation, CorporateAction, SafekeepingAccount,
-                    #   CashDeposit, CardTransaction,
-                    #   AdditionalTransactionInformation, SupplementaryData
+                    #   PaymentTypeInformation, Purpose,
+                    #   RelatedRemittanceInformation, RemittanceInformation,
+                    #   RelatedDates, RelatedPrice, RelatedQuantities,
+                    #   FinancialInstrumentId, Tax, ReturnInformation,
+                    #   CorporateAction, SafekeepingAccount, CashDeposit,
+                    #   CardTransaction, AdditionalTransactionInformation,
+                    #   SupplementaryData
 
                     # is a x0:TransactionReferences6
                     # is optional
@@ -1999,7 +2000,7 @@
 
                     # is a x0:RemittanceLocation8
                     # occurs 0 <= # <= 10 times
-                    RelatedRemoteInformation =>
+                    RelatedRemittanceInformation =>
                     [ { # sequence of RemittanceId, RemittanceLocationDetails
 
                         # is a xs:string
@@ -2044,7 +2045,7 @@
                       Structured =>
                       [ { # sequence of ReferencedDocumentInformation,
                           #   ReferencedDocumentsAmount, CreditorReferenceInformation,
-                          #   Invoicer, Invoicee, Taxremittance, GarnishmentRemittance,
+                          #   Invoicer, Invoicee, TaxRemittance, GarnishmentRemittance,
                           #   AdditionalRemittanceInformation
 
                           # is a x0:ReferredDocumentInformation8
@@ -2184,7 +2185,7 @@
 
                           # is a x0:TaxData1
                           # is optional
-                          Taxremittance =>
+                          TaxRemittance =>
                           { # sequence of Creditor, Debtor, UltimateDebitor,
                             #   AdministrationZone, ReferenceNumber, Method,
                             #   TotalTaxableBaseAmount, TotalTaxAmount, Date,

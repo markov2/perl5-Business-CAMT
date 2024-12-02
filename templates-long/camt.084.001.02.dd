@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.084.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:35 2024
+#          on Sun Dec  1 23:10:59 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -17,7 +17,7 @@
   IntraBalanceMovementPostingReport =>
   { # sequence of Identification, Pagination,
     #   ReportGeneralDetails, CashAccount, CashAccountOwner,
-    #   CashAccountServicer, SubBallance
+    #   CashAccountServicer, SubBalance
 
     # is a x0:DocumentIdentification51
     # is optional
@@ -479,11 +479,11 @@
 
     # is a x0:IntraBalancePosting5
     # occurs any number of times
-    SubBallance =>
-    [ { # sequence of BallanceFrom, Movement
+    SubBalance =>
+    [ { # sequence of BalanceFrom, Movement
 
         # is a x0:CashSubBalanceTypeAndQuantityBreakdown3
-        BallanceFrom =>
+        BalanceFrom =>
         { # sequence of Type, QuantityBreakdown
 
           # is a x0:CashBalanceType3Choice
@@ -566,11 +566,10 @@
         [ { # sequence of AccountOwnerTransactionId,
             #   AccountServicerTransactionId,
             #   MarketInfrastructureTransactionId, ProcessorTransactionId,
-            #   PoolId, CorporateActionEventId, BallanceTotal,
-            #   SettledAmount, PreviouslySettledAmount,
-            #   RemainingSettlementAmount, EffectiveSettlementDate,
-            #   StatusDate, CashSubBalanceId, Linkages, Priority,
-            #   MessageOriginator, CreationDateTime,
+            #   PoolId, CorporateActionEventId, BalanceTotal, SettledAmount,
+            #   PreviouslySettledAmount, RemainingSettlementAmount,
+            #   EffectiveSettlementDate, StatusDate, CashSubBalanceId,
+            #   Linkages, Priority, MessageOriginator, CreationDateTime,
             #   InstructingProcessingAdditionalDetails, SupplementaryData
 
             # is a xs:string
@@ -610,7 +609,7 @@
 
             # is a x0:CashSubBalanceTypeAndQuantityBreakdown3
             # complex structure shown above
-            BallanceTotal => {},
+            BalanceTotal => {},
 
             # is a x0:Amount2Choice
             SettledAmount =>

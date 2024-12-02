@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.088.001.02}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:35 2024
+#          on Sun Dec  1 23:10:59 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -136,7 +136,7 @@
         # is a x0:PartyIdentification266
         PartyId =>
         { # sequence of PartyNumber, AnyBIC, AccountNumber, Address,
-          #   ClearSystemId, LegalEntityId
+          #   ClearSystemId, LegalEntityIdentifier
 
           # is a xs:string
           # is optional
@@ -179,7 +179,7 @@
           # is a xs:string
           # is optional
           # Pattern: [A-Z0-9]{18,18}[0-9]{2,2}
-          LegalEntityId => "example", }, },
+          LegalEntityIdentifier => "example", }, },
 
       # is a xs:string
       # is optional

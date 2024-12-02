@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.086.001.05}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Thu Nov 28 17:11:35 2024
+#          on Sun Dec  1 23:10:59 2024
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -402,7 +402,7 @@
         [ { # sequence of StatementId, FromToDate, CreationDateTime,
             #   Status, AccountCharacteristics, RateData, CurrencyExchange,
             #   Balance, Compensation, Service, TaxRegion,
-            #   BallanceAdjustment, ServiceAdjustment
+            #   BalanceAdjustment, ServiceAdjustment
 
             # is a xs:string
             # length <= 35
@@ -740,7 +740,7 @@
             Service =>
             [ { # sequence of ServiceDetail, Price, PaymentMethod,
                 #   OriginalChargePrice, OriginalChargeSettlementAmount,
-                #   BallanceRequestedAccountAmount, TaxDesignation, TaxCalculation
+                #   BalanceRequestedAccountAmount, TaxDesignation, TaxCalculation
 
                 # is a x0:BillingServiceParameters3
                 ServiceDetail =>
@@ -888,7 +888,7 @@
                 # is a x0:AmountAndDirection34
                 # complex structure shown above
                 # is optional
-                BallanceRequestedAccountAmount => [{},],
+                BalanceRequestedAccountAmount => [{},],
 
                 # is a x0:ServiceTaxDesignation1
                 TaxDesignation =>
@@ -1102,10 +1102,9 @@
 
             # is a x0:BalanceAdjustment1
             # occurs any number of times
-            BallanceAdjustment =>
-            [ { # sequence of Type, Description, BallanceAmount,
-                #   AverageAmount, ErrorDate, PostingDate, Days,
-                #   EarningsAdjustmentAmount
+            BalanceAdjustment =>
+            [ { # sequence of Type, Description, BalanceAmount, AverageAmount,
+                #   ErrorDate, PostingDate, Days, EarningsAdjustmentAmount
 
                 # is a xs:string
                 # Enum: CLLD FLOT LDGR
@@ -1118,7 +1117,7 @@
 
                 # is a x0:AmountAndDirection34
                 # complex structure shown above
-                BallanceAmount => {},
+                BalanceAmount => {},
 
                 # is a x0:AmountAndDirection34
                 # complex structure shown above
@@ -1147,10 +1146,9 @@
             # occurs any number of times
             ServiceAdjustment =>
             [ { # sequence of Type, Description, Amount,
-                #   BallanceRequestedAmount, ErrorDate, AdjustmentId,
-                #   SubService, PriceChange, OriginalPrice, NewPrice,
-                #   VolumeChange, OriginalVolume, NewVolume,
-                #   OriginalChargeAmount, NewChargeAmount
+                #   BalanceRequestedAmount, ErrorDate, AdjustmentId, SubService,
+                #   PriceChange, OriginalPrice, NewPrice, VolumeChange,
+                #   OriginalVolume, NewVolume, OriginalChargeAmount, NewChargeAmount
 
                 # is a xs:string
                 # Enum: COMP NCMP
@@ -1168,7 +1166,7 @@
                 # is a x0:AmountAndDirection34
                 # complex structure shown above
                 # is optional
-                BallanceRequestedAmount => [{},],
+                BalanceRequestedAmount => [{},],
 
                 # is a xs:date
                 # is optional
