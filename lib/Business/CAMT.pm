@@ -524,10 +524,15 @@ The XML schema, when B<designed> as XML schema, could have looked like
     <Credit Currency="SEK">500000.00</Credit>
   </OpeningBook>
 
-The use of C<group>'ed elements and C<substitutionGroup>'s would have made
-messages so much clearer and easier.  It would have reduced the message
-size much further than by leaving out the vowels from tags, as the example
-shows.
+The use of C<group>'ed elements and C<substitutionGroup>'s would have
+made messages so much clearer and easier.  Even simple constructs
+as C<extension> and C<restriction> of C<complexType>'s are not used.
+It would have reduced the message size much further than by leaving
+out the vowels from tags, as the example shows.
+
+But more importantly: this hinders backward compatibility in the message
+evaluation a lot!  Using XML features better would result in better
+maintainable applications.  Much better.
 
 =cut
 
