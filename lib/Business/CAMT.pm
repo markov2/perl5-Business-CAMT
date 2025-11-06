@@ -56,18 +56,20 @@ Business::CAMT - ISO20022 Cash Management (CAMT) messages
 
 =chapter DESCRIPTION
 
-Use this module to manage CAMT messages, which are ISO20022 standard
-"Cash Management" messages as produced in banking.  For instance,
-CAMT.053 is produced by banks and consumed by accountancies, showing
-transactions in bank-accounts.  See L<https://www.iso20022.org>.
+Use this module to manage B<any type of CAMT messages>, which are
+ISO20022 standard "Cash Management" messages as produced in banking.
+For instance, CAMT.053 is produced by banks and consumed by accountancies,
+showing transactions in bank-accounts.  See L<https://www.iso20022.org>.
 
-At the moment, this module can be used to read and write the XML
-message files, perfectly validated and predictable.  It is intended to
-also support abstraction in interpreting and constructing the content.
+At the moment, this module can be used to read and write the XML message
+files, perfectly validated and predictable.  Not all versions of all
+schemas are included (yet) because there is no public historical archive
+for them (AFAIK).
 
-However, B<I need a sponsor> to make that happen.  Contact the author
-for support.  Please.  I would also like to include a CAMT.053 to CSV
-and MT-940 converter, v.v.  Please hire me.
+It is intended to also support abstraction in interpreting and
+constructing the content.  However, B<I need a sponsor> to make that
+happen.  Contact the author for support.  Please.  I would also like to
+include a CAMT.053 to CSV and MT-940 converter, v.v.  Please hire me.
 
 =chapter METHODS
 
