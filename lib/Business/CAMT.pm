@@ -1,5 +1,7 @@
-# This code is part of distribution Business::CAMT.  It is licensed under the
-# same terms as Perl itself: https://spdx.org/licenses/Artistic-2.0.html
+#oodist: *** DO NOT USE THIS VERSION FOR PRODUCTION ***
+#oodist: This file contains OODoc-style documentation which will get stripped
+#oodist: during its release in the distribution.  You can use this file for
+#oodist: testing, however the code of this development version may be broken!
 
 # https://www.betaalvereniging.nl/wp-content/uploads/IG-Bank-to-Customer-Statement-CAMT-053-v1-1.pdf
 
@@ -14,9 +16,9 @@ use Log::Report 'business-camt';
 use Path::Class         ();
 use XML::LibXML         ();
 use XML::Compile::Cache ();
-use Scalar::Util        qw(blessed);
-use List::Util          qw(first);
-use XML::Compile::Util  qw(pack_type);
+use Scalar::Util        qw/blessed/;
+use List::Util          qw/first/;
+use XML::Compile::Util  qw/pack_type/;
 
 use Business::CAMT::Message ();
 
@@ -57,7 +59,7 @@ Business::CAMT - ISO20022 Cash Management (CAMT) messages
 Use this module to manage CAMT messages, which are ISO20022 standard
 "Cash Management" messages as produced in banking.  For instance,
 CAMT.053 is produced by banks and consumed by accountancies, showing
-transactions in bank-accounts.  See F<https://www.iso20022.org>.
+transactions in bank-accounts.  See L<https://www.iso20022.org>.
 
 At the moment, this module can be used to read and write the XML
 message files, perfectly validated and predictable.  It is intended to
@@ -86,22 +88,22 @@ See M<matchSchema()> for the available $rule values.  See the L<DETAILS>
 section about the namespace versioning horrors.
 
 =option  big_numbers BOOLEAN
-=default big_numbers C<false>
+=default big_numbers false
 Set to a true value when your accounts run into the billions.  This will
-enable M<Math::BigFloat> to be used, which is slower and memory hungry.
+enable Math::BigFloat to be used, which is slower and memory hungry.
 
 =option  long_tagnames BOOLEAN
-=default long_tagnames C<false>
+=default long_tagnames false
 The schemas are derived from an UML specifications which uses clear and
 readible long names for relations and attributes.  But, someone with a
 poor sense of optimization removed most of the vowels from these tags
-while translating the UML into an XSD.  When set to C<true>, this option
+while translating the UML into an XSD.  When set to true, this option
 will give you the nice long names in Perl.
 =cut
 
 sub new(%)
 {	my ($class, %args) = @_;
-    (bless {}, $class)->init(\%args);
+	(bless {}, $class)->init(\%args);
 }
 
 sub init($)
@@ -118,21 +120,21 @@ sub init($)
 	$self->{BC_long} = delete $args->{long_tagnames} || 0;
 	$self->{RC_schemas} = XML::Compile::Cache->new;
 
-    $self;
+	$self;
 }
 
-#-------------------------
+#--------------------
 =section Accessors
 
 =method schemas
-Returns the M<XML::Compile::Schema> object, which collects the
+Returns the XML::Compile::Schema object, which collects the
 compiled message XSDs.  The XSDs get automatically loaded when
 messages are encountered which need them.
 =cut
 
 sub schemas() { $_[0]->{RC_schemas} }
 
-#-------------------------
+#--------------------
 =section Read and Write messages
 
 =method read $file|$xml, %options
@@ -142,16 +144,21 @@ C<Business::CAMT::CAMT053>.
 
 =option  match_schema $rule
 =default match_schema M<new(match_schema)>
+
+=error Unrecognized input
+=error Not a CAMT file.
+=error Not a supported CAMT message type.
+=error No compatible schema version available.
 =cut
 
 sub read($%)
 {	my ($self, $src, %args) = @_;
 
 	my $dom
-	  = ! ref $src ? XML::LibXML->load_xml($src =~ /\<.*\>/ ? (string => $src) : (location => $src))
-	  : $src->isa('IO::Handle') || $src->isa('GLOB') ? XML::LibXML->load_xml(IO => $src)
-	  : $src->isa('XML::LibXML::Node') ? $src
-	  : error "Unrecognized input";
+	= ! ref $src ? XML::LibXML->load_xml($src =~ /\<.*\>/ ? (string => $src) : (location => $src))
+	: $src->isa('IO::Handle') || $src->isa('GLOB') ? XML::LibXML->load_xml(IO => $src)
+	: $src->isa('XML::LibXML::Node') ? $src
+	: error "Unrecognized input";
 
 	my $xml = $dom->isa('XML::LibXML::Document') ? $dom->documentElement : $dom;
 
@@ -182,12 +189,14 @@ sub read($%)
 }
 
 =method fromHASH \%data, %options
-Create a M<Business::CAMT::Message> object of the given C<type>.  It is not
+Create a Business::CAMT::Message object of the given P<type>.  It is not
 checked whether the type schema exists until an attempt is made to write the
 message.
 
 =requires type VERSION
 Something like C<camt.053.001.02> or C<053.001.02>.
+
+=error Unknown message type '$type'
 =cut
 
 sub fromHASH($%)
@@ -205,15 +214,17 @@ sub fromHASH($%)
 }
 
 =method create $type, $data, %options
-Create a new message, to be written later.  The C<$data> is the content of
+Create a new message, to be written later.  The $data is the content of
 the message, in a structure as can be found in the example templates.
 
-The C<$type> is either in the form C<camt.053.001.02> or C<053.001.02>.
+The $type is either in the form C<camt.053.001.02> or C<053.001.02>.
 
 =example of create
   my $camt = Business::CAMT->new(...);
   my $msg  = $camt->create('053.001.02', \%data);
   $msg->write('file.xml');
+
+=error Unknown message type '$type'
 =cut
 
 sub create($$%)
@@ -230,7 +241,7 @@ sub create($$%)
 }
 
 =method write $file, $message, %options
-Write a constructed C<$message> (an extension of M<Business::CAMT::Message>)
+Write a constructed $message (an extension of Business::CAMT::Message)
 to a file in XML format.  The message can also be written as JSON or Perl
 data-structure, via the message itself.
 
@@ -239,6 +250,8 @@ data-structure, via the message itself.
   $camt->write('out.xml', $message);
   $message->write('out.xml');   # same
 
+=error Message set '$set' is unsupported.
+=error Schema version $version is not available, pick from $versions.
 =cut
 
 sub write($$%)
@@ -251,8 +264,7 @@ sub write($$%)
 	my @versions = sort { $a <=> $b } keys %$versions;
 	my $version  = $msg->version;
 	grep $version eq $_, @versions
-		or error __x"Schema version {version} is not available, pick from {versions}.",
-			version => $version, versions => \@versions;
+		or error __x"Schema version {version} is not available, pick from {versions}.", version => $version, versions => \@versions;
 
 	my $ns     = "$urnbase:camt.$set.$version";
 	my $writer = $self->schemaWriter($set, $version, $ns);
@@ -261,14 +273,12 @@ sub write($$%)
 	my $xml    = $writer->($doc, $msg);
 	$doc->setDocumentElement($xml);
 
-	if(ref $fn eq 'GLOB')
-         { $doc->toFH($fn, 1) }
-	else { $doc->toFile($fn, 1) }
+	if(ref $fn eq 'GLOB') { $doc->toFH($fn, 1) } else { $doc->toFile($fn, 1) }
 
 	$xml;
 }
 
-#-------------------------
+#--------------------
 =section Helper methods
 
 You would rarely (or never) need to use these methods in your programs: they support
@@ -334,11 +344,14 @@ it is older than the message version.
 
 You may also pass a CODE reference, which is called with the $set, the requested
 schema, and a sorted ARRAY of available versions.  It must return one of the
-available versions or C<undef> (no compatible version).
+available versions or undef (no compatible version).
+
+=error Unknown schema match rule '$rule'.
 =cut
 
 # called with ($set, $version, \@available_versions)
 sub _exact { first { $_[1] eq $_ } @{$_[2]} }
+
 my %rules = (
 	EXACT  => \&_exact,
 	NEWER  => sub { (grep $_ >= $_[1], @{$_[2]})[0] },
@@ -353,7 +366,7 @@ sub matchSchema($$%)
 	my $ruler = $args{rule} ||= $self->{BC_rule};
 	my $rule  = ref $ruler eq 'CODE' ? $ruler : $rules{$ruler}
 		or error __x"Unknown schema match rule '{rule}'.", rule => $ruler;
-	
+
 	$rule->($set, $version, [ sort { $a <=> $b } keys %$versions ]);
 }
 
@@ -394,7 +407,7 @@ sub tag2fullnameTable()
 	};
 }
 
-#---------------
+#--------------------
 =chapter DETAILS
 
 In this chapter, you find some background information and implementation tips.

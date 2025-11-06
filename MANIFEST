@@ -14,6 +14,7 @@ lib/Business/CAMT/Message.pm
 lib/Business/CAMT/tags/README.md
 lib/Business/CAMT/tags/abbreviations.csv
 lib/Business/CAMT/tags/index.csv
+lib/Business/CAMT/xsd/README.md
 lib/Business/CAMT/xsd/camt.003.001.08.xsd
 lib/Business/CAMT/xsd/camt.004.001.10.xsd
 lib/Business/CAMT/xsd/camt.005.001.11.xsd
@@ -117,6 +118,5 @@ lib/Business/CAMT/xsd/camt.109.001.02.xsd
 lib/Business/CAMT/xsd/camt.110.001.01.xsd
 lib/Business/CAMT/xsd/camt.111.001.01.xsd
 lib/Business/CAMT/xsd/camt.111.001.02.xsd
-lib/Business/CAMT/xsd/README.md
 t/00use.t
 xt/99pod.t

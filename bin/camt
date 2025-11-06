@@ -170,7 +170,7 @@ The CAMT uses huge values as maximum.  This can be handled for some output, but
 not for (for instance) JSON.  Such values are also usually not needed, so the
 default is not to expect them.
 
-=item -l --log-tagnames --no-long-tagnames (default false)
+=item -l --long-tagnames --no-long-tagnames (default false)
 
 The CAMT specification contains clear names for the data fields, but decided to
 trim characters from XML fields.  This is really silly and needless.  When you
@@ -201,7 +201,7 @@ Github: F<https://github.com/markov2/perl5-Business-CAMT/>
 
 =head1 LICENSE
 
-Copyrights 2024 by [Mark Overmeer <markov@cpan.org>]. For other
+Copyrights 2024-2025 by [Mark Overmeer <markov@cpan.org>]. For other
 contributors see ChangeLog.
 
 This program is free software; you can redistribute it and/or modify it

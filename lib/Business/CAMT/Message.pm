@@ -1,5 +1,7 @@
-# This code is part of distribution Business::CAMT.  It is licensed under the
-# same terms as Perl itself: https://spdx.org/licenses/Artistic-2.0.html
+#oodist: *** DO NOT USE THIS VERSION FOR PRODUCTION ***
+#oodist: This file contains OODoc-style documentation which will get stripped
+#oodist: during its release in the distribution.  You can use this file for
+#oodist: testing, however the code of this development version may be broken!
 
 package Business::CAMT::Message;
 
@@ -39,18 +41,18 @@ the CAMT messages.
 
 =c_method new %options
 The data (probably read from a file) is wrapped into this class.  When
-C<data> is undef, then C<undef> will be returned.
+P<data> is undef, then undef will be returned.
 
 =requires set STRING
 =requires version STRING
 =requires data HASH
-=requires camt M<Business::CAMT> object
+=requires camt Business::CAMT object
 =cut
 
 sub new
 {	my ($class, %args) = @_;
 	my $data = delete $args{data} or return undef;
-    (bless $data, $class)->init(\%args);
+	(bless $data, $class)->init(\%args);
 }
 
 sub init($) {
@@ -89,7 +91,7 @@ sub fromData(%)
 	$class->_loadSubclass($set)->new(%args);
 }
 
-#-------------------------
+#--------------------
 =section Accessors
 
 =method set
@@ -101,15 +103,15 @@ sub set     { $_[0]->{_attrs}{set} }
 sub version { $_[0]->{_attrs}{version} }
 sub camt    { $_[0]->{_attrs}{camt} }
 
-#-------------------------
+#--------------------
 =section Other
 
 =method write $file, %options
 All %options are passed to M<Business::CAMT::write()>.
 
 =examples for write
-   $msg->write($file);
-   $camt->write($file, $msg);   # same
+  $msg->write($file);
+  $camt->write($file, $msg);   # same
 =cut
 
 sub write(%)
@@ -118,7 +120,7 @@ sub write(%)
 }
 
 =method toPerl
-Convert the HASH into Perl code, using M<Data::Dumper>.  This is
+Convert the HASH into Perl code, using Data::Dumper.  This is
 useful, because you do not want to include the hidden object
 attributes in your output: this method hides that administration.
 =cut
