@@ -9,6 +9,7 @@ use 5.020;
 use ExtUtils::MakeMaker;
 
 # Use command 'oodist' to produce your whole software release.
+my $version  = '0.15';
 my $git      = "https://github.com/markov2/perl5-Business-CAMT";
 my $publish  = "../public_html/business-camt";
 my $homepage = "http://perl.overmeer.net/CPAN/";
@@ -52,7 +53,7 @@ my %oodist   = (
 
 WriteMakefile
     NAME             => 'Business::CAMT',
-    VERSION          => '0.14',
+    VERSION          => $version,
     AUTHOR           => 'Mark Overmeer <markov@cpan.org>',
 	ABSTRACT         => 'ISO20022 Cash Management (CAMT) messages',
 	LICENSE          => 'perl_5',
