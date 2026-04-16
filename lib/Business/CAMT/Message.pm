@@ -92,7 +92,7 @@ sub fromData(%)
 }
 
 #--------------------
-=section Accessors
+=section Attributes
 
 =method set
 =method version

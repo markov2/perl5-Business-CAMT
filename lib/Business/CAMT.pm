@@ -126,7 +126,7 @@ sub init($)
 }
 
 #--------------------
-=section Accessors
+=section Attributes
 
 =method schemas
 Returns the XML::Compile::Schema object, which collects the
