@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.011.001.08}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Sun Dec  1 23:10:56 2024
+#          on Thu Apr 16 14:55:44 2026
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -33,7 +33,7 @@
     # is a x0:LimitStructure5
     # occurs any number of times
     LimitDetails =>
-    [ { # sequence of LimitId, NewLimitValueSet, OdLmtValSet,
+    [ { # sequence of LimitId, NewLimitValueSet, OldLimitValueSet,
         #   LimitValueAmendment
 
         # is a x0:LimitIdentification3Choice
@@ -422,7 +422,7 @@
 
         # is a x0:Limit10
         # is optional
-        OdLmtValSet =>
+        OldLimitValueSet =>
         { # sequence of Amount, CreditDebitInd
 
           # is a x0:Amount2Choice

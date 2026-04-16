@@ -2,7 +2,7 @@
 #     {urn:iso:std:iso:20022:tech:xsd:camt.057.001.08}Document
 #
 # Produced by XML::Compile::Translate::Template version undef
-#          on Sun Dec  1 23:10:58 2024
+#          on Thu Apr 16 14:55:47 2026
 #
 # BE WARNED: in most cases, the example below cannot be used without
 # interpretation.  The comments will guide you.
@@ -555,7 +555,7 @@
           #   AccountOwner, AccountServicer, RelatedAccount, Amount,
           #   ExpectedValueDate, Debtor, DebtorAgent, IntermediaryAgent,
           #   Purpose, RelatedRemittanceInformation,
-          #   RemittanceInformation, UndrlygAllcn
+          #   RemittanceInformation, UnderlyingAllocation
 
           # is a xs:string
           # length <= 35
@@ -1149,7 +1149,7 @@
 
           # is a x0:TransactionAllocation1
           # occurs any number of times
-          UndrlygAllcn =>
+          UnderlyingAllocation =>
           [ { # sequence of Amount, CreditDebitInd, Account, Purpose,
               #   Reference, RelatedReferences
 
