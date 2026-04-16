@@ -141,7 +141,7 @@ sub schemas() { $_[0]->{RC_schemas} }
 
 =method read $file|$xml, %options
 Pass a $file name, an $xml document or an $xml element.  Returned is
-a HASH blessed in class 'Business::CAMT::CAMT<nr>', for instance
+a HASH blessed in class 'C<Business::CAMT::CAMT[nr]>', for instance
 C<Business::CAMT::CAMT053>.
 
 =option  match_schema $rule
